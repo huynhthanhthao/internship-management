@@ -4,7 +4,7 @@ const updateCompany = async function (req, res, next) {
   const { companyID } = req.value.params;
 
   const bodyData = req.value.body;
-  console.log(bodyData);
+
   try {
     const resultUpdate = await CompanyAccount.findOneAndUpdate(
       { account: companyID },
@@ -13,21 +13,26 @@ const updateCompany = async function (req, res, next) {
         message: bodyData.message,
       }
     );
+    if (resultUpdate) {
+      await Account.findOneAndUpdate(
+        { _id: companyID },
+        {
+          name: bodyData.name,
+          email: bodyData.email,
+          phoneNumber: bodyData.phoneNumber,
+          urlAvatar: bodyData.urlAvatar,
+        }
+      );
 
-    await Account.findOneAndUpdate(
-      { _id: companyID },
-      {
-        name: bodyData.name,
-        email: bodyData.email,
-        phoneNumber: bodyData.phoneNumber,
-        urlAvatar: bodyData.urlAvatar,
-      }
-    );
-
-    return res.status(201).json({
-      status: "success",
-      message: "Update Information Company Completed!",
-    });
+      return res.status(201).json({
+        status: "success",
+        message: "Update Information Company Completed!",
+      });
+    } else
+      return res.status(201).json({
+        status: "success",
+        message: "Don't Find Company ID to Update",
+      });
   } catch (error) {
     next(error);
   }

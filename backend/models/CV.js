@@ -15,7 +15,9 @@ const CVSchema = new Schema({
   projects: {
     type: [String],
   },
-  message: String,
+  message: {
+    type: String,
+  },
 });
 
 export default mongoose.model("CVSchema", CVSchema);

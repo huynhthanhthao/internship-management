@@ -1,10 +1,6 @@
 import express from "express";
 import addCompany from "../controllers/admin-controllers/add-company.js";
-import addStudent from "../controllers/admin-controllers/add-student.js";
-import addTeacher from "../controllers/admin-controllers/add-teacher.js";
 import deleteCompany from "../controllers/admin-controllers/delete-company.js";
-import getAllAccount from "../controllers/admin-controllers/get-account.js";
-import getAllCompany from "../controllers/admin-controllers/get-all-company.js";
 import getInforTeacher from "../controllers/admin-controllers/get-infor-teacher.js";
 import searchCompany from "../controllers/admin-controllers/search-company.js";
 import searchTeacher from "../controllers/admin-controllers/search-teacher.js";
@@ -19,8 +15,6 @@ router.get("/", (req, res) => {
 
 router
   .route("/company")
-  //GET All Company
-  .get(getAllCompany)
   // Create New Company
   .post(validateBody(schema.accountSchema), addCompany);
 
@@ -38,21 +32,12 @@ router
 router
   .route("/teacher/:username")
   //Get infor teacher by username.
-  .get(validateParam(schema.usernameSchema, "username"), getInforTeacher);
+  .get(getInforTeacher);
 
 //Search Teacher By username or name
-router.route("/teacher/search/:searchData").get(searchTeacher);
+router.route("/search-teacher/:searchData").get(searchTeacher);
 
 //Search Company By username or name
-router.route("/company/search/:searchData").get(searchCompany);
-
-// Router Add Tam Thoi Mot Teacher De Test Data.
-router.route("/teacher").post(validateBody(schema.accountSchema), addTeacher);
-
-// Router Add Tam Thoi Mot Student De Test Data.
-router.route("/student").post(validateBody(schema.accountSchema), addStudent);
-
-// Router Tam Thoi De Test Account
-router.get("/account", getAllAccount);
+router.route("/search-company/:searchData").get(searchCompany);
 
 export default router;
