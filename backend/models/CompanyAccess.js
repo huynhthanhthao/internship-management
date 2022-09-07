@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const CompanyAccessSchema = new Schema({
+const companyAccessSchema = new Schema({
   studentAccount: {
     type: Schema.Types.Mixed,
   },
-  disPoints: Number,
+  disPoint: Number,
   techPoint: Number,
   resultPoint: Number,
   message: String,
 });
 
-export default mongoose.model("CompanyAccess", CompanyAccessSchema);
+export default mongoose.model("companyAccess", companyAccessSchema);

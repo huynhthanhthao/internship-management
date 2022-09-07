@@ -12,7 +12,6 @@ const addCompanyAccess = async function (req, res, next) {
       techPoint: 20,
     });
 
-    console.log(temp2);
     return res.status(201).json({
       status: "access",
       message: "Create New Account Company Access Complete.",

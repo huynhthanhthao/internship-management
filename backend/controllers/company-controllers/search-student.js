@@ -1,31 +1,27 @@
-import CompanyAccess from "../../models/CompanyAccess.js";
 import Account from "../../models/Account.js";
+import CompanyAccess from "../../models/CompanyAccess.js";
+
 const searchStudent = async function (req, res, next) {
-  const { searchData } = req.params;
-  const regex = new RegExp(searchData, "i");
+    const { searchData } = req.params;
+    const regex = new RegExp(searchData, "i");
 
-  try {
-    const resultAccounts = await Account.find({
-      $or: [{ username: regex }, { name: regex }],
-      rule: "STUDENT",
-    });
+    try {
+        const resultSearch = await CompanyAccess.find({
+            "studentAccount.username": regex,
+        });
 
-    const resultSearch = [];
-
-    for (resultAccount in resultAccounts) {
-      const tempResult = await CompanyAccess.find({
-        studentAccount: resultAccount._id,
-      });
-      if (tempResult) resultSearch.push(tempResult._id);
+        return resultSearch
+            ? res.status(201).json({
+                  status: "success",
+                  result: resultSearch,
+              })
+            : res.status(201).json({
+                  status: "success",
+                  message: "Don't find information",
+              });
+    } catch (error) {
+        next(error);
     }
-
-    return res.status(201).json({
-      status: "success",
-      result: resultSearch,
-    });
-  } catch (error) {
-    next(error);
-  }
 };
 
 export default searchStudent;

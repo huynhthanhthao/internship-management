@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
+
 const { Schema } = mongoose;
 
 const companyAccountSchema = new Schema({
     account: {
-        type: Schema.Types.ObjectId,
-        ref: "Account",
+        type: Schema.Types.Mixed,
     },
     address: {
         type: String,

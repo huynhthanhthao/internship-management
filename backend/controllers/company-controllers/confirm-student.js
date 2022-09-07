@@ -6,18 +6,18 @@ const confirmStudent = async function (req, res, next) {
   const bodyData = req.body;
 
   try {
-    await StudentAccount.findOneAndUpdate(
-      { account: studentID },
-      { company: bodyData.companyID }
-    );
+    const studentAccount = await StudentAccount.create({
+      account: studentID,
+      company: bodyData.companyID,
+    });
 
     await CompanyAccess.create({
-      account: studentID,
+      account: studentAccount._id,
     });
 
     return res.status(201).json({
-      status: "access",
-      message: "Confirm Student",
+      status: "success",
+      message: "Confirm Student Completed",
     });
   } catch (error) {
     next(error);

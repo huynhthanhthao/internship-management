@@ -1,0 +1,9 @@
+POST http://localhost:3000/admin/add-company
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.YXhvbg.yVkoYuRRfCggqyyPT5uZJNTI88QgTSpx1JolRFpFGBs
+
+{
+    "username": "axon",
+    "password": "12345678",
+    "name": "Axon active"
+}

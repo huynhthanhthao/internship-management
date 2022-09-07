@@ -1,25 +1,42 @@
-import createAccount from "./create-account.js";
+import Account from "../../models/Account.js";
 import CompanyAccount from "../../models/CompanyAccount.js";
 
-const addCompany = async function (req, res, next) {
-  const dataBody = req.value.body;
+const addCompanyController = async (req, res) => {
+    const { username, password, name } = req.body;
 
-  try {
-    const resultCreateAccount = await createAccount(dataBody, "COMPANY");
+    // Check missing data
+    if (!username || !password || !name) {
+        return res
+            .status(400)
+            .json({ status: false, message: "Missing data!" });
+    }
 
-    await CompanyAccount.create({
-      account: resultCreateAccount,
-      address: dataBody.address,
-      message: dataBody.message,
-    });
+    try {
+        let account = await Account.findOne({ username });
 
-    return res.status(201).json({
-      status: "access",
-      message: "Create New Account Company Complete.",
-    });
-  } catch (error) {
-    next(error);
-  }
+        // Check username is existed
+        if (account) {
+            return res
+                .status(400)
+                .json({ status: false, message: "Account already exists!" });
+        }
+
+        // All good
+        account = await Account.create({ username, password });
+
+        const companyAccount = await CompanyAccount.create({
+            account,
+            name,
+        });
+
+        return res.json({
+            status: true,
+            message: "Create account company successful!",
+            companyAccount,
+        });
+    } catch (error) {
+        console.log(error);
+    }
 };
 
-export default addCompany;
+export default addCompanyController;

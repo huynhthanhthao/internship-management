@@ -25,7 +25,6 @@ const accountSchema = new Schema({
     },
     rule: {
         type: String,
-        enum: ["ADMIN", "STUDENT", "TEACHER", "COMPANY"],
     },
     createdAt: {
         type: Date,
