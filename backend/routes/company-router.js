@@ -1,4 +1,5 @@
 import express from "express";
+import addCompanyAccess from "../controllers/company-controllers/add.js";
 import assessResult from "../controllers/company-controllers/assess-result.js";
 import assessTask from "../controllers/company-controllers/assess-task.js";
 import confirmStudent from "../controllers/company-controllers/confirm-student.js";
@@ -36,4 +37,5 @@ router
 //Search Student By Name OR Username
 router.route("/search/:searchData").get(searchStudent);
 
+router.route("/add-company-access/").post(addCompanyAccess);
 export default router;
