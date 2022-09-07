@@ -5,7 +5,7 @@ const companyAccessSchema = new Schema({
     studentAccount: {
         type: Schema.Types.Mixed,
     },
-    disPoints: Number,
+    disPoint: Number,
     techPoint: Number,
     resultPoint: Number,
     message: String,

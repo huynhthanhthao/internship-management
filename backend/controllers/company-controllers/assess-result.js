@@ -1,14 +1,13 @@
 import CompanyAccess from "../../models/CompanyAccess.js";
-
 const assessResult = async function (req, res, next) {
     const { studentId } = req.params;
-    const { disPoints, techPoint, resultPoint, message } = req.body;
+    const { disPoint, techPoint, resultPoint, message } = req.body;
 
     try {
-        await CompanyAccess.findOneAndUpdate(
-            { "studentAccount.username": "ST01" },
+        const result = await CompanyAccess.findOneAndUpdate(
+            { "studentAccount._id": "63138ba7a82803fb443dfb25" },
             {
-                disPoints,
+                disPoint,
                 techPoint,
                 resultPoint,
                 message,
@@ -18,9 +17,9 @@ const assessResult = async function (req, res, next) {
 
         console.log(
             await CompanyAccess.findOneAndUpdate(
-                { "studentAccount._id": "63138ba7a82803fb443dfb25" },
+                { "studentAccount._id": studentId },
                 {
-                    disPoints,
+                    disPoint,
                     techPoint,
                     resultPoint,
                     message,
@@ -32,7 +31,7 @@ const assessResult = async function (req, res, next) {
         return res.status(201).json({
             status: "success",
             message: "Assess Completed!",
-            findStudent,
+            result,
         });
     } catch (error) {
         next(error);

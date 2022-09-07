@@ -1,4 +1,3 @@
-import Account from "../../models/Account.js";
 import CompanyAccess from "../../models/CompanyAccess.js";
 
 const searchStudent = async function (req, res, next) {
