@@ -1,21 +1,21 @@
 import Task from "../../models/Task.js";
 
-const getTask = async function (req, res, next) {
-  const { studentAccount } = req.params;
+const getTasks = async function (req, res, next) {
+    const { studentId } = req.params;
 
-  try {
-    const tasks = await Task.find({ studentAccount: studentAccount });
+    try {
+        const tasks = await Task.find({ studentId });
 
-    return tasks
-      ? res.status(201).json({
-          status: "success",
-          tasks,
-        })
-      : res.status(201).json({
-          status: "success",
-          message: "Don't Find Student ID to Get Task",
-        });
-  } catch (error) {}
+        return tasks
+            ? res.status(201).json({
+                  status: "success",
+                  tasks,
+              })
+            : res.status(201).json({
+                  status: "success",
+                  message: "Don't Find Student ID to Get Task",
+              });
+    } catch (error) {}
 };
 
-export default getTask;
+export default getTasks;

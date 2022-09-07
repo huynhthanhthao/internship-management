@@ -1,22 +1,21 @@
-import RegisterStudent from "../../models/RegisterStudent.js";
+import FormRegister from "../../models/FormRegister.js";
 
 const registerCompany = async function (req, res, next) {
-  const { companyAccount } = req.params;
-  const bodyData = req.body;
+    const { studentId, companyId } = req.body;
 
-  try {
-    const resultRegister = await RegisterStudent.create({
-      companyAccount: companyAccount,
-      CV: bodyData.CV,
-    });
+    try {
+        const resultRegister = await FormRegister.create({
+            studentId,
+            companyId,
+        });
 
-    return res.status(201).json({
-      status: "access",
-      message: "Register Completed!",
-    });
-  } catch (error) {
-    next(error);
-  }
+        return res.status(201).json({
+            status: "access",
+            message: "Register Completed!",
+        });
+    } catch (error) {
+        next(error);
+    }
 };
 
 export default registerCompany;

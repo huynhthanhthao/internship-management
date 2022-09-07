@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const teacherAccessSchema = new Schema({
-    studentAccount: {
+    studentId: {
         type: Schema.Types.ObjectId,
         ref: "Account",
     },
