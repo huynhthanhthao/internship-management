@@ -1,14 +1,15 @@
 import Task from "../../models/Task.js";
 
 const assessTask = async function (req, res, next) {
-  const { studentID, title } = req.value.params;
+  const { studentAccount, taskID } = req.value.params;
+  //title => TaskID
   const bodyData = req.value.body;
 
   try {
     const resultAssess = await Task.findOneAndUpdate(
       {
-        studentAccount: studentID,
-        title: title,
+        studentAccount: studentAccount,
+        taskID: taskID,
       },
       {
         status: bodyData.status,
@@ -23,7 +24,7 @@ const assessTask = async function (req, res, next) {
         })
       : res.status(201).json({
           status: "success",
-          message: "Don't Find Account Student or Title to Assess",
+          message: "Don't Find Student ID or Task ID to Assess",
         });
   } catch (error) {
     next(error);

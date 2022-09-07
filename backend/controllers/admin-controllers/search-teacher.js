@@ -10,10 +10,15 @@ const searchTeacher = async function (req, res, next) {
       rule: "TEACHER",
     });
 
-    return res.status(201).json({
-      status: "success",
-      result: resultSearch,
-    });
+    return resultSearch
+      ? res.status(201).json({
+          status: "success",
+          result: resultSearch,
+        })
+      : res.status(201).json({
+          status: "success",
+          message: "Don't find information",
+        });
   } catch (error) {
     next(error);
   }
