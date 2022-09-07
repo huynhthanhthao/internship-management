@@ -2,12 +2,13 @@ import jwt from "jsonwebtoken";
 
 const verifyToken = (res, req, next) => {
     const authHeader = req.header("Authorization");
+
     const token = authHeader && authHeader.split(" ")[1];
 
     if (token) {
         return res
             .status(401)
-            .json({ success: false, message: "Token Invalid!" });
+            .json({ status: false, message: "Token Invalid!" });
     }
 
     try {
@@ -17,8 +18,6 @@ const verifyToken = (res, req, next) => {
         next();
     } catch (error) {
         console.log(error);
-        return res
-            .status(403)
-            .json({ success: false, message: "Server Error" });
+        return res.status(403).json({ status: false, message: "Server Error" });
     }
 };
