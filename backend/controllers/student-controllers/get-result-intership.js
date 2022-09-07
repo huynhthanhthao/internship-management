@@ -2,9 +2,8 @@ import CompanyAccess from "../../models/CompanyAccess.js";
 
 const getResultInternShip = async function (req, res, next) {
     const { studentId } = req.params;
-
     try {
-        const resultAssess = CompanyAccess.find({ studentId });
+        const resultAssess = await CompanyAccess.findOne({ studentId });
 
         return resultAssess
             ? res.status(201).json({

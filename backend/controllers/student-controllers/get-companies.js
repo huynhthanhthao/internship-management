@@ -10,8 +10,8 @@ const getCompanies = async function (req, res, next) {
             let detail = await Account.findOne({ _id: company.companyId });
 
             detail = {
-                detail,
                 company,
+                detail,
             };
 
             result.push(detail);

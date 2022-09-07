@@ -15,7 +15,9 @@ const getTasks = async function (req, res, next) {
                   status: "success",
                   message: "Don't Find Student ID to Get Task",
               });
-    } catch (error) {}
+    } catch (error) {
+        console.log(error);
+    }
 };
 
 export default getTasks;

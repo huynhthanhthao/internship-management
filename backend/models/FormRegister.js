@@ -15,11 +15,11 @@ const formRegisterSchema = new Schema({
         default: 0,
     },
     language: {
-        type: [String],
+        type: String,
         default: "No Language",
     },
     projects: {
-        type: [String],
+        type: String,
         default: "No Project",
     },
     message: {
