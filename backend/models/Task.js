@@ -2,17 +2,13 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const taskSchema = new Schema({
-    title: String,
-    studentAccount: {
-        type: Schema.Types.ObjectId,
-        ref: "StudentAccount",
-    },
-    status: {
-        type: Boolean,
-    },
-    assess: {
-        type: String,
-    },
+  title: String,
+  studentId: {
+    type: Schema.Types.ObjectId,
+    ref: "Account",
+  },
+  status: { type: Boolean, default: false },
+  message: { type: String, default: "No Message" },
 });
 
 export default mongoose.model("Task", taskSchema);

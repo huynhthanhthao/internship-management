@@ -1,10 +1,14 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const CVSchema = new Schema({
-  account: {
+const formRegisterSchema = new Schema({
+  studentId: {
     type: Schema.Types.ObjectId,
-    ref: "StudentAccount",
+    ref: "Account",
+  },
+  companyId: {
+    type: Schema.Types.ObjectId,
+    ref: "Account",
   },
   gpa: {
     type: Number,
@@ -20,4 +24,4 @@ const CVSchema = new Schema({
   },
 });
 
-export default mongoose.model("CVSchema", CVSchema);
+export default mongoose.model("FromRegister", formRegisterSchema);

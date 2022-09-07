@@ -2,11 +2,13 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const studentAccountSchema = new Schema({
-  account: {
-    type: Schema.Types.Mixed,
+  studentId: {
+    type: Schema.Types.ObjectId,
+    ref: "Account",
   },
-  company: {
-    type: Schema.Types.Mixed,
+  companyId: {
+    type: Schema.Types.ObjectId,
+    ref: "Account",
   },
 });
 

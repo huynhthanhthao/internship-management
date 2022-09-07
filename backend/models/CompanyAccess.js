@@ -2,13 +2,30 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const companyAccessSchema = new Schema({
-  studentAccount: {
-    type: Schema.Types.Mixed,
+  studentId: {
+    type: Schema.Types.ObjectId,
+    ref: "Account",
   },
-  disPoint: Number,
-  techPoint: Number,
-  resultPoint: Number,
-  message: String,
+  companyId: {
+    type: Schema.Types.ObjectId,
+    ref: "Account",
+  },
+  disPoint: {
+    type: Number,
+    default: 0,
+  },
+  techPoint: {
+    type: Number,
+    default: 0,
+  },
+  resultPoint: {
+    type: Number,
+    default: 0,
+  },
+  message: {
+    type: String,
+    default: "No Message",
+  },
 });
 
 export default mongoose.model("companyAccess", companyAccessSchema);

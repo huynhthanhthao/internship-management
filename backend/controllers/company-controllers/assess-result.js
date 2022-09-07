@@ -1,12 +1,11 @@
 import CompanyAccess from "../../models/CompanyAccess.js";
 import { ObjectId } from "mongodb";
 const assessResult = async function (req, res, next) {
-  const { studentId } = req.params;
-  const { disPoint, techPoint, resultPoint, message } = req.body;
+  const { studentId, disPoint, techPoint, resultPoint, message } = req.body;
 
   try {
     const findStudent = await CompanyAccess.findOneAndUpdate(
-      { "studentAccount._id": ObjectId(studentId) },
+      { studentId: ObjectId(studentId) },
       {
         disPoint,
         techPoint,

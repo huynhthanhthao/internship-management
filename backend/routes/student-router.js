@@ -1,8 +1,7 @@
 import express from "express";
-import getAllCompany from "../controllers/student-controllers/get-companys.js";
+import getAllCompany from "../controllers/student-controllers/get-companies.js";
 import getResultInternShip from "../controllers/student-controllers/get-result-intership.js";
 import getTask from "../controllers/student-controllers/get-tasks.js";
-import registerCompany from "../controllers/student-controllers/register-company.js";
 import { validateParam, validateBody, schema } from "../middleware/validate.js";
 
 const router = express.Router();
@@ -24,7 +23,4 @@ router
   .route("/task/:studentAccount")
   .get(validateParam(schema.idSchema, "studentAccount"), getTask);
 
-router
-  .route("/register-company/:companyAccount")
-  .post(validateParam(schema.idSchema, "companyAccount"), registerCompany);
 export default router;
