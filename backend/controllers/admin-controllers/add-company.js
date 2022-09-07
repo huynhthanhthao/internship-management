@@ -23,7 +23,6 @@ const addCompanyController = async (req, res) => {
 
         // All good
         account = await Account.create({ username, password });
-        console.log("account", account);
 
         const companyAccount = await CompanyAccount.create({
             account,

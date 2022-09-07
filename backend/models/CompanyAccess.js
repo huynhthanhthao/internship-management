@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const evaluateCompany = new Schema({
+const companyAccessSchema = new Schema({
     studentAccount: {
-        type: Schema.Types.ObjectId,
-        ref: "StudentAccount",
+        type: Schema.Types.Mixed,
     },
     disPoints: Number,
     techPoint: Number,
@@ -12,4 +11,4 @@ const evaluateCompany = new Schema({
     message: String,
 });
 
-export default mongoose.model("EvaluateCompany", evaluateCompany);
+export default mongoose.model("companyAccess", companyAccessSchema);

@@ -33,6 +33,24 @@ app.use("/auth", authRouter);
 
 app.use("/", studentRouter);
 
+//Catch
+app.use((req, res, next) => {
+  const err = new Error();
+  err.status = 404;
+  next(err);
+});
+
+//Error handler
+app.use((err, req, res, next) => {
+  const error = app.get("env") === "development" ? err : {};
+  const status = err.status || 500;
+  return res.status(status).json({
+    error: {
+      message: error.message,
+    },
+  });
+});
+
 app.listen(port, () => {
-    console.log(`Server running in port ${port}`);
+  console.log(`Server running in port ${port}`);
 });
