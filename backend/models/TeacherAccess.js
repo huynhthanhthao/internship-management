@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const evaluateTeacher = new Schema({
+const teacherAccessSchema = new Schema({
     studentAccount: {
         type: Schema.Types.ObjectId,
-        ref: "StudentAccount",
+        ref: "Account",
     },
     formPoint: Number,
     followPoint: Number,
@@ -13,4 +13,4 @@ const evaluateTeacher = new Schema({
     message: String,
 });
 
-export default mongoose.model("EvaluateTeacher", evaluateTeacher);
+export default mongoose.model("TeacherAccess", teacherAccessSchema);

@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const companyAccountSchema = new Schema({
-    account: {
-        type: Schema.Types.Mixed,
+    company: {
+        type: Schema.Types.ObjectId,
+        ref: "Account",
     },
     address: {
         type: String,

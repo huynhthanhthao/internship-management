@@ -1,27 +1,21 @@
-import StudentAccount from "../../models/StudentAccount.js";
+import studentAccount from "../../models/studentAccount.js";
 import CompanyAccess from "../../models/CompanyAccess.js";
 
 const confirmStudent = async function (req, res, next) {
-  const { studentID } = req.params;
-  const bodyData = req.body;
+    const { studentID, companyID } = req.body;
 
-  try {
-    const studentAccount = await StudentAccount.create({
-      account: studentID,
-      company: bodyData.companyID,
-    });
+    try {
+        const studentAccount = await Account.findOne({ _id: studentID });
 
-    await CompanyAccess.create({
-      account: studentAccount._id,
-    });
+        await CompanyAccess.create({});
 
-    return res.status(201).json({
-      status: "success",
-      message: "Confirm Student Completed",
-    });
-  } catch (error) {
-    next(error);
-  }
+        return res.status(201).json({
+            status: "success",
+            message: "Confirm Student Completed",
+        });
+    } catch (error) {
+        next(error);
+    }
 };
 
 export default confirmStudent;

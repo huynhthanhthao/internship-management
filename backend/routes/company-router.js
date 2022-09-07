@@ -1,9 +1,10 @@
 import express from "express";
 import assessResult from "../controllers/company-controllers/assess-result.js";
-import assessTask from "../controllers/company-controllers/assess-task.js";
 import confirmStudent from "../controllers/company-controllers/confirm-student.js";
 import searchStudent from "../controllers/company-controllers/search-student.js";
+import assessTask from "../controllers/company-controllers/assess-task.js";
 import { validateParam, validateBody, schema } from "../middleware/validate.js";
+import createTask from "../controllers/company-controllers/create-task.js";
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -13,11 +14,7 @@ router.get("/", (req, res) => {
 // Assess Result & Assess Task
 router.route("/assess-result/:studentId").patch(assessResult);
 
-// .patch(
-//     validateParam(schema.idSchema, "studentId"),
-//     validateBody(schema.assessTask),
-//     assessTask
-// );
+router.route("/assess-task").patch(assessTask);
 
 // Confirm Student
 router
@@ -27,4 +24,5 @@ router
 //Search Student By Name OR Username
 router.route("/search/:searchData").get(searchStudent);
 
+router.route("/create-task").post(createTask);
 export default router;

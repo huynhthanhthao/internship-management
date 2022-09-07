@@ -3,16 +3,12 @@ const { Schema } = mongoose;
 
 const taskSchema = new Schema({
     title: String,
-    studentAccount: {
+    studentId: {
         type: Schema.Types.ObjectId,
-        ref: "StudentAccount",
+        ref: "Account",
     },
-    status: {
-        type: Boolean,
-    },
-    assess: {
-        type: String,
-    },
+    status: { type: Boolean, default: false },
+    message: { type: String, default: "No Message" },
 });
 
 export default mongoose.model("Task", taskSchema);
