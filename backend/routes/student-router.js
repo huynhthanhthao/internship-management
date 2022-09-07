@@ -1,5 +1,5 @@
 import express from "express";
-import getAllCompany from "../controllers/student-controllers/get-companies.js";
+import getCompanies from "../controllers/student-controllers/get-companies.js";
 import getResultInternShip from "../controllers/student-controllers/get-result-intership.js";
 import getTask from "../controllers/student-controllers/get-tasks.js";
 import { validateParam, validateBody, schema } from "../middleware/validate.js";
@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 });
 
 //GET All Company
-router.route("/company").get(getAllCompany);
+router.route("/get-companies").get(getCompanies);
 
 //Get Result InternShip
 router

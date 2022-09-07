@@ -12,15 +12,19 @@ const formRegisterSchema = new Schema({
   },
   gpa: {
     type: Number,
+    default: 0,
   },
   language: {
     type: [String],
+    default: "No Language",
   },
   projects: {
     type: [String],
+    default: "No Project",
   },
   message: {
     type: String,
+    default: "No Message",
   },
 });
 
