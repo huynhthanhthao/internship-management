@@ -9,45 +9,35 @@ import getInforTeacher from "../controllers/admin-controllers/get-infor-teacher.
 import searchCompany from "../controllers/admin-controllers/search-company.js";
 import searchTeacher from "../controllers/admin-controllers/search-teacher.js";
 import updateCompany from "../controllers/admin-controllers/update-company.js";
-import { validateBody, schema, validateParam } from "../middleware/validate.js";
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.send("Admin");
+  res.send("Admin");
 });
 
 router.post(
-    "/add-company",
-    (req, res, next) => checkRule(req, res, next, "ADMIN"),
-    addCompanyController
+  "/add-company",
+  (req, res, next) => checkRule(req, res, next, "ADMIN"),
+  addCompanyController
 );
 
-router
-    .route("/company")
-    // Create New Company
-    .post(validateBody(schema.accountSchema), addCompanyController);
+// Create New Company
+router.post("/company", addCompanyController);
 
-router
-    .route("/company/:companyID")
-    //Update Infor Company
-    .patch(
-        validateParam(schema.idSchema, "companyID"),
-        validateBody(schema.updateSchema),
-        updateCompany
-    )
-    //Delete Company By Id.
-    .delete(validateParam(schema.idSchema, "companyID"), deleteCompany);
+//Update Infor Company
+router.patch("/company", updateCompany);
 
-router
-    .route("/teacher/:username")
-    //Get infor teacher by username.
-    .get(getInforTeacher);
+//Delete Company By Id.
+router.delete("/company", deleteCompany);
+
+//Get infor teacher by username.
+router.get("/teacher/:username", getInforTeacher);
 
 //Search Teacher By username or name
-router.route("/search-teacher/:searchData").get(searchTeacher);
+router.get("/search-teacher/:searchData", searchTeacher);
 
 //Search Company By username or name
-router.route("/search-company/:searchData").get(searchCompany);
+router.get("/search-company/:searchData", searchCompany);
 
 export default router;

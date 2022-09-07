@@ -1,21 +1,23 @@
-import studentAccount from "../../models/studentAccount.js";
 import CompanyAccess from "../../models/CompanyAccess.js";
-
+import { ObjectId } from "mongodb";
 const confirmStudent = async function (req, res, next) {
-    const { studentID, companyID } = req.body;
+  const { studentId, companyId } = req.body;
+  console.log("123");
 
-    try {
-        const studentAccount = await Account.findOne({ _id: studentID });
+  try {
+    const resultConfirm = await CompanyAccess.create({
+      studentId: ObjectId(studentId),
+      companyId: ObjectId(companyId),
+    });
 
-        await CompanyAccess.create({});
-
-        return res.status(201).json({
-            status: "success",
-            message: "Confirm Student Completed",
-        });
-    } catch (error) {
-        next(error);
-    }
+    return res.status(201).json({
+      status: "success",
+      message: "Confirm Student Completed",
+      resultConfirm,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export default confirmStudent;

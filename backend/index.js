@@ -10,6 +10,9 @@ import teacherRouter from "./routes/teacher-router.js";
 import companyRouter from "./routes/company-router.js";
 import authRouter from "./routes/auth-router.js";
 
+// import midleware
+import middlewareRouter from "./middleware/check-rule.js";
+
 const app = express();
 const port = 3000;
 
@@ -25,32 +28,50 @@ app.use(bodyParser.json());
 // Router
 app.use("/admin", adminRouter);
 
-app.use("/teacher", teacherRouter);
+app.use(
+    "/teacher",
+    (req, res, next) => {
+        middlewareRouter(req, res, next, "TEACHER");
+    },
+    teacherRouter
+);
 
-app.use("/company", companyRouter);
+app.use(
+    "/company",
+    (req, res, next) => {
+        middlewareRouter(req, res, next, "COMPANY");
+    },
+    companyRouter
+);
 
 app.use("/auth", authRouter);
 
-app.use("/", studentRouter);
+app.use(
+    "/",
+    (req, res, next) => {
+        middlewareRouter(req, res, next, "STUDENT");
+    },
+    studentRouter
+);
 
 //Catch
 app.use((req, res, next) => {
-  const err = new Error();
-  err.status = 404;
-  next(err);
+    const err = new Error();
+    err.status = 404;
+    next(err);
 });
 
 //Error handler
 app.use((err, req, res, next) => {
-  const error = app.get("env") === "development" ? err : {};
-  const status = err.status || 500;
-  return res.status(status).json({
-    error: {
-      message: error.message,
-    },
-  });
+    const error = app.get("env") === "development" ? err : {};
+    const status = err.status || 500;
+    return res.status(status).json({
+        error: {
+            message: error.message,
+        },
+    });
 });
 
 app.listen(port, () => {
-  console.log(`Server running in port ${port}`);
+    console.log(`Server running in port ${port}`);
 });

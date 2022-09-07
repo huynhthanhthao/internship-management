@@ -1,26 +1,26 @@
 import CompanyAccount from "../../models/CompanyAccount.js";
 import Account from "../../models/Account.js";
+import { ObjectId } from "mongodb";
 const updateCompany = async function (req, res, next) {
-  const { companyID } = req.value.params;
-
-  const bodyData = req.value.body;
+  const { companyId, address, message, name, email, phoneNumber, urlAvatar } =
+    req.body;
 
   try {
     const resultUpdate = await CompanyAccount.findOneAndUpdate(
-      { account: companyID },
+      { companyId: ObjectId(companyId) },
       {
-        address: bodyData.address,
-        message: bodyData.message,
+        address,
+        message,
       }
     );
     if (resultUpdate) {
       await Account.findOneAndUpdate(
-        { _id: companyID },
+        { _id: companyId },
         {
-          name: bodyData.name,
-          email: bodyData.email,
-          phoneNumber: bodyData.phoneNumber,
-          urlAvatar: bodyData.urlAvatar,
+          name,
+          email,
+          phoneNumber,
+          urlAvatar,
         }
       );
 
