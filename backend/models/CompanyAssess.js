@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const formRegisterSchema = new Schema({
+const companyAssessSchema = new Schema({
     studentId: {
         type: Schema.Types.ObjectId,
         ref: "Account",
@@ -10,17 +10,17 @@ const formRegisterSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Account",
     },
-    gpa: {
+    disPoint: {
         type: Number,
         default: 0,
     },
-    languages: {
-        type: [String],
-        default: "No Language",
+    techPoint: {
+        type: Number,
+        default: 0,
     },
-    projects: {
-        type: [String],
-        default: "No Project",
+    resultPoint: {
+        type: Number,
+        default: 0,
     },
     message: {
         type: String,
@@ -28,4 +28,4 @@ const formRegisterSchema = new Schema({
     },
 });
 
-export default mongoose.model("FormRegister", formRegisterSchema);
+export default mongoose.model("companyAssess", companyAssessSchema);
