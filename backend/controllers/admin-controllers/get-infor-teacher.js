@@ -5,13 +5,6 @@ const getInforTeacher = async function (req, res, next) {
   try {
     const resultGetInfor = await Account.findOne(teacherUsername);
 
-    const resultRespond = {
-      username: resultGetInfor.username,
-      name: resultGetInfor.name,
-      email: resultGetInfor.email,
-      phone: resultGetInfor.phoneNumber,
-    };
-
     return resultGetInfor
       ? res.status(201).json({
           status: "success",
