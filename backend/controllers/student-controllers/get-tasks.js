@@ -1,23 +1,19 @@
 import Task from "../../models/Task.js";
+import { ObjectId } from "mongodb";
 
 const getTasks = async function (req, res, next) {
-    const { studentId } = req.params;
+  const { studentId } = req.params;
 
-    try {
-        const tasks = await Task.find({ studentId });
+  try {
+    const tasks = await Task.findOne({ studentId: ObjectId(studentId) });
 
-        return tasks
-            ? res.status(201).json({
-                  status: "success",
-                  tasks,
-              })
-            : res.status(201).json({
-                  status: "success",
-                  message: "Don't Find Student ID to Get Task",
-              });
-    } catch (error) {
-        console.log(error);
-    }
+    return res.status(201).json({
+      status: "success",
+      tasks,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default getTasks;
