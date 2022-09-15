@@ -1,19 +1,16 @@
 import Account from "../../models/Account.js";
 
 const getInforTeacher = async function (req, res, next) {
-  const teacherUsername = req.params;
+  const { username } = req.params;
   try {
-    const resultGetInfor = await Account.findOne(teacherUsername);
+    const result = await Account.findOne({ username });
 
-    return resultGetInfor
-      ? res.status(201).json({
-          status: "success",
-          infor: resultRespond,
-        })
-      : res.status(201).json({
-          status: "success",
-          message: "Don't Find Teacher",
-        });
+    return res.status(201).json({
+      status: "success",
+      message: "Get infor teacher successfully!",
+
+      result,
+    });
   } catch (error) {
     next(error);
   }

@@ -4,7 +4,7 @@ const registerCompany = async function (req, res, next) {
     const { studentId, companyId } = req.body;
 
     try {
-        const resultRegister = await FormRegister.create({
+        await FormRegister.create({
             studentId,
             companyId,
         });
