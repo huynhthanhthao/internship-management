@@ -1,6 +1,7 @@
 import CompanyAccount from "../../models/CompanyAccount.js";
 import Account from "../../models/Account.js";
 import { ObjectId } from "mongodb";
+
 const updateCompany = async function (req, res, next) {
   const { companyId, address, message, name, email, phoneNumber, urlAvatar } =
     req.body;

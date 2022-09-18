@@ -1,6 +1,7 @@
 import Account from "../../models/Account.js";
 import CompanyAssess from "../../models/CompanyAssess.js";
 import { ObjectId } from "mongodb";
+
 const searchStudent = async function (req, res, next) {
     const { searchData } = req.params;
     const regex = new RegExp(searchData, "i");

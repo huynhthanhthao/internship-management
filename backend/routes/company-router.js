@@ -4,6 +4,7 @@ import confirmStudent from "../controllers/company-controllers/confirm-student.j
 import searchStudent from "../controllers/company-controllers/search-student.js";
 import assessTask from "../controllers/company-controllers/assess-task.js";
 import createTask from "../controllers/company-controllers/create-task.js";
+import updateCompanyInfor from "../controllers/company-controllers/update-company-infor.js";
 
 const router = express.Router();
 
@@ -24,4 +25,5 @@ router.get("/search/:searchData", searchStudent);
 
 router.post("/create-task", createTask);
 
+router.patch("/update-company-infor", updateCompanyInfor);
 export default router;
