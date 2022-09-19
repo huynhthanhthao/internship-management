@@ -1,75 +1,23 @@
 <template>
-    <footer class="text-center text-white" style="background-color: #f1f1f1">
-        <!-- Grid container -->
-        <div class="container pt-4">
-            <!-- Section: Social media -->
-            <section class="mb-4">
-                <!-- Facebook -->
-                <a
-                    class="btn btn-link btn-floating btn-lg text-dark m-1"
-                    href="#!"
-                    role="button"
-                    data-mdb-ripple-color="dark"
-                    ><i class="fab fa-facebook-f"></i
-                ></a>
-
-                <!-- Twitter -->
-                <a
-                    class="btn btn-link btn-floating btn-lg text-dark m-1"
-                    href="#!"
-                    role="button"
-                    data-mdb-ripple-color="dark"
-                    ><i class="fab fa-twitter"></i
-                ></a>
-
-                <!-- Google -->
-                <a
-                    class="btn btn-link btn-floating btn-lg text-dark m-1"
-                    href="#!"
-                    role="button"
-                    data-mdb-ripple-color="dark"
-                    ><i class="fab fa-google"></i
-                ></a>
-
-                <!-- Instagram -->
-                <a
-                    class="btn btn-link btn-floating btn-lg text-dark m-1"
-                    href="#!"
-                    role="button"
-                    data-mdb-ripple-color="dark"
-                    ><i class="fab fa-instagram"></i
-                ></a>
-
-                <!-- Linkedin -->
-                <a
-                    class="btn btn-link btn-floating btn-lg text-dark m-1"
-                    href="#!"
-                    role="button"
-                    data-mdb-ripple-color="dark"
-                    ><i class="fab fa-linkedin"></i
-                ></a>
-                <!-- Github -->
-                <a
-                    class="btn btn-link btn-floating btn-lg text-dark m-1"
-                    href="#!"
-                    role="button"
-                    data-mdb-ripple-color="dark"
-                    ><i class="fab fa-github"></i
-                ></a>
-            </section>
-            <!-- Section: Social media -->
-        </div>
-        <!-- Grid container -->
-
+    <footer
+        class="footer d-flex align-items-center justify-content-between px-3"
+    >
         <!-- Copyright -->
-        <div
-            class="text-center text-dark p-3"
-            style="background-color: rgba(0, 0, 0, 0.2)"
-        >
-            © 2020 Copyright:
-            <a class="text-dark" href="https://mdbootstrap.com/">Duy Tan Pig</a>
+        <div class="text-center text-dark p-3">
+            © 2022 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">Fat team</a>
         </div>
-        <!-- Copyright -->
+        <!-- Contact -->
+        <div class="contact d-flex">
+            <div class="email me-3">
+                <i class="bi bi-envelope-fill"></i>
+                fat.admin@gmail.com
+            </div>
+            <div class="facebook">
+                <i class="bi bi-facebook"></i>
+                fb.com/CTUDHCT
+            </div>
+        </div>
     </footer>
 </template>
 
@@ -79,4 +27,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.footer {
+    background-color: rgb(160, 160, 160);
+}
+</style>

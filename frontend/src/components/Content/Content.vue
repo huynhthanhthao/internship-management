@@ -1,6 +1,5 @@
 <template>
     <div class="content">
-        <h1>{{ test }}</h1>
         <router-view></router-view>
     </div>
 </template>
@@ -9,9 +8,7 @@
 export default {
     name: "ContentComponent",
     data() {
-        return {
-            test: this.$store.state.testModule.test,
-        };
+        return {};
     },
 };
 </script>
@@ -19,5 +16,6 @@ export default {
 <style>
 .content {
     height: 80vh;
+    background-color: #fff;
 }
 </style>

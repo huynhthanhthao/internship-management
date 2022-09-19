@@ -1,7 +1,7 @@
-import { createApp } from "vue";
-import App from "./App.vue";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
+import { createApp } from "vue";
+import App from "./App.vue";
 import router from "./router/index.js";
 import store from "./store/index";
 
