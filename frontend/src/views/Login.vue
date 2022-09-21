@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <Header/>
   <div class="login py-5 col-sm-8 m-auto d-flex flex-column align-items-center">
     <h2 class="login__title fs-2 fw-semibold" style="color:#555">Chào mừng đến với <span style="color: #1f5cca">CTU</span> <span style="color: #00b0f0">M-INTERNSHIP</span> !</h2>
     <form class="login__form col-sm-6 mt-5 p-5 rounded-5">
@@ -24,11 +26,14 @@
         <button type="submit" class="btn btn-primary d-flex m-auto mt-5">Đăng nhập</button>
       </form>
   </div>
+  </div>
 </template>
 
 <script>
+import Header from '@/components/Header/Header.vue';
 export default {
-    name: "LoginComponent"
+    name: "LoginComponent",
+    components: { Header }
 }
 </script>
 

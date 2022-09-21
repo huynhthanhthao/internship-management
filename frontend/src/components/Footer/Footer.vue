@@ -3,9 +3,14 @@
         class="footer d-flex align-items-center justify-content-between px-3"
     >
         <!-- Copyright -->
-        <div class="text-center text-dark p-3">
+        <div class="text-center p-3">
             © 2022 Copyright:
-            <a class="text-dark" href="https://mdbootstrap.com/">Fat team</a>
+            <a
+                class="text-dark text-decoration-none"
+                target="_blank"
+                href="https://facebook.com/"
+                >Fat team</a
+            >
         </div>
         <!-- Contact -->
         <div class="contact d-flex">
@@ -13,10 +18,14 @@
                 <i class="bi bi-envelope-fill"></i>
                 fat.admin@gmail.com
             </div>
-            <div class="facebook">
+            <a
+                class="facebook-fanpage text-decoration-none text-black"
+                href="https://www.facebook.com/CTUDHCT/"
+                target="_blank"
+            >
                 <i class="bi bi-facebook"></i>
                 fb.com/CTUDHCT
-            </div>
+            </a>
         </div>
     </footer>
 </template>
@@ -30,5 +39,9 @@ export default {
 <style>
 .footer {
     background-color: rgb(160, 160, 160);
+}
+
+.facebook-fanpage {
+    color: #212529 !important;
 }
 </style>
