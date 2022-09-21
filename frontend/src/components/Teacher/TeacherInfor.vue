@@ -1,5 +1,5 @@
 <template>
-    <div class="start-0 p-0">
+    <div class="start-0 p-0" >
         <a class="btn btn-primary btn-infor position-fixed top-50" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <i class="bi bi-info-circle-fill"></i>
         </a>

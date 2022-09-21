@@ -8,13 +8,13 @@
 
 <script>
 
-import TeacherUpdate from '@/components/Teacher/TeacherUpdate.vue';
 import TeacherInfor from '@/components/Teacher/TeacherInfor.vue';
 import Header from "../components/Header/Header.vue"
 import { mapGetters } from 'vuex';
+import TeacherUpdate from './teacher/TeacherUpdate.vue';
 export default {
     name: "TeacherComponent",
-    components: { TeacherUpdate, TeacherInfor , Header},
+    components: { TeacherInfor, Header, TeacherUpdate },
     computed: {
         ...mapGetters({teacherRoutes : "getTeacherRoutes"})
     }

@@ -26,7 +26,7 @@
             <button type="submit" class="btn btn-danger" @click="btnPreventDefault">
               <i class="bi bi-arrow-clockwise"></i>&nbsp;Đặt lại
             </button>
-            <button type="submit" class="btn btn-primary btn-save " @click="CLOSE_UPDATE">
+            <button type="submit" class="btn btn-primary btn-save" @click="CLOSE_UPDATE">
               <i class="bi bi-calendar4"></i>&nbsp;Lưu
             </button>
           </div>
@@ -38,7 +38,7 @@
 <script>
 
 import { mapGetters, mapMutations } from 'vuex';
-import TeacherAvatar from './TeacherAvatar.vue'; 
+import TeacherAvatar from '../../components/Teacher/TeacherAvatar.vue'; 
 export default {
     name: "TeacherUpdate",
     computed: {

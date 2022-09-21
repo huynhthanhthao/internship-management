@@ -12,14 +12,18 @@ import HomePageCompany from "../views/company/HomePage.vue";
 import StudentsRegister from "../views/company/StudentsRegister.vue";
 import StudentsTraining from "../views/company/StudentsTraining.vue";
 import Login from "../views/Login.vue";
-
+import TeacherUpdate from "../views/teacher/TeacherUpdate.vue";
 // 2. Define some routes
 
 const routes = [
   { path: "/", component: Home },
   { path: "/login", component: Login },
   { path: "/student", component: Student },
-  { path: "/teacher", component: Teacher },
+  {
+    path: "/teacher",
+    component: Teacher,
+    children: [{ path: "/teacher/update", component: TeacherUpdate }],
+  },
   { path: "/admin", component: Admin },
   {
     path: "/company",
