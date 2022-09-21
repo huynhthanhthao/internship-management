@@ -1,13 +1,9 @@
 const companyModule = {
     state: {
         isShowDetailRegister: false,
-        isShowModal: false,
     },
     getters: {
         getShowDetailRegister(state) {
-            return state.isShowDetailRegister;
-        },
-        getIsShowModal(state) {
             return state.isShowDetailRegister;
         },
     },
