@@ -1,6 +1,5 @@
 <template>
-    <div id="app" class="container mt-4">
-        <Navbar />
+    <div id="app" class="container mt-4 shadow-sm bg-body p-0 rounded">
         <Content />
         <Footer />
     </div>
@@ -8,12 +7,11 @@
 
 <script>
 import Footer from "./components/Footer/Footer.vue";
-import Navbar from "./components/Navbar/Navbar.vue";
 import Content from "./components/Content/Content.vue";
 
 export default {
     name: "App",
-    components: { Footer, Navbar, Content },
+    components: { Footer, Content },
 };
 </script>
 <style>
@@ -22,6 +20,7 @@ export default {
 #app {
     font-family: "Noto Sans", sans-serif;
     box-sizing: border-box;
+
     background-image: url("https://elearning.ctu.edu.vn/pluginfile.php/1/theme_lambda/pagebackground/1662695177/CTU_Blank_white.png");
 }
 </style>
