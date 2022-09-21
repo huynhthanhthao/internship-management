@@ -1,18 +1,18 @@
 const authModules = {
-    state: {
-        isLogin: true,
+  state: {
+    isLogin: true,
+  },
+  getters: {
+    getIsLogin(state) {
+      return state.isLogin;
     },
-    getters: {
-        getIsLogin(state) {
-            return state.isLogin;
-        },
+  },
+  mutations: {
+    LOGOUT(state) {
+      state.isLogin = false;
     },
-    mutations: {
-        LOGOUT(state) {
-            state.isLogin = false;
-        },
-    },
-    actions: {},
+  },
+  actions: {},
 };
 
 export default authModules;

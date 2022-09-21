@@ -52,9 +52,6 @@ export default {
     name: "ModalComponent",
     computed: mapGetters({ modal: "getModal" }),
     methods: {
-        // ...mapActions({
-        //     handle: this.modal.handle,
-        // }),
         handle() {
             console.log(this);
         },

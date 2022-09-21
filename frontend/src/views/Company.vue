@@ -1,6 +1,6 @@
 <template>
     <div class="company">
-        <Header />
+        <Header rule="company" />
 
         <router-view class="p-3"></router-view>
     </div>

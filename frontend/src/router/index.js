@@ -11,31 +11,33 @@ import Company from "../views/Company";
 import HomePageCompany from "../views/company/HomePage.vue";
 import StudentsRegister from "../views/company/StudentsRegister.vue";
 import StudentsTraining from "../views/company/StudentsTraining.vue";
+import Login from "../views/Login.vue";
 
 // 2. Define some routes
 
 const routes = [
-    { path: "/", component: Home },
-    { path: "/student", component: Student },
-    { path: "/teacher", component: Teacher },
-    { path: "/admin", component: Admin },
-    {
-        path: "/company",
-        component: Company,
-        children: [
-            { path: "/company/home", component: HomePageCompany },
-            { path: "/company/students-register", component: StudentsRegister },
-            { path: "/company/students-training", component: StudentsTraining },
-        ],
-    },
+  { path: "/", component: Home },
+  { path: "/login", component: Login },
+  { path: "/student", component: Student },
+  { path: "/teacher", component: Teacher },
+  { path: "/admin", component: Admin },
+  {
+    path: "/company",
+    component: Company,
+    children: [
+      { path: "/company/home", component: HomePageCompany },
+      { path: "/company/students-register", component: StudentsRegister },
+      { path: "/company/students-training", component: StudentsTraining },
+    ],
+  },
 ];
 
 // 3. Create the router instance and pass the `routes` option
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
-    linkActiveClass: "active-link",
+  history: createWebHistory(),
+  routes,
+  linkActiveClass: "active-link",
 });
 
 export default router;

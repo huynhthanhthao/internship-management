@@ -1,10 +1,22 @@
 <template>
-    <h1>Teacher</h1>
+    <div class="teacher w-100 h-100 row m-0">
+        <Header class="p-0" rule="teacher" />
+        <TeacherInfor />
+        <TeacherUpdate />
+    </div>
 </template>
 
 <script>
+import TeacherUpdate from "@/components/Teacher/TeacherUpdate.vue";
+import TeacherInfor from "@/components/Teacher/TeacherInfor.vue";
+import Header from "../components/Header/Header.vue";
+import { mapGetters } from "vuex";
 export default {
     name: "TeacherComponent",
+    components: { TeacherUpdate, TeacherInfor, Header },
+    computed: {
+        ...mapGetters({ teacherRoutes: "getTeacherRoutes" }),
+    },
 };
 </script>
 

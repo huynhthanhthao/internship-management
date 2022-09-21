@@ -1,7 +1,7 @@
 <template>
     <div class="header bg-white">
         <IntroduceApp />
-        <Navbar />
+        <Navbar :rule="rule" />
     </div>
 </template>
 
@@ -12,6 +12,7 @@ import Navbar from "./Navbar.vue";
 export default {
     name: "HeaderComponent",
     components: { IntroduceApp, Navbar },
+    props: ["rule"],
 };
 </script>
 
