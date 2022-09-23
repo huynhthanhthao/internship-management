@@ -1,6 +1,6 @@
 const routersModule = {
   state: {
-    companyRouters: [
+    companyRoutes: [
       { name: "Trang chủ", path: "/company/home" },
       {
         name: "Sinh viên đăng ký thực tập",
@@ -11,14 +11,11 @@ const routersModule = {
         path: "/company/students-training",
       },
     ],
-    teacherRoutes: [{ name: "Trang chủ", path: "/teacher" }],
+    teacherRoutes: [{ name: "Trang chủ", path: "/teacher/home" }],
   },
   getters: {
-    getCompanyRouters(state) {
-      return state.companyRouters;
-    },
-    getTeacherRoutes(state) {
-      return state.teacherRoutes;
+    getRouters(state) {
+      return state;
     },
   },
 };

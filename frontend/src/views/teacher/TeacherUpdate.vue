@@ -1,5 +1,5 @@
 <template>
-  <div class="teacher--update my-5" v-if="getUpdateTeacher">
+  <div class="teacher--update my-5" >
     <h3 class="update__title text-center">Cập nhật thông tin cá nhân</h3>
 
     <div class="form-update col-sm-6 mt-5 p-5 rounded-5 m-auto row d-flex justify-content-center">
@@ -42,7 +42,7 @@ import TeacherAvatar from '../../components/Teacher/TeacherAvatar.vue';
 export default {
     name: "TeacherUpdate",
     computed: {
-      ...mapGetters(["getUpdateTeacher"])
+      ...mapGetters({getUpdateTeacher: "getUpdateTeacher"})
     },
     methods: {
       ...mapMutations(["CLOSE_UPDATE"]),

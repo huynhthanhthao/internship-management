@@ -37,12 +37,11 @@
 import RegisterList from "../../components/StudentsRegister/RegisterList.vue";
 import InformationDetail from "../../components/StudentsRegister/InformationDetail.vue";
 import Statistics from "../../components/StudentsRegister/Statistics.vue";
-import Modal from "../../components/Modal/Modal.vue";
 
 import { mapGetters } from "vuex";
 export default {
     name: "StudentsRegister",
-    components: { RegisterList, InformationDetail, Statistics, Modal },
+    components: { RegisterList, InformationDetail, Statistics },
     computed: mapGetters({ isShowDetail: "getShowDetailRegister" }),
 };
 </script>

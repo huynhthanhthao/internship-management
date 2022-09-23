@@ -12,6 +12,9 @@ import HomePageCompany from "../views/company/HomePage.vue";
 import StudentsRegister from "../views/company/StudentsRegister.vue";
 import StudentsTraining from "../views/company/StudentsTraining.vue";
 import Login from "../views/Login.vue";
+
+//Teacher router
+import TeacherHome from "../views/teacher/TeacherHome.vue";
 import TeacherUpdate from "../views/teacher/TeacherUpdate.vue";
 // 2. Define some routes
 
@@ -20,9 +23,12 @@ const routes = [
   { path: "/login", component: Login },
   { path: "/student", component: Student },
   {
-    path: "/teacher",
+    path: "/teacher/home",
     component: Teacher,
-    children: [{ path: "/teacher/update", component: TeacherUpdate }],
+    children: [
+      { path: "/teacher/home", component: TeacherHome },
+      { path: "/teacher/update-information", component: TeacherUpdate },
+    ],
   },
   { path: "/admin", component: Admin },
   {

@@ -38,8 +38,10 @@
                     </li>
                 </ul>
 
-                <button class="btn btn-primary rounded-pill mt-5 d-flex m-auto" data-bs-dismiss="offcanvas" @click="SHOW_UPDATE">
-                    <i class="bi bi-pencil-square"></i> &nbsp; Cập nhật thông tin
+                <button class="btn btn-primary rounded-pill mt-5 d-flex m-auto " data-bs-dismiss="offcanvas">
+                    <router-link to="/teacher/update-information" style="text-decoration: none; color: inherit;">
+                        <i class="bi bi-pencil-square"></i> &nbsp; Cập nhật thông tin
+                    </router-link>
                 </button>
 
             </div>

@@ -22,7 +22,7 @@
                             aria-label="Close"
                         ></button>
                     </div>
-                    <div class="modal-body">...</div>
+                    <div class="modal-body">{{ modal.message }}</div>
                     <div class="modal-footer">
                         <button
                             type="button"
@@ -31,7 +31,11 @@
                         >
                             Đóng
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            @click="handle"
+                        >
                             Xác nhận
                         </button>
                     </div>
@@ -42,8 +46,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
     name: "ModalComponent",
+    computed: mapGetters({ modal: "getModal" }),
+    methods: {
+        handle() {
+            console.log(this);
+        },
+    },
 };
 </script>
 

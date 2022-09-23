@@ -12,7 +12,6 @@
             >
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" v-if="!isLogin">
@@ -24,18 +23,18 @@
                         >
                     </li>
                     <li
-                        v-for="companyRouter in companyRouters"
+                        v-for="router in routers"
                         v-else
                         class="nav-item"
-                        :key="companyRouter.path"
+                        :key="router.path"
                     >
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item py-1">
                                 <router-link
                                     class="text-decoration-none me-3 text-white"
                                     aria-current="page"
-                                    :to="companyRouter.path"
-                                    >{{ companyRouter.name }}</router-link
+                                    :to="router.path"
+                                    >{{ router.name }}</router-link
                                 >
                             </li>
                         </ul>
@@ -51,11 +50,24 @@ import { mapGetters } from "vuex";
 
 export default {
     name: "NavbarComponent",
-
-    computed: mapGetters({
-        isLogin: "getIsLogin",
-        companyRouters: "getCompanyRouters",
-    }),
+    props: ["rule"],
+    computed: {
+        ...mapGetters({
+            isLogin: "getIsLogin",
+            getRouters: "getRouters",
+        }),
+        routers() {
+            if (this.rule == "company") {
+                return this.getRouters.companyRoutes;
+            } else if (this.rule == "teacher") {
+                return this.getRouters.teacherRoutes;
+            } else if (this.rule == "admin") {
+                return this.getRouters.adminRoutes;
+            } else {
+                return this.getRouters.studentRoutes;
+            }
+        },
+    },
 };
 </script>
 
