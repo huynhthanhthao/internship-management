@@ -31,11 +31,7 @@
                         >
                             Đóng
                         </button>
-                        <button
-                            type="button"
-                            class="btn btn-primary"
-                            @click="handle"
-                        >
+                        <button type="button" class="btn btn-primary">
                             Xác nhận
                         </button>
                     </div>
@@ -52,9 +48,7 @@ export default {
     name: "ModalComponent",
     computed: mapGetters({ modal: "getModal" }),
     methods: {
-        handle() {
-            console.log(this);
-        },
+        handleConfirm() {},
     },
 };
 </script>

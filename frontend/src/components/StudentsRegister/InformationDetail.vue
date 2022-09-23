@@ -70,9 +70,11 @@ import { mapMutations } from "vuex";
 
 export default {
     name: "InformationDetail",
-    methods: mapMutations({
-        closeDetail: "CLOSE_DETAIL_REGISTER",
-    }),
+    methods: {
+        ...mapMutations({
+            closeDetail: "CLOSE_DETAIL_REGISTER",
+        }),
+    },
 };
 </script>
 

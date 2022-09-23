@@ -21,8 +21,11 @@
                     </h2>
                 </div>
             </div>
-            <div class="col-6">
-                <RegisterList />
+            <div
+                class="accordion col-6"
+                style="height: 500px; overflow: scroll"
+            >
+                <RegisterItem class="mb-2" />
             </div>
             <div class="col-6">
                 <InformationDetail v-if="isShowDetail" />
@@ -34,14 +37,15 @@
 </template>
 
 <script>
-import RegisterList from "../../components/StudentsRegister/RegisterList.vue";
+import RegisterItem from "../../components/StudentsRegister/RegisterItem.vue";
 import InformationDetail from "../../components/StudentsRegister/InformationDetail.vue";
 import Statistics from "../../components/StudentsRegister/Statistics.vue";
+import Modal from "../../components/Modal/Modal.vue";
 
 import { mapGetters } from "vuex";
 export default {
     name: "StudentsRegister",
-    components: { RegisterList, InformationDetail, Statistics },
+    components: { RegisterItem, InformationDetail, Statistics, Modal },
     computed: mapGetters({ isShowDetail: "getShowDetailRegister" }),
 };
 </script>
