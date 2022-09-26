@@ -1,0 +1,43 @@
+<template>
+  <div class="teacher--update mt-5" v-if="getUpdateTeacher">
+    <h3 class="update__title text-center">Cập nhật thông tin cá nhân</h3>
+    <div class="form-update m-auto mt-5 row d-flex justify-content-center">
+        <form class="col-sm-8 col-lg-5 col-xl-4 col-xxl-4">
+            <div class="mb-3 ">
+              <label for="fullname" class="form-label">Họ và tên</label>
+              <input type="text" class="form-control" id="fullname" aria-describedby="name">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3 ">
+              <label for="phone" class="form-label">Số điện thoại</label>
+              <input type="text" class="form-control" id="phone" aria-describedby="name">
+            </div>
+            <div class="form__footer  d-flex justify-content-around ">
+              <button type="submit" class="btn btn-primary">Lưu</button>
+              <button type="submit" class="btn btn-primary">Đặt lại</button>
+            </div>
+            
+          </form>
+    </div>
+  </div>
+</template>
+
+<script>
+
+import { mapGetters } from 'vuex'; 
+export default {
+    name: "TeacherUpdate",
+    computed:{
+        ...mapGetters(["getUpdateTeacher"])
+    }
+}
+</script>
+
+<style>
+  .btn{
+    min-width: 60px;
+  }
+</style>
