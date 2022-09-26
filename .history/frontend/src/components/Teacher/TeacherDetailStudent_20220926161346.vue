@@ -1,16 +1,17 @@
 <template>
-<div class="teacher-detail-student" v-if="getDetailStudent">
-    <div class="information-detail position-relative border rounded-2 p-3 py-4 row col-12 animate__fadeIn animate__animated" >
+    <div
+        class="information-detail position-relative border rounded-2 p-3 py-4 row col-12 animate__fadeIn animate__animated"
+    >
         <button
             type="button"
             class="btn-close position-absolute"
             aria-label="Close"
             @click="closeDetail"
-        >
-        </button>
+        ></button>
         <div
             class="col-5 d-flex justify-content-center"
-            style="height: 180px; width: 200px">
+            style="height: 180px; width: 200px"
+        >
             <img
                 src="https://cdn-icons-png.flaticon.com/512/2302/2302834.png"
                 alt=""
@@ -31,15 +32,14 @@
             </div>
         </div>
         <div class="col-12 d-flex justify-content-around">
-            <router-link to="/teacher/home/view-progress/id">
-                <button type="button" class="btn btn-outline-secondary" >
-                Xem tiến độ thực tập
-                </button>
-            </router-link >
-            <router-link to="/teacher/home/view-assess/id">
-                <button type="button" class="btn btn-outline-secondary">Xem đánh giá của đơn vị</button>
-            </router-link>
-        </div>
+        <router-link to="/teacher/home/view-progress/id">
+            <button type="button" class="btn btn-outline-secondary" >
+            Xem tiến độ thực tập
+            </button>
+        </router-link >
+        <router-link to="/teacher/home/view-assess/id">
+            <button type="button" class="btn btn-outline-secondary">Xem đánh giá của đơn vị</button>
+        </router-link>
     </div>
 </div>
 </template>
