@@ -55,7 +55,6 @@ const routes = [
     children: [
       { path: "/company/home", component: HomePageCompany },
       { path: "/company/students-register", component: StudentsRegister },
-      { path: "/company/detail-task", component: TaskDetail },
       { path: "/company/students-training", component: StudentsTraining },
     ],
   },
