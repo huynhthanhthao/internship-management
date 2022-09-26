@@ -1,5 +1,5 @@
 <template>
-    <div class="start-0 p-0">
+    <div class="start-0 p-0" >
         <a class="btn btn-primary btn-infor position-fixed top-50" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <i class="bi bi-info-circle-fill"></i>
         </a>
@@ -38,8 +38,10 @@
                     </li>
                 </ul>
 
-                <button class="btn btn-primary rounded-pill mt-5 d-flex m-auto" data-bs-dismiss="offcanvas" @click="SHOW_UPDATE">
-                    <i class="bi bi-pencil-square"></i> &nbsp; Cập nhật thông tin
+                <button class="btn btn-primary rounded-pill mt-5 d-flex m-auto " data-bs-dismiss="offcanvas">
+                    <router-link to="/teacher/update-information" style="text-decoration: none; color: inherit;">
+                        <i class="bi bi-pencil-square"></i> &nbsp; Cập nhật thông tin
+                    </router-link>
                 </button>
 
             </div>

@@ -25,19 +25,40 @@
                 class="accordion col-6"
                 style="height: 500px; overflow: scroll"
             >
-                <RegisterItem class="mb-2" />
+                <ItemStudent class="mb-2" />
             </div>
             <div class="col-6">
                 <InformationDetail v-if="isShowDetail" />
                 <Statistics v-else />
             </div>
         </div>
-        <Modal />
+
+        <Modal id="ModalRefuse"
+            ><button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+            >
+                Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </Modal>
+
+        <Modal id="ModalAccept"
+            ><button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+            >
+                Close2
+            </button>
+            <button type="button" class="btn btn-primary">Save changes2</button>
+        </Modal>
     </div>
 </template>
 
 <script>
-import RegisterItem from "../../components/StudentsRegister/RegisterItem.vue";
+import ItemStudent from "../../components/StudentsRegister/ItemStudent.vue";
 import InformationDetail from "../../components/StudentsRegister/InformationDetail.vue";
 import Statistics from "../../components/StudentsRegister/Statistics.vue";
 import Modal from "../../components/Modal/Modal.vue";
@@ -45,7 +66,7 @@ import Modal from "../../components/Modal/Modal.vue";
 import { mapGetters } from "vuex";
 export default {
     name: "StudentsRegister",
-    components: { RegisterItem, InformationDetail, Statistics, Modal },
+    components: { ItemStudent, InformationDetail, Statistics, Modal },
     computed: mapGetters({ isShowDetail: "getShowDetailRegister" }),
 };
 </script>

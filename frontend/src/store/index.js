@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import TeacherModule from "./modules/TeacherModule.js";
+import teacherModule from "./modules/teacher-module/index.js";
 import authModule from "./modules/authModule.js";
 import routersModule from "./modules/routersModule";
 import companyModule from "./modules/company-module/index.js";
@@ -8,7 +8,7 @@ import modalModule from "./modules/modalModel.js";
 // Create a new store instance.
 const store = createStore({
     modules: {
-        TeacherModule,
+        teacherModule,
         authModule,
         routersModule,
         companyModule,

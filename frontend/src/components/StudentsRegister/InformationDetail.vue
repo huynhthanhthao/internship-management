@@ -49,7 +49,7 @@
                 type="button"
                 class="btn btn-danger me-3"
                 data-bs-toggle="modal"
-                data-bs-target="#Modal"
+                data-bs-target="#ModalRefuse"
             >
                 <i class="bi bi-x-octagon-fill"></i> Từ chối
             </button>
@@ -57,7 +57,7 @@
                 type="button"
                 class="btn btn-success"
                 data-bs-toggle="modal"
-                data-bs-target="#Modal"
+                data-bs-target="#ModalAccept"
             >
                 <i class="bi bi-check-circle-fill"></i> Chấp nhận
             </button>

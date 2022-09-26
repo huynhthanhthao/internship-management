@@ -1,7 +1,6 @@
 <template>
     <div class="company">
         <Header rule="company" />
-
         <router-view class="p-3"></router-view>
     </div>
 </template>

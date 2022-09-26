@@ -1,7 +1,7 @@
 <template>
     <div>
         <div
-            class="students-register row p-4 animate__fadeIn animate__animated"
+            class="students-register row p-4 animate__fadeIn animate__animated position-relative"
         >
             <div class="col-12">
                 <div class="d-flex">
@@ -26,24 +26,24 @@
                 style="height: 500px; overflow: scroll"
             >
                 <RegisterItem class="mb-2" />
-                <RegisterItem class="mb-2" />
-                <RegisterItem class="mb-2" />
-                <RegisterItem class="mb-2" />
             </div>
             <div class="col-6">
-                <InformationDetail v-if="isShowDetail" />
+                <TrainingDetail v-if="isShowDetail" />
                 <Statistics v-else />
             </div>
         </div>
-        <Modal />
     </div>
 </template>
 
 <script>
-import RegisterItem from "../../components/StudentsRegister/RegisterItem.vue";
+import RegisterItem from "../../components/StudentsRegister/ItemStudent.vue";
+import TrainingDetail from "../../components/StudentTraining/TrainingDetail.vue";
+import Statistics from "../../components/StudentTraining/Statistics.vue";
+import { mapGetters } from "vuex";
 export default {
     name: "StudentsTraining",
-    components: { RegisterItem },
+    components: { RegisterItem, TrainingDetail, Statistics },
+    computed: mapGetters({ isShowDetail: "getShowDetailRegister" }),
 };
 </script>
 
