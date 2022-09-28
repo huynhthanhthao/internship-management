@@ -1,5 +1,5 @@
 <template>
-  <div class="accordion mb-3" :id="`accordion${id}`">
+  <div class="student-item accordion mb-3" :id="`accordion${id}`">
             <div class="accordion-item">
                 <h2 class="accordion-header" :id="`heading${id}`">
                     <button
@@ -56,28 +56,29 @@
 <script>
 import { mapMutations } from 'vuex';
 export default {
-    name : "TeacherStudentItem", 
+    name : "StudentItem", 
     props:{
         id: {
             type: String
         }
     },
+
     methods: {
         ...mapMutations({
             showDetail: "SHOW_DETAIL_STUDENT",
-            closeDetail: "CLOSE_DETAIL_STUDENT",
-            closeOverview: "CLOSE_OVERVIEW"
+            closeOverview: "CLOSE_OVERVIEW",
         }),
         showDetailInfor(title){
-            const headerList = document.querySelectorAll(".header-list");
-            headerList[1].innerText = title;
+            const headerDetail = document.querySelector(".header-detail");
+            headerDetail.innerText = title;
             this.showDetail();
             this.closeOverview();
+            
         }
     },
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

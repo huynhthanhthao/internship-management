@@ -17,8 +17,10 @@ import TaskDetail from "../views/company/TaskDetail.vue";
 
 //Teacher router
 import TeacherHome from "../views/teacher/TeacherHome.vue";
-import TeacherViewProgress from "../views/teacher/TeacherViewProgress.vue";
-import TeacherViewAssess from "../views/teacher/TeacherViewAssess.vue";
+import TeacherManage from "../views/teacher/TeacherManage.vue";
+import TeacherView from "../views/teacher/TeacherView.vue";
+import ViewProgress from "../components/Teacher/ProgressAssess/ViewProgress.vue";
+import ViewAssess from "../components/Teacher/ProgressAssess/ViewAssess.vue";
 import TeacherUpdate from "../views/teacher/TeacherUpdate.vue";
 
 // 2. Define some routes
@@ -34,17 +36,26 @@ const routes = [
       {
         path: "/teacher/home",
         component: TeacherHome,
+      },
+      {
+        path: "/teacher/manage",
+        component: TeacherManage,
+      },
+      {
+        path: "/teacher/view",
+        component: TeacherView,
         children: [
           {
-            path: "/teacher/home/view-progress/:id",
-            component: TeacherViewProgress,
+            path: "/teacher/view/progress/:id",
+            component: ViewProgress,
           },
           {
-            path: "/teacher/home/view-assess/:id",
-            component: TeacherViewAssess,
+            path: "/teacher/view/assess/:id",
+            component: ViewAssess,
           },
         ],
       },
+
       { path: "/teacher/update-information", component: TeacherUpdate },
     ],
   },

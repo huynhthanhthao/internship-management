@@ -1,6 +1,6 @@
 <template>
-<div class="teacher-detail-student" v-if="getDetailStudent">
-    <div class="information-detail position-relative border rounded-2 p-3 py-4 row col-12 animate__fadeIn animate__animated" >
+<div class="detail-student" v-if="getDetailStudent">
+    <div class="detail__infor position-relative border rounded-2 p-3 py-4 row col-12 animate__fadeIn animate__animated" >
         <button
             type="button"
             class="btn-close position-absolute"
@@ -31,12 +31,12 @@
             </div>
         </div>
         <div class="col-12 d-flex justify-content-around">
-            <router-link to="/teacher/home/view-progress/id">
+            <router-link to="/teacher/view/progress/id">
                 <button type="button" class="btn btn-outline-secondary" >
                 Xem tiến độ thực tập
                 </button>
             </router-link >
-            <router-link to="/teacher/home/view-assess/id">
+            <router-link to="/teacher/view/assess/id">
                 <button type="button" class="btn btn-outline-secondary">Xem đánh giá của đơn vị</button>
             </router-link>
         </div>
@@ -47,7 +47,7 @@
 <script>
 import { mapGetters, mapMutations } from "vuex";
 export default {
-    name: "TeacherDetailStudent",
+    name: "DetailStudent",
     computed: {
         ...mapGetters(["getDetailStudent"]),
     },
@@ -58,8 +58,8 @@ export default {
       }),
 
       closeDetail(){
-        const headerList = document.querySelectorAll(".header-list");
-        headerList[1].innerText = "Tổng quan";
+        const headerDetail = document.querySelector(".header-detail");
+        headerDetail.innerText = "Tổng quan";
         this.closeDetailStudent();
         this.showOverview();
       }
@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style scoped>
-.information-detail {
+.detail__infor {
     min-height: 300px;
 }
 
