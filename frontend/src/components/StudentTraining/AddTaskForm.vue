@@ -1,8 +1,7 @@
 <template>
-    <!-- Modal -->
     <div
         class="modal fade"
-        id="ModalAssessTask"
+        id="AddTaskModal"
         tabindex="-1"
         aria-labelledby="ModalLabel"
         aria-hidden="true"
@@ -11,7 +10,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title fw-bold fs-3" id="ModalLabel">
-                        Đánh giá công việc
+                        Thêm công việc
                     </h5>
                     <button
                         type="button"
@@ -23,32 +22,29 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label class="form-label"
-                                ><strong>Tên công việc: </strong> Học ngôn ngữ
-                                Python</label
+                            <label for="nameTask" class="form-label"
+                                >Tên công việc</label
                             >
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label"
-                                ><strong>Thời gian: </strong> 3 giờ</label
-                            >
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label"
-                                ><strong>Trạng thái: </strong>Đã hoàn
-                                thành</label
-                            >
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="AssessTask" class="form-label"
-                                ><strong>Đánh giá:</strong>
-                            </label>
-                            <textarea
+                            <input
                                 type="text"
                                 class="form-control"
-                                id="AssessTask"
-                            ></textarea>
+                                id="nameTask"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label for="workTime" class="form-label"
+                                >Thời gian hoàn thành</label
+                            >
+
+                            <input
+                                class="form-control"
+                                type="number"
+                                if="workTime"
+                            />
+                            <div id="workTimelHelp" class="form-text">
+                                Đây là thời gian tối đa mà sinh viên có thể thực
+                                hiện công việc này.
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -58,7 +54,7 @@
                         class="btn btn-secondary"
                         data-bs-dismiss="modal"
                     >
-                        Hủy
+                        Đóng
                     </button>
                     <button type="button" class="btn btn-primary">
                         Xác nhận
@@ -71,7 +67,7 @@
 
 <script>
 export default {
-    name: "AssessTaskForm",
+    name: "AddTaskForm",
 };
 </script>
 

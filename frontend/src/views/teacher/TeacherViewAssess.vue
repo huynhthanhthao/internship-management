@@ -1,26 +1,42 @@
 <template>
-    <div class="modal modal-view-assess animate__fadeIn animate__animated d-block" data-bs-backdrop="static"
-        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered ">
+    <div
+        class="modal modal-view-assess animate__fadeIn animate__animated d-block"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0">
                 <div class="modal-header text-white">
-                    <h5 class="modal-title" id="staticBackdropLabel">Đánh giá của đơn vị thực tập</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"
-                        @click="closeModalInfor"></button>
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        Đánh giá của đơn vị thực tập
+                    </h5>
+                    <button
+                        type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                        @click="closeModalInfor"
+                    ></button>
                 </div>
                 <div class="modal-body">
-                    <div class="modal-body__infor row  border-bottom">
+                    <div class="modal-body__infor row border-bottom">
                         <div class="col-4 my-1">
                             <strong>MSSV: </strong> B1906570
                         </div>
                         <div class="col-8 my-1 text-end">
-                            <strong>Họ và tên: </strong> Huỳnh Thới Thị Thanh Thảo
+                            <strong>Họ và tên: </strong> Huỳnh Thới Thị Thanh
+                            Thảo
                         </div>
                         <div class="col-12 my-1">
-                            <strong>Đơn vị thực tập: </strong> Công ty TNHH MTV An Toàn Khu
+                            <strong>Đơn vị thực tập: </strong> Công ty TNHH MTV
+                            An Toàn Khu
                         </div>
                         <div class="col-12 my-1">
-                            <strong>Thời gian thực tập: </strong> từ ngày <span>19-05-2022</span> đến ngày
+                            <strong>Thời gian thực tập: </strong> từ ngày
+                            <span>19-05-2022</span> đến ngày
                             <span>20-07-2022</span>
                         </div>
                     </div>
@@ -30,7 +46,8 @@
                                 <strong>Tuần 1</strong>
                             </div>
                             <div class="content-week__task col-6 text-justify">
-                                Học tập kinh nghiệm và theo dõi quá trình làm việc trong đơn vị
+                                Học tập kinh nghiệm và theo dõi quá trình làm
+                                việc trong đơn vị
                             </div>
                             <div class="content-week__message col-4">
                                 Hoàn thành tốt trong 4 giờ
@@ -41,7 +58,8 @@
                                 <strong>Tuần 2</strong>
                             </div>
                             <div class="content-week__task col-6 text-justify">
-                                Học tập kinh nghiệm và theo dõi quá trình làm việc trong đơn vị
+                                Học tập kinh nghiệm và theo dõi quá trình làm
+                                việc trong đơn vị
                             </div>
                             <div class="content-week__message col-4">
                                 Hoàn thành tốt trong 4 giờ
@@ -52,7 +70,8 @@
                                 <strong>Tuần 3</strong>
                             </div>
                             <div class="content-week__task col-6 text-justify">
-                                Học tập kinh nghiệm và theo dõi quá trình làm việc trong đơn vị
+                                Học tập kinh nghiệm và theo dõi quá trình làm
+                                việc trong đơn vị
                             </div>
                             <div class="content-week__message col-4">
                                 Hoàn thành tốt trong 4 giờ
@@ -63,7 +82,8 @@
                                 <strong>Tuần 4</strong>
                             </div>
                             <div class="content-week__task col-6 text-justify">
-                                Học tập kinh nghiệm và theo dõi quá trình làm việc trong đơn vị
+                                Học tập kinh nghiệm và theo dõi quá trình làm
+                                việc trong đơn vị
                             </div>
                             <div class="content-week__message col-4">
                                 Hoàn thành tốt trong 4 giờ
@@ -72,8 +92,16 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" class="btn btn-primary">Đánh giá kết quả thực tập</button>
-                    <button type="button" class="btn btn-secondary" @click="closeModalInfor">Đóng</button>
+                    <button type="button" class="btn btn-primary">
+                        Đánh giá kết quả thực tập
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        @click="closeModalInfor"
+                    >
+                        Đóng
+                    </button>
                 </div>
             </div>
         </div>
@@ -86,11 +114,11 @@ export default {
     methods: {
         closeModalInfor() {
             history.back();
-        }
-    }
-}
+        },
+    },
+};
 </script>
-<style>
+<style scoped>
 .modal {
     background-color: rgba(91, 88, 88, 0.436);
 }
@@ -107,7 +135,8 @@ export default {
     margin-left: -16px;
     margin-right: -16px;
     padding-bottom: 16px;
-    border-bottom: var(--bs-modal-header-border-width) solid var(--bs-modal-header-border-color);
+    border-bottom: var(--bs-modal-header-border-width) solid
+        var(--bs-modal-header-border-color);
 }
 
 .modal-body__content [class*="col-"] {
