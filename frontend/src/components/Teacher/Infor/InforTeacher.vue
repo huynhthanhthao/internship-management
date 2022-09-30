@@ -1,5 +1,5 @@
 <template>
-    <div class="start-0 p-0" >
+    <div class="infor-teacher start-0 p-0" >
         <a class="btn btn-primary btn-infor position-fixed top-50" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <i class="bi bi-info-circle-fill"></i>
         </a>
@@ -12,25 +12,25 @@
             </div>
 
             <div class="offcanvas-body mt-5 ">
-                <div class="teacher-infor-header d-flex flex-column align-items-center">
-                    <TeacherAvatar/>
-                    <h3 class="teacher-infor-name mt-3">Le Duy Tan</h3>
+                <div class="infor-teacher-header d-flex flex-column align-items-center">
+                    <Avatar :avatar="avatar"/>
+                    <h3 class="infor-teacher-name mt-3">Le Duy Tan</h3>
                 </div>
 
-                <ul class="teacher-infor-detail fs-6 mt-5 ps-0">
-                    <li class="teacher-infor-item mb-2">
+                <ul class="infor-teacher-detail fs-6 mt-5 ps-0">
+                    <li class="infor-teacher-item mb-2">
                         <span class="item__title me-3">
                             <i class="bi bi-person-circle"></i>
                         </span>
                         <span class="item__value">B1906758</span>
                     </li>
-                    <li class="teacher-infor-item mb-2">
+                    <li class="infor-teacher-item mb-2">
                         <span class="item__title me-3">
                             <i class="bi bi-envelope-fill"></i>
                         </span>
                         <span class="item__value">tanb1906758@student.ctu.edu.vn</span>
                     </li>
-                    <li class="teacher-infor-item mb-2">
+                    <li class="infor-teacher-item mb-2">
                         <span class="item__title me-3">
                             <i class="bi bi-phone-fill"></i>
                         </span>
@@ -51,20 +51,26 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import TeacherAvatar from './TeacherAvatar.vue';
+import Avatar from './AvatarComponent.vue';
 export default {
-    name: "TeacherInforComponent",
-    computed: {
-       
+    name: "InforTeacher",
+    data(){
+        return{
+            avatar:{
+                path: "https://cdn-icons-png.flaticon.com/512/3429/3429440.png",
+                width: 200,
+                height: 200
+            }
+        }
     },
     methods:{
         ...mapMutations(["SHOW_UPDATE"]),
         closeHome(){
-            const TeacherHome = document.querySelector(".teacher-home");
+            const TeacherHome = document.querySelector(".teacher-manage");
             TeacherHome.parentElement.removeChild(TeacherHome);
         }
     },
-    components: { TeacherAvatar }
+    components: { Avatar }
 }
 </script>
 
@@ -79,7 +85,7 @@ export default {
         background-color: #1f5caa ;
     }
 
-    .teacher-infor-detail{
+    .infor-teacher-detail{
         list-style-type: none;
     }
 

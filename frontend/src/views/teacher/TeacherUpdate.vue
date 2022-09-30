@@ -1,9 +1,9 @@
 <template>
-  <div class="teacher--update my-5 animate__animated animate__fadeIn" >
+  <div class="teacher-update my-5 animate__animated animate__fadeIn" >
     <h2 class="update__title text-center fw-bold" style="color: #555555">Cập nhật thông tin cá nhân</h2>
 
     <div class="form-update col-sm-6 mt-5 p-5 rounded-5 m-auto row d-flex justify-content-center">
-      <TeacherAvatar/>
+      <AvatarComponent :avatar="avatar"/>
       <form class="form-update-infor ms-5 col-sm-8 col-lg-5 col-xl-4 col-xxl-4 flex-grow-1" >
           <div class="mb-3 ">
             <label for="fullname" class="form-label">Họ và tên</label>
@@ -38,9 +38,18 @@
 <script>
 
 import { mapGetters, mapMutations } from 'vuex';
-import TeacherAvatar from '../../components/Teacher/TeacherAvatar.vue'; 
+import AvatarComponent from '../../components/Teacher/Infor/AvatarComponent.vue'; 
 export default {
     name: "TeacherUpdate",
+    data() {
+      return {
+        avatar: {
+          path: "https://cdn-icons-png.flaticon.com/512/3429/3429440.png",
+          width: 200,
+          height: 200
+        }
+      }
+    },
     computed: {
       ...mapGetters({getUpdateTeacher: "getUpdateTeacher"})
     },
@@ -54,11 +63,11 @@ export default {
           event.preventDefault();
         },
     },
-    components: { TeacherAvatar }
+    components: { AvatarComponent }
 }
 </script>
 
-<style>
+<style scoped>
   .btn-save{
     min-width: 70px;
   }

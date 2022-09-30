@@ -13,6 +13,7 @@ const routersModule = {
     ],
     teacherRoutes: [
       { name: "Trang chủ", path: "/teacher/home" },
+      { name: "Quản lý sinh viên", path: "/teacher/manage" },
       { name: "Cập nhật thông tin", path: "/teacher/update-information" },
     ],
   },

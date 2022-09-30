@@ -2,6 +2,7 @@ const state = {
   updateTeacher: false,
   detailStudent: false,
   overview: true,
+  showAssess: true,
 };
 
 const getters = {
@@ -16,6 +17,9 @@ const getters = {
   getOverview(state) {
     return state.overview;
   },
+  getShowAssess(state){
+    return state.showAssess;
+  }
 };
 
 const mutations = {
@@ -42,6 +46,12 @@ const mutations = {
   CLOSE_OVERVIEW(state) {
     state.overview = false;
   },
+  SHOW_ASSESS(state){
+    state.showAssess = true;
+  },
+  CLOSE_ASSESS(state){
+    state.showAssess = false;
+  }
 };
 
 const actions = {};
