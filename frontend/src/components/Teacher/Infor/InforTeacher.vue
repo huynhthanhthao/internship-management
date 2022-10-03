@@ -65,10 +65,6 @@ export default {
     },
     methods:{
         ...mapMutations(["SHOW_UPDATE"]),
-        closeHome(){
-            const TeacherHome = document.querySelector(".teacher-manage");
-            TeacherHome.parentElement.removeChild(TeacherHome);
-        }
     },
     components: { Avatar }
 }

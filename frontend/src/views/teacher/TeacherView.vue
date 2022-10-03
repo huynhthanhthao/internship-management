@@ -11,7 +11,7 @@
 import InforGeneral from '@/components/Teacher/ProgressAssess/InforGeneral.vue';
 export default {
     name: "TeacherView",
-    components: { InforGeneral }
+    components: { InforGeneral },
 }
 </script>
 

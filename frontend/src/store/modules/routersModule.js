@@ -16,6 +16,12 @@ const routersModule = {
       { name: "Quản lý sinh viên", path: "/teacher/manage" },
       { name: "Cập nhật thông tin", path: "/teacher/update-information" },
     ],
+    studentRoutes: [
+      { name: "Trang chủ", path: "/student/home" },
+      { name: "Đăng ký thực tập", path: "/student/register" },
+      { name: "Quản lý thực tập", path: "/student/manage" },
+      { name: "Cập nhật thông tin", path: "/student/update-information" },
+    ],
   },
   getters: {
     getRouters(state) {

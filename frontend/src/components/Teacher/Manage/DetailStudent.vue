@@ -54,7 +54,7 @@ export default {
     methods: {
       ...mapMutations({
         closeDetailStudent:"CLOSE_DETAIL_STUDENT", 
-        showOverview: "SHOW_OVERVIEW"
+        showOverview: "SHOW_OVERVIEW_TEACHER"
       }),
 
       closeDetail(){

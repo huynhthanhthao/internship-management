@@ -1,7 +1,7 @@
 const state = {
   updateTeacher: false,
   detailStudent: false,
-  overview: true,
+  overviewTeacher: true,
   showAssess: true,
 };
 
@@ -14,12 +14,12 @@ const getters = {
     return state.detailStudent;
   },
 
-  getOverview(state) {
-    return state.overview;
+  getOverviewTeacher(state) {
+    return state.overviewTeacher;
   },
-  getShowAssess(state){
+  getShowAssess(state) {
     return state.showAssess;
-  }
+  },
 };
 
 const mutations = {
@@ -39,19 +39,19 @@ const mutations = {
     state.detailStudent = false;
   },
 
-  SHOW_OVERVIEW(state) {
-    state.overview = true;
+  SHOW_OVERVIEW_TEACHER(state) {
+    state.overviewTeacher = true;
   },
 
-  CLOSE_OVERVIEW(state) {
-    state.overview = false;
+  CLOSE_OVERVIEW_TEACHER(state) {
+    state.overviewTeacher = false;
   },
-  SHOW_ASSESS(state){
+  SHOW_ASSESS(state) {
     state.showAssess = true;
   },
-  CLOSE_ASSESS(state){
+  CLOSE_ASSESS(state) {
     state.showAssess = false;
-  }
+  },
 };
 
 const actions = {};

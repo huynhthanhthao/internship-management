@@ -23,39 +23,40 @@ import ViewProgress from "../components/Teacher/ProgressAssess/ViewProgress.vue"
 import ViewAssess from "../components/Teacher/ProgressAssess/ViewAssess.vue";
 import TeacherUpdate from "../views/teacher/TeacherUpdate.vue";
 
+//Student router
+import StudentHome from "../views/student/StudentHome.vue";
+import StudentRegister from "../views/student/StudentRegister.vue";
+import StudentManage from "../views/student/StudentManage.vue";
+import StudentUpdate from "../views/student/StudentUpdate.vue";
 // 2. Define some routes
 
 const routes = [
   { path: "/", component: Home },
   { path: "/login", component: Login },
-  { path: "/student", component: Student },
+  {
+    path: "/student",
+    component: Student,
+    children: [
+      { path: "/student/home", component: StudentHome },
+      { path: "/student/register", component: StudentRegister },
+      { path: "/student/manage", component: StudentManage },
+      { path: "/student/update-information", component: StudentUpdate },
+    ],
+  },
   {
     path: "/teacher",
     component: Teacher,
     children: [
-      {
-        path: "/teacher/home",
-        component: TeacherHome,
-      },
-      {
-        path: "/teacher/manage",
-        component: TeacherManage,
-      },
+      { path: "/teacher/home", component: TeacherHome },
+      { path: "/teacher/manage", component: TeacherManage },
       {
         path: "/teacher/view",
         component: TeacherView,
         children: [
-          {
-            path: "/teacher/view/progress/:id",
-            component: ViewProgress,
-          },
-          {
-            path: "/teacher/view/assess/:id",
-            component: ViewAssess,
-          },
+          { path: "/teacher/view/progress/:id", component: ViewProgress },
+          { path: "/teacher/view/assess/:id", component: ViewAssess },
         ],
       },
-
       { path: "/teacher/update-information", component: TeacherUpdate },
     ],
   },
