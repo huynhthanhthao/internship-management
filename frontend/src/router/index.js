@@ -10,7 +10,7 @@ import Company from "../views/Company";
 import Login from "../views/Login.vue";
 
 // Company router
-import HomePageCompany from "../views/company/HomePage.vue";
+import HomePage from "../views/company/HomePage.vue";
 import StudentsRegister from "../views/company/StudentsRegister.vue";
 import StudentsTraining from "../views/company/StudentsTraining.vue";
 import TaskDetail from "../views/company/TaskDetail.vue";
@@ -23,61 +23,79 @@ import ViewProgress from "../components/Teacher/ProgressAssess/ViewProgress.vue"
 import ViewAssess from "../components/Teacher/ProgressAssess/ViewAssess.vue";
 import TeacherUpdate from "../views/teacher/TeacherUpdate.vue";
 
+// Admin router
+import TeacherManagement from "../views/admin/TeacherManagement.vue";
+import CompanyManagement from "../views/admin/CompanyManagement.vue";
+import StudentsManagement from "../views/admin/StudentsManagement.vue";
+
 // 2. Define some routes
 
 const routes = [
-  { path: "/", component: Home },
-  { path: "/login", component: Login },
-  { path: "/student", component: Student },
-  {
-    path: "/teacher",
-    component: Teacher,
-    children: [
-      {
-        path: "/teacher/home",
-        component: TeacherHome,
-      },
-      {
-        path: "/teacher/manage",
-        component: TeacherManage,
-      },
-      {
-        path: "/teacher/view",
-        component: TeacherView,
+    { path: "/", component: Home },
+    { path: "/login", component: Login },
+    { path: "/student", component: Student },
+    {
+        path: "/teacher",
+        component: Teacher,
         children: [
-          {
-            path: "/teacher/view/progress/:id",
-            component: ViewProgress,
-          },
-          {
-            path: "/teacher/view/assess/:id",
-            component: ViewAssess,
-          },
-        ],
-      },
+            {
+                path: "/teacher/home",
+                component: TeacherHome,
+            },
+            {
+                path: "/teacher/manage",
+                component: TeacherManage,
+            },
+            {
+                path: "/teacher/view",
+                component: TeacherView,
+                children: [
+                    {
+                        path: "/teacher/view/progress/:id",
+                        component: ViewProgress,
+                    },
+                    {
+                        path: "/teacher/view/assess/:id",
+                        component: ViewAssess,
+                    },
+                ],
+            },
 
-      { path: "/teacher/update-information", component: TeacherUpdate },
-    ],
-  },
-  { path: "/admin", component: Admin },
-  {
-    path: "/company",
-    component: Company,
-    children: [
-      { path: "/company/home", component: HomePageCompany },
-      { path: "/company/students-register", component: StudentsRegister },
-      { path: "/company/detail-task", component: TaskDetail },
-      { path: "/company/students-training", component: StudentsTraining },
-    ],
-  },
+            { path: "/teacher/update-information", component: TeacherUpdate },
+        ],
+    },
+    { path: "/admin", component: Admin },
+    {
+        path: "/company",
+        component: Company,
+        children: [
+            { path: "/company/home", component: HomePage },
+            { path: "/company/students-register", component: StudentsRegister },
+            { path: "/company/detail-task", component: TaskDetail },
+            { path: "/company/students-training", component: StudentsTraining },
+        ],
+    },
+    {
+        path: "/admin",
+        component: Admin,
+        children: [
+            { path: "/admin/home", component: HomePage },
+            { path: "/admin/teacher-management", component: TeacherManagement },
+            {
+                path: "/admin/teacher-management/students",
+                component: StudentsManagement,
+            },
+            { path: "/admin/company-management", component: CompanyManagement },
+        ],
+    },
 ];
 
 // 3. Create the router instance and pass the `routes` option
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
-  linkActiveClass: "active-link",
+    history: createWebHistory(),
+    routes,
+    linkActiveClass: "active-link",
 });
 
 export default router;
