@@ -1,7 +1,7 @@
 <template>
-    <div class="student-register">
+    <div class="student-register p-4">
       <div class="row animate__fadeIn animate__animated">
-        <ViewListStructure :listTitle="`Danh sách đơn vị thực tập`"/>
+        <ViewListStructure :title="title"/>
         <div class="company__list col-6 me-2">
           <ObjectItem :infor="infor" :itemId="`1`" :layout="layout">
             <div class="col-12 d-flex justify-content-center mt-4">
@@ -10,56 +10,70 @@
               </button>
             </div>
           </ObjectItem>
-          <ObjectItem :infor="infor" :itemId="`2`" :layout="layout">
-            <div class="col-12 d-flex justify-content-center mt-4">
-              <button type="button" class="btn btn-outline-secondary p-2" style="font-size: 15px" @click="showDetail">
-                Xem chi tiết
-              </button>
-            </div>
-          </ObjectItem>
-          <ObjectItem :infor="infor" :itemId="`3`" :layout="layout">
-            <div class="col-12 d-flex justify-content-center mt-4">
-              <button type="button" class="btn btn-outline-secondary p-2" style="font-size: 15px" @click="showDetail">
-                Xem chi tiết
-              </button>
-            </div>
-          </ObjectItem>
         </div>
-        <div class="col-6 flex-grow-1">
+        <div class="col-6 p-0">
           <DetailCompany/>
+          <Overview />
         </div>
       </div>
+      <SendRegister/>
     </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 import ViewListStructure from '@/components/GlobalComponent/ViewListStructure.vue';
 import ObjectItem from '@/components/GlobalComponent/ObjectItem.vue';
-import { mapMutations } from 'vuex';
-import DetailCompany from '@/components/Student/Company/DetailCompany.vue';
+import DetailCompany from '@/components/Student/RegisterCompany/DetailCompany.vue';
+import SendRegister from '@/components/Student/RegisterCompany/SendRegister.vue';
+import Overview from '@/components/Student/RegisterCompany/Overview.vue';
+
 export default {
     name: "StudentRegister",
-    components: { ViewListStructure, ObjectItem, DetailCompany },
+    components: { ViewListStructure, ObjectItem, DetailCompany, SendRegister, Overview },
     data(){
       return {
+        title: {
+          headerList: "Danh sách đơn vị thực tập",
+          headerDetail: "Tổng quan",
+        },
         layout: {
-          nameField: "Đơn vị",
           optionField: "Địa chỉ"
         },
         infor:{
           name: "Tập đoàn viễn thông quân đội Viettel",
+          avatar: "https://brademar.com/wp-content/uploads/2022/09/Viettel-Logo-PNG-1.png",
           email: "contacts@viettel.com.vn",
-          phone: "09090989",
-          option: "Thanh Xuan, Ha Noi"
+          phone: "90959595",
+          option: "Xuân Khánh, Ninh Kiều, Cần Thơ"
         }
       }
     },
+
+    //Close detail company when all of accordions are not shown
+    mounted(){
+      const accordionShow = document.querySelector(".accordion-collapse.show");
+      if(!accordionShow){
+        this.closeDetail();
+      }
+    },
+    
     methods:{
-      ...mapMutations({showDetailCompany: "SHOW_DETAIL_COMPANY"}),
+      ...mapMutations({
+        showDetailCompany: "SHOW_DETAIL_COMPANY",
+        closeDetailCompany: "CLOSE_DETAIL_COMPANY"
+      }),
+
       showDetail(){
         const headerDetail = document.querySelector(".header-detail");
         headerDetail.innerText = "Thông tin chi tiết"
         this.showDetailCompany();
+      },
+
+      closeDetail(){
+        const headerDetail = document.querySelector(".header-detail");
+        headerDetail.innerText = "Tổng quan";
+        this.closeDetailCompany();
       }
     }
 }

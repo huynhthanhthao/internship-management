@@ -1,13 +1,20 @@
 <template>
-  <h1>Đợi xin cái background của Thanh Thảo<br/>Cho thì cho hỏng cho thì cho</h1>
+  <HomePage :name="name" />
 </template>
 
 <script>
+import HomePage from '@/components/GlobalComponent/HomePage.vue';
 export default {
-    name: "TeacherHome"
+  name: "TeacherHome",
+  components: { HomePage },
+  data() {
+    return {
+      name: "Nguyễn Văn A"
+    }
+  }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

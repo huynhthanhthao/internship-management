@@ -1,10 +1,15 @@
 <template>
-    <h1>Admin</h1>
+    <div class="admin">
+        <Header rule="admin" />
+        <router-view class="p-3"></router-view>
+    </div>
 </template>
 
 <script>
+import Header from "../components/Header/Header.vue";
 export default {
     name: "AdminComponent",
+    components: { Header },
 };
 </script>
 

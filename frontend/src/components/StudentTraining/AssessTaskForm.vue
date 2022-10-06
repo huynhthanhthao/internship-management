@@ -7,10 +7,10 @@
         aria-labelledby="ModalLabel"
         aria-hidden="true"
     >
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold" id="ModalLabel">
+                    <h5 class="modal-title fw-bold fs-3" id="ModalLabel">
                         Đánh giá công việc
                     </h5>
                     <button
@@ -26,6 +26,17 @@
                             <label class="form-label"
                                 ><strong>Tên công việc: </strong> Học ngôn ngữ
                                 Python</label
+                            >
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label"
+                                ><strong>Thời gian: </strong> 3 giờ</label
+                            >
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label"
+                                ><strong>Trạng thái: </strong>Đã hoàn
+                                thành</label
                             >
                         </div>
 

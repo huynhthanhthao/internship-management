@@ -23,7 +23,7 @@
             </div>
             <div
                 class="accordion col-6"
-                style="height: 500px; overflow: scroll"
+                style="height: 500px; overflow-y: scroll"
             >
                 <RegisterItem class="mb-2" />
             </div>

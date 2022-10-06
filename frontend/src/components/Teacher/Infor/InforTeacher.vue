@@ -50,8 +50,8 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-import Avatar from './AvatarComponent.vue';
+import Avatar from '../../GlobalComponent/AvatarComponent.vue';
+
 export default {
     name: "InforTeacher",
     data(){
@@ -62,9 +62,6 @@ export default {
                 height: 200
             }
         }
-    },
-    methods:{
-        ...mapMutations(["SHOW_UPDATE"]),
     },
     components: { Avatar }
 }

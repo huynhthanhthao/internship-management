@@ -1,36 +1,21 @@
 <template>
-  <div class="teacher-manage" >
-    <div class="students-register row p-4 animate__fadeIn animate__animated">
-      <div class="col-12">
-        <div class="d-flex">
-          <div class="col-6">
-            <h2 class="header-list label m-0 p-2 pt-4 fw-bold" style="color: #555555">
-              Danh sách sinh viên
-            </h2>
-            <div class="line my-3"></div>
-          </div>
-          <div class="col-6">
-            <h2 class="header-detail label m-0 p-2 pt-4 fw-bold" style="color: #555555">
-              Tổng quan
-            </h2>
-            <div class="line my-3"></div>
-          </div>
+  <div class="teacher-manage p-4" >
+      <ViewListStructure :title="title"/>
+      <div class="teacher-manage__content row">
+        <div class="teacher-student-list col-6">
+          <ObjectItem :infor="infor" :itemId="`1`" :layout="layout">
+            <div class="col-12 d-flex justify-content-center mt-4">
+              <button type="button" class="btn btn-outline-secondary p-2" style="font-size: 15px" @click="showDetail">
+                Xem chi tiết
+              </button>
+            </div>
+          </ObjectItem>
+        </div>
+        <div class="view-detail col-6 flex-grow-1">
+          <Overview />
+          <DetailStudent />
         </div>
       </div>
-      <div class="teacher-student__list col-6">
-        <ObjectItem :infor="infor" :itemId="`1`" :layout="layout">
-          <div class="col-12 d-flex justify-content-center mt-4">
-            <button type="button" class="btn btn-outline-secondary p-2" style="font-size: 15px" @click="showDetail()">
-              Xem chi tiết
-            </button>
-          </div>
-        </ObjectItem>
-      </div>
-      <div class="col-6">
-        <Overview/>
-        <DetailStudent/>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -39,46 +24,64 @@ import { mapMutations } from 'vuex';
 import ObjectItem from '@/components/GlobalComponent/ObjectItem.vue';
 import Overview from '@/components/Teacher/Manage/Overview.vue';
 import DetailStudent from '@/components/Teacher/Manage/DetailStudent.vue';
+import ViewListStructure from '@/components/GlobalComponent/ViewListStructure.vue';
+
 export default {
   name: "TeacherManage",
-  components: { Overview, DetailStudent, ObjectItem },
+  components: { Overview, DetailStudent, ObjectItem, ViewListStructure },
   data() {
     return {
-      layout: {
-        nameField: "Họ và tên",
-        optionField: "Đơn vị"
+      title: {
+        headerList: "Danh sách sinh viên",
+        headerDetail: "Tổng quan",
+      },
+      layout:{
+        optionField: "Đơn vị",
       },
       infor: {
+        avatar: "https://cdn-icons-png.flaticon.com/512/2436/2436683.png",
         name: "Huỳnh Thanh Thảo",
-        email: "thaohoiden@gmail.com",
-        phone: "09090989",
-        option: "Tập đoàn viễn thông quân đội"
+        email: "thaob1900001@student.ctu.edu.vn",
+        phone: "0942718717",
+        option: "Tập đoàn viễn thông quân đội Viettel"
       }
     }
   },
+  // Close detailStudent when the all of accordions are not show.
   mounted(){
-    this.showAssess();
+    const accordionShow = document.querySelector(".accordion-collapse.show");
+    if (!accordionShow) {
+      this.closeDetail();
+    }
   },
   methods: {
-    ...mapMutations({
-      showAssess: "SHOW_ASSESS", 
+    ...mapMutations({ 
       showDetailStudent: "SHOW_DETAIL_STUDENT",
-      closeOverview: "CLOSE_OVERVIEW_TEACHER",
+      closeDetailStudent: "CLOSE_DETAIL_STUDENT"
     }),
 
     showDetail(){
       const headerDetail = document.querySelector(".header-detail");
       headerDetail.innerText = "Thông tin chi tiết";
       this.showDetailStudent();
-      this.closeOverview();
+    },
+
+    closeDetail(){
+      const headerDetail = document.querySelector(".header-detail");
+      headerDetail.innerText = "Tổng quan";
+      this.closeDetailStudent();
     }
   }
 }
 </script>
 
-<style>
-  .teacher-student__list{
-    height: 450px;
+<style scoped>
+  .teacher-student-list{
+    height: 420px;
     overflow-y: scroll;
+  }
+  
+  .view-detail{
+    width: 49%;
   }
 </style>
