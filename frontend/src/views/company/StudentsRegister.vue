@@ -58,9 +58,9 @@
 </template>
 
 <script>
-import ItemStudent from "../../components/StudentsRegister/ItemStudent.vue";
-import InformationDetail from "../../components/StudentsRegister/InformationDetail.vue";
-import Statistics from "../../components/StudentsRegister/Statistics.vue";
+import ItemStudent from "../../components/Company/StudentsRegister/ItemStudent.vue";
+import InformationDetail from "../../components/Company/StudentsRegister/InformationDetail.vue";
+import Statistics from "../../components/Company/StudentsRegister/Statistics.vue";
 import Modal from "../../components/Modal/Modal.vue";
 
 import { mapGetters } from "vuex";

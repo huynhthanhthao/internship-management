@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import RegisterItem from "../../components/StudentsRegister/ItemStudent.vue";
-import TrainingDetail from "../../components/StudentTraining/TrainingDetail.vue";
-import Statistics from "../../components/StudentTraining/Statistics.vue";
+import RegisterItem from "../../components/Company/StudentsRegister/ItemStudent.vue";
+import TrainingDetail from "../../components/Company/StudentTraining/TrainingDetail.vue";
+import Statistics from "../../components/Company/StudentTraining/Statistics.vue";
 import { mapGetters } from "vuex";
 export default {
     name: "StudentsTraining",

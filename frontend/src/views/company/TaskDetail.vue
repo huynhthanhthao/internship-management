@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import InforStudentTraining from "../../components/StudentTraining/InforStudentTraining.vue";
-import TasksList from "../../components/StudentTraining/TasksList.vue";
+import InforStudentTraining from "../../components/Company/StudentTraining/InforStudentTraining.vue";
+import TasksList from "../../components/Company/StudentTraining/TasksList.vue";
 
 export default {
     name: "TaskDetail",
