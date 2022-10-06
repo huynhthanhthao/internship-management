@@ -91,8 +91,8 @@
 </template>
 
 <script>
-import AssessTaskForm from "../../components/StudentTraining/AssessTaskForm.vue";
-import AddTaskForm from "../../components/StudentTraining/AddTaskForm.vue";
+import AssessTaskForm from "../StudentTraining/AssessTaskForm.vue";
+import AddTaskForm from "../StudentTraining/AddTaskForm.vue";
 
 export default {
     name: "TaskList",

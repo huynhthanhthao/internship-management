@@ -1,9 +1,9 @@
 <template>
     <div>
         <div
-            class="statistics d-flex justify-content-center animate__fadeIn animate__animated"
+            class="statistics d-flex justify-content-center mt-5 animate__fadeIn animate__animated"
         >
-            <Bar
+            <Pie
                 :chart-options="chartOptions"
                 :chart-data="chartData"
                 :chart-id="chartId"
@@ -13,46 +13,35 @@
                 :styles="styles"
                 :width="width"
                 :height="height"
-                style="width: 500px"
+                style="width: 450px"
             />
         </div>
         <h6 class="fw-bolder col-12 text-center mt-3">
-            Biểu đồ thể hiện số lượng sinh viên đang thực tập tại đơn vị
+            Biểu đồ thể hiện số lượng sinh viên thực tập tại các vị trí
         </h6>
     </div>
 </template>
 
 <script>
-import { Bar } from "vue-chartjs";
+import { Pie } from "vue-chartjs";
 import {
     Chart as ChartJS,
     Title,
     Tooltip,
     Legend,
-    BarElement,
+    ArcElement,
     CategoryScale,
-    LinearScale,
 } from "chart.js";
-
-ChartJS.register(
-    Title,
-    Tooltip,
-    Legend,
-    BarElement,
-    CategoryScale,
-    LinearScale
-);
+ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 export default {
-    name: "StatisticsTeacher",
-    components: { Bar },
+    name: "StatisticsTraining",
+    components: {
+        Pie,
+    },
     props: {
         chartId: {
             type: String,
-            default: "bar-chart",
-        },
-        datasetIdKey: {
-            type: String,
-            default: "label",
+            default: "pie-chart",
         },
         width: {
             type: Number,
@@ -70,27 +59,20 @@ export default {
             type: Object,
             default: () => {},
         },
-        plugins: {
-            type: Object,
-            default: () => {},
-        },
     },
     data() {
         return {
             chartData: {
-                labels: [
-                    "Axon Active",
-                    "SPS",
-                    "TechBase",
-                    "Viettel",
-                    "S3 Corp",
-                ],
-                backgroundColor: "#f87979",
+                labels: ["VueJs", "EmberJs", "ReactJs", "AngularJs"],
                 datasets: [
                     {
-                        label: "Số lượng sinh viên đang thực tập",
-                        backgroundColor: "#f87979",
-                        data: [40, 25, 31, 18, 50, 39, 80, 40, 20, 12, 11],
+                        backgroundColor: [
+                            "#41B883",
+                            "#E46651",
+                            "#00D8FF",
+                            "#DD1B16",
+                        ],
+                        data: [40, 20, 80, 10],
                     },
                 ],
             },

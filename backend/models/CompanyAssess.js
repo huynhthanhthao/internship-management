@@ -10,17 +10,8 @@ const companyAssessSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Account",
     },
-    disPoint: {
-        type: Number,
-        default: 0,
-    },
-    techPoint: {
-        type: Number,
-        default: 0,
-    },
-    resultPoint: {
-        type: Number,
-        default: 0,
+    points: {
+        type: Array,
     },
     message: {
         type: String,

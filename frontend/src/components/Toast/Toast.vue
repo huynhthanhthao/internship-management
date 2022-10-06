@@ -1,6 +1,6 @@
 <template>
     <div
-        class="toast d-block animate__fadeInRight animate__animated"
+        class="toast d-block d-none animate__fadeInRight animate__animated"
         role="alert"
         aria-live="assertive"
         aria-atomic="true"
