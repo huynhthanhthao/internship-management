@@ -2,23 +2,23 @@
   <div class="teacher-update my-5 animate__animated animate__fadeIn" >
     <h2 class="update__title text-center fw-bold" style="color: #555555">Cập nhật thông tin cá nhân</h2>
 
-    <div class="form-update col-sm-6 mt-5 p-5 rounded-5 m-auto row d-flex justify-content-center">
+    <div class="form-update row col-6 mt-5 p-4 rounded-3 m-auto justify-content-center">
       <AvatarComponent :avatar="avatar"/>
-      <form class="form-update-infor ms-5 col-sm-8 col-lg-5 col-xl-4 col-xxl-4 flex-grow-1" >
+      <form class="form-update-infor ms-5 col-6 " >
           <div class="mb-3 ">
-            <label for="fullname" class="form-label">Họ và tên</label>
+            <label for="fullname" class="form-label"><strong>Họ và tên</strong></label>
             <input type="text" class="form-control" id="fullname" aria-describedby="name">
           </div>
           <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <label for="email" class="form-label"><strong>Email</strong></label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
           </div>
           <div class="mb-3 ">
-            <label for="phone" class="form-label">Số điện thoại</label>
+            <label for="phone" class="form-label"><strong>Số điện thoại</strong></label>
             <input type="text" class="form-control" id="phone" aria-describedby="name">
           </div>
           <div class="mb-3">
-            <label for="avatar" class="form-label">Cập nhật ảnh đại diện </label>
+            <label for="avatar" class="form-label"><strong>Cập nhật ảnh đại diện</strong></label>
             <input type="file" id="avatar" name="avatar"
             accept="image/png, image/jpeg"/>
           </div>
@@ -26,7 +26,7 @@
             <button type="submit" class="btn btn-danger" @click="btnPreventDefault">
               <i class="bi bi-arrow-clockwise"></i>&nbsp;Đặt lại
             </button>
-            <button type="submit" class="btn btn-primary btn-save" @click="CLOSE_UPDATE">
+            <button type="submit" class="btn btn-primary btn-save">
               <i class="bi bi-calendar4"></i>&nbsp;Lưu
             </button>
           </div>
@@ -36,9 +36,8 @@
 </template>
 
 <script>
+import AvatarComponent from '../../components/GlobalComponent/AvatarComponent.vue'; 
 
-import { mapGetters, mapMutations } from 'vuex';
-import AvatarComponent from '../../components/Teacher/Infor/AvatarComponent.vue'; 
 export default {
     name: "TeacherUpdate",
     data() {
@@ -50,15 +49,11 @@ export default {
         }
       }
     },
-    computed: {
-      ...mapGetters({getUpdateTeacher: "getUpdateTeacher"})
-    },
     mounted(){
       const nav = document.querySelector("nav");
       nav.scrollIntoView();
     },  
     methods: {
-      ...mapMutations(["CLOSE_UPDATE"]),
         btnPreventDefault(event) {
           event.preventDefault();
         },

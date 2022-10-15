@@ -36,7 +36,7 @@ export default {
 </script> -->
 
 <template>
-  <div class="col-12" v-if="getOverview">
+  <div class="col-12" v-if="!getDetailStudent">
     <Bar :chart-data="chartData" class="col-10 m-auto" style="width: 400px; height: 400px"/>
     <h6 class="fw-bolder col-12 text-center mt-3">Biểu đồ thể hiện số lượng sinh viên tại các đơn vị thực tập</h6>
   </div>
@@ -66,7 +66,7 @@ export default {
         }
     },
     ...mapGetters({
-      getOverview: "getOverview"
+      getDetailStudent: "getDetailStudent"
     })
   }
 

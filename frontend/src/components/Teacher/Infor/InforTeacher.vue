@@ -50,8 +50,8 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-import Avatar from './AvatarComponent.vue';
+import Avatar from '../../GlobalComponent/AvatarComponent.vue';
+
 export default {
     name: "InforTeacher",
     data(){
@@ -61,13 +61,6 @@ export default {
                 width: 200,
                 height: 200
             }
-        }
-    },
-    methods:{
-        ...mapMutations(["SHOW_UPDATE"]),
-        closeHome(){
-            const TeacherHome = document.querySelector(".teacher-manage");
-            TeacherHome.parentElement.removeChild(TeacherHome);
         }
     },
     components: { Avatar }
