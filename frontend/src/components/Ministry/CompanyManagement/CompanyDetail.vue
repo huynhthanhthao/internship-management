@@ -46,26 +46,6 @@
                 deaths of two high school friends who were gunned down in an act
                 of road rage. This tragedy sparked a passion in
             </div>
-            <div class="col-12 d-flex justify-content-center mt-3">
-                <button
-                    type="button"
-                    class="btn btn-outline-warning me-3"
-                    data-bs-toggle="modal"
-                    data-bs-target="#UpdateInforForm"
-                >
-                    <i class="bi bi-pencil-fill"></i>
-                    Chỉnh sửa thông tin
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-outline-danger"
-                    data-bs-toggle="modal"
-                    data-bs-target="#ConfirmDeleteCompany"
-                >
-                    <i class="bi bi-archive-fill"></i>
-                    Xóa đơn vị
-                </button>
-            </div>
         </div>
         <div class="col-12"></div>
     </div>

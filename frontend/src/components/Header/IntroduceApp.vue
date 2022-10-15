@@ -15,17 +15,21 @@
                 </h5>
             </div>
         </div>
+        <div v-if="getIsLogin" class="dropdown d-flex align-items-center">
+            <span class="fw-bold">Diagrams</span>
 
-        <div v-if="getIsLogin" class="dropdown">
             <button
-                class="btn-option btn btn-outline-dark d-flex align-items-center dropdown-toggle"
+                class="avatar-icon border border-light bg-white d-flex align-items-center dropdown-toggle"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
             >
-                <i class="bi bi-person-circle fs-4"></i>
-
-                &nbsp; Thanh Thao
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/236/236831.png"
+                    alt="Ảnh đại diện"
+                    style="width: 50px"
+                />
+                &nbsp;
             </button>
             <ul class="dropdown-menu">
                 <li>
@@ -55,5 +59,9 @@ export default {
 
 .btn-option {
     height: 40px;
+}
+
+.avatar-icon:hover {
+    opacity: 0.8;
 }
 </style>

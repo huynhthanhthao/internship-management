@@ -37,7 +37,7 @@
                             @click="closeDetail"
                         ></button>
                         <router-link
-                            to="/admin/teacher-management/students"
+                            to="/ministry/teacher-management/students"
                             type="button"
                             class="btn btn-outline-secondary d-flex align-items-center p-2"
                         >
@@ -52,9 +52,9 @@
 </template>
 
 <script>
-import TeacherItem from "../../components/Admin/TeacherManagement/TeacherItem.vue";
-import TeacherDetail from "../../components/Admin/TeacherManagement/TeacherDetail.vue";
-import Statistics from "../../components/Admin/TeacherManagement/Statistics.vue";
+import TeacherItem from "../../components/Ministry/TeacherManagement/TeacherItem.vue";
+import TeacherDetail from "../../components/Ministry/TeacherManagement/TeacherDetail.vue";
+import Statistics from "../../components/Ministry/TeacherManagement/Statistics.vue";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {

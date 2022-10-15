@@ -16,12 +16,22 @@ const routersModule = {
             { name: "Quản lý sinh viên", path: "/teacher/manage" },
             { name: "Cập nhật thông tin", path: "/teacher/update-information" },
         ],
-        adminRoutes: [
-            { name: "Trang chủ", path: "/admin/home" },
-            { name: "Quản lý giảng viên", path: "/admin/teacher-management" },
+        ministryRoutes: [
+            { name: "Trang chủ", path: "/ministry/home" },
+            {
+                name: "Quản lý giảng viên",
+                path: "/ministry/teacher-management",
+            },
             {
                 name: "Quản lý đơn vị thực tập",
-                path: "/admin/company-management",
+                path: "/ministry/company-management",
+            },
+        ],
+        adminRoutes: [
+            { name: "Trang chủ", path: "/admin/home" },
+            {
+                name: "Quản lý tài khoản",
+                path: "/admin/account",
             },
         ],
     },

@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 // 1. Define route components.
-import Home from "../views/Home";
+import Home from "../views/Home.vue";
 import Student from "../views/Student";
 import Teacher from "../views/Teacher";
-import Admin from "../views/Admin";
+import Ministry from "../views/Ministry";
 import Company from "../views/Company";
 
 import Login from "../views/Login.vue";
@@ -23,11 +23,13 @@ import ViewProgress from "../components/Teacher/ProgressAssess/ViewProgress.vue"
 import ViewAssess from "../components/Teacher/ProgressAssess/ViewAssess.vue";
 import TeacherUpdate from "../views/teacher/TeacherUpdate.vue";
 
-// Admin router
-import TeacherManagement from "../views/admin/TeacherManagement.vue";
-import CompanyManagement from "../views/admin/CompanyManagement.vue";
-import StudentsManagement from "../views/admin/StudentsManagement.vue";
+// Ministry router
+import TeacherManagement from "../views/ministry/TeacherManagement.vue";
+import CompanyManagement from "../views/ministry/CompanyManagement.vue";
+import StudentsManagement from "../views/ministry/StudentsManagement.vue";
 
+// Admin router
+import Admin from "../views/Admin";
 // 2. Define some routes
 
 const routes = [
@@ -64,7 +66,6 @@ const routes = [
             { path: "/teacher/update-information", component: TeacherUpdate },
         ],
     },
-    { path: "/admin", component: Admin },
     {
         path: "/company",
         component: Company,
@@ -76,18 +77,25 @@ const routes = [
         ],
     },
     {
-        path: "/admin",
-        component: Admin,
+        path: "/ministry",
+        component: Ministry,
         children: [
-            { path: "/admin/home", component: HomePage },
-            { path: "/admin/teacher-management", component: TeacherManagement },
+            { path: "/ministry/home", component: HomePage },
             {
-                path: "/admin/teacher-management/students",
+                path: "/ministry/teacher-management",
+                component: TeacherManagement,
+            },
+            {
+                path: "/ministry/teacher-management/students",
                 component: StudentsManagement,
             },
-            { path: "/admin/company-management", component: CompanyManagement },
+            {
+                path: "/ministry/company-management",
+                component: CompanyManagement,
+            },
         ],
     },
+    { path: "/admin", component: Admin, children: [{ path: "/admin/home" }] },
 ];
 
 // 3. Create the router instance and pass the `routes` option

@@ -61,6 +61,8 @@ export default {
                 return this.getRouters.companyRoutes;
             } else if (this.rule == "teacher") {
                 return this.getRouters.teacherRoutes;
+            } else if (this.rule == "ministry") {
+                return this.getRouters.ministryRoutes;
             } else if (this.rule == "admin") {
                 return this.getRouters.adminRoutes;
             } else {

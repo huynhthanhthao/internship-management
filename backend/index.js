@@ -4,7 +4,7 @@ import connectDB from "./database/connectDB.js";
 import bodyParser from "body-parser";
 
 // import router
-import adminRouter from "./routes/admin-router.js";
+import ministryRouter from "./routes/ministry-router.js";
 import studentRouter from "./routes/student-router.js";
 import teacherRouter from "./routes/teacher-router.js";
 import companyRouter from "./routes/company-router.js";
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Router
-app.use("/admin", adminRouter);
+app.use("/ministry", ministryRouter);
 
 app.use(
     "/teacher",

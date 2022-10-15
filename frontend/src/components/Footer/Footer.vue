@@ -16,7 +16,7 @@
         <div class="contact d-flex">
             <div class="email me-3">
                 <i class="bi bi-envelope-fill"></i>
-                fat.admin@gmail.com
+                fat.ministry@gmail.com
             </div>
             <a
                 class="facebook-fanpage text-decoration-none text-black"
