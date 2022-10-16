@@ -22,12 +22,11 @@ import TeacherAssess from "../components/Teacher/ProgressAssess/TeacherAssess.vu
 import ViewProgress from "../components/GlobalComponent/ViewProgress.vue";
 import TeacherUpdate from "../views/teacher/TeacherUpdate.vue";
 
-<<<<<<< HEAD
 // Ministry router
 import TeacherManagement from "../views/ministry/TeacherManagement.vue";
 import CompanyManagement from "../views/ministry/CompanyManagement.vue";
 import StudentsManagement from "../views/ministry/StudentsManagement.vue";
-=======
+
 //Student router
 import StudentHome from "../views/student/StudentHome.vue";
 import StudentRegister from "../views/student/StudentRegister.vue";
@@ -36,103 +35,13 @@ import ViewAssessCompany from "../components/GlobalComponent/ViewAssessCompany.v
 import ViewAssessTeacher from "../components/Student/ManageInternship/ViewAssessTeacher.vue";
 
 // Admin router
-import TeacherManagement from "../views/admin/TeacherManagement.vue";
-import CompanyManagement from "../views/admin/CompanyManagement.vue";
-import StudentsManagement from "../views/admin/StudentsManagement.vue";
->>>>>>> 963d5b7942394075ac82775533e2847d5e2d2914
-
-// Admin router
 import Admin from "../views/Admin";
 // 2. Define some routes
 
 const routes = [
-<<<<<<< HEAD
-    { path: "/", component: Home },
-    { path: "/login", component: Login },
-    { path: "/student", component: Student },
-    {
-        path: "/teacher",
-        component: Teacher,
-        children: [
-            {
-                path: "/teacher/home",
-                component: TeacherHome,
-            },
-            {
-                path: "/teacher/manage",
-                component: TeacherManage,
-            },
-            {
-                path: "/teacher/view",
-                component: TeacherView,
-                children: [
-                    {
-                        path: "/teacher/view/progress/:id",
-                        component: ViewProgress,
-                    },
-                    {
-                        path: "/teacher/view/assess/:id",
-                        component: ViewAssess,
-                    },
-                ],
-            },
-
-            { path: "/teacher/update-information", component: TeacherUpdate },
-        ],
-    },
-    {
-        path: "/company",
-        component: Company,
-=======
   { path: "/", component: Home },
   { path: "/login", component: Login },
-  {
-    path: "/student",
-    component: Student,
-    children: [
-      { path: "/student/home", component: StudentHome },
-      { path: "/student/register", component: StudentRegister },
-      {
-        path: "/student/manage",
-        component: StudentManage,
->>>>>>> 963d5b7942394075ac82775533e2847d5e2d2914
-        children: [
-          { path: "/student/manage/view-progress", component: ViewProgress },
-          {
-            path: "/student/manage/view-assess-company",
-            component: ViewAssessCompany,
-          },
-          {
-            path: "/student/manage/view-assess-teacher",
-            component: ViewAssessTeacher,
-          },
-        ],
-<<<<<<< HEAD
-    },
-    {
-        path: "/ministry",
-        component: Ministry,
-        children: [
-            { path: "/ministry/home", component: HomePage },
-            {
-                path: "/ministry/teacher-management",
-                component: TeacherManagement,
-            },
-            {
-                path: "/ministry/teacher-management/students",
-                component: StudentsManagement,
-            },
-            {
-                path: "/ministry/company-management",
-                component: CompanyManagement,
-            },
-        ],
-    },
-    { path: "/admin", component: Admin, children: [{ path: "/admin/home" }] },
-=======
-      },
-    ],
-  },
+  { path: "/student", component: Student },
   {
     path: "/teacher",
     component: Teacher,
@@ -157,6 +66,89 @@ const routes = [
       { path: "/teacher/update-information", component: TeacherUpdate },
     ],
   },
+  {
+    path: "/company",
+    component: Company,
+    children: [
+      { path: "/student/manage/view-progress", component: ViewProgress },
+      {
+        path: "/student/manage/view-assess-company",
+        component: ViewAssessCompany,
+      },
+      {
+        path: "/student/manage/view-assess-teacher",
+        component: ViewAssessTeacher,
+      },
+    ],
+  },
+  {
+    path: "/ministry",
+    component: Ministry,
+    children: [
+      { path: "/ministry/home", component: HomePage },
+      {
+        path: "/ministry/teacher-management",
+        component: TeacherManagement,
+      },
+      {
+        path: "/ministry/teacher-management/students",
+        component: StudentsManagement,
+      },
+      {
+        path: "/ministry/company-management",
+        component: CompanyManagement,
+      },
+    ],
+  },
+  { path: "/admin", component: Admin, children: [{ path: "/admin/home" }] },
+
+  {
+    path: "/teacher",
+    component: Teacher,
+    children: [
+      { path: "/teacher/home", component: TeacherHome },
+      { path: "/teacher/manage", component: TeacherManage },
+      {
+        path: "/teacher/view",
+        component: TeacherView,
+        children: [
+          { path: "/teacher/view/progress/:id", component: ViewProgress },
+          {
+            path: "/teacher/view/company-assess/:id",
+            component: ViewAssessCompany,
+          },
+          {
+            path: "/teacher/view/assess-student/:id",
+            component: TeacherAssess,
+          },
+        ],
+      },
+      { path: "/teacher/update-information", component: TeacherUpdate },
+    ],
+  },
+  {
+    path: "/student",
+    component: Student,
+    children: [
+      { path: "/student/home", component: StudentHome },
+      { path: "/student/register", component: StudentRegister },
+      {
+        path: "/student/manage",
+        component: StudentManage,
+        children: [
+          { path: "/student/manage/view-progress", component: ViewProgress },
+          {
+            path: "/student/manage/view-assess-company",
+            component: ViewAssessCompany,
+          },
+          {
+            path: "/student/manage/view-assess-teacher",
+            component: ViewAssessTeacher,
+          },
+        ],
+      },
+    ],
+  },
   { path: "/admin", component: Admin },
   {
     path: "/company",
@@ -168,20 +160,6 @@ const routes = [
       { path: "/company/students-training", component: StudentsTraining },
     ],
   },
-  {
-    path: "/admin",
-    component: Admin,
-    children: [
-      { path: "/admin/home", component: HomePage },
-      { path: "/admin/teacher-management", component: TeacherManagement },
-      {
-        path: "/admin/teacher-management/students",
-        component: StudentsManagement,
-      },
-      { path: "/admin/company-management", component: CompanyManagement },
-    ],
-  },
->>>>>>> 963d5b7942394075ac82775533e2847d5e2d2914
 ];
 
 // 3. Create the router instance and pass the `routes` option
