@@ -1,7 +1,10 @@
 <template>
     <div class="view p-4 animate__animated animate__fadeIn">
         <div class="infor">
-            <ViewListStructure :title="title"/>
+            <div class="col-12 d-flex">
+                <TitleStructure :title="`Thông tin cá nhân`" class="col-6 me-4"></TitleStructure>
+                <TitleStructure :title="`Thông tin đơn vị thực tập`" class="col-6 title-detail"></TitleStructure>
+            </div>
             <div class="row m-0 pt-3 pb-5 border-bottom justify-content-between">
                 <ObjectInfor :infor="inforStudent"/>
                 <ObjectInfor :infor="inforCompany"/>
@@ -14,8 +17,8 @@
 <script>
 
 import InforInternship from '@/components/Teacher/ProgressAssess/InforInternship.vue';
-import ViewListStructure from '@/components/GlobalComponent/ViewListStructure.vue';
 import ObjectInfor from '@/components/GlobalComponent/ObjectInfor.vue';
+import TitleStructure from '@/components/GlobalComponent/TitleStructure.vue';
 
 export default {
     name: "TeacherView",
@@ -29,7 +32,6 @@ export default {
                 "MSSV": "B1900001",
                 "Họ và tên": "Huỳnh Thanh Thảo",
                 "Email": "thaob1900001@student.ctu.edu.vn",
-                "Vị trí thực tập": "Frontend Developer",
                 "Đơn vị": "Tập đoàn viễn thông quân đội Viettel"
             },
             inforCompany: {
@@ -40,7 +42,7 @@ export default {
             }
         }
     },
-    components: { InforInternship, ViewListStructure, ObjectInfor },
+    components: { InforInternship, ObjectInfor, TitleStructure },
 }
 </script>
 

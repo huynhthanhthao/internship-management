@@ -20,7 +20,6 @@ import TeacherManage from "../views/teacher/TeacherManage.vue";
 import TeacherView from "../views/teacher/TeacherView.vue";
 import TeacherAssess from "../components/Teacher/ProgressAssess/TeacherAssess.vue";
 import ViewProgress from "../components/GlobalComponent/ViewProgress.vue";
-import TeacherUpdate from "../views/teacher/TeacherUpdate.vue";
 
 // Ministry router
 import TeacherManagement from "../views/ministry/TeacherManagement.vue";
@@ -31,17 +30,28 @@ import StudentsManagement from "../views/ministry/StudentsManagement.vue";
 import StudentHome from "../views/student/StudentHome.vue";
 import StudentRegister from "../views/student/StudentRegister.vue";
 import StudentManage from "../views/student/StudentManage.vue";
+import StudentUpdateInfor from "../views/student/StudentUpdateInfor.vue";
 import ViewAssessCompany from "../components/GlobalComponent/ViewAssessCompany.vue";
 import ViewAssessTeacher from "../components/Student/ManageInternship/ViewAssessTeacher.vue";
 
 // Admin router
 import Admin from "../views/Admin";
+import AdminHome from "../views/admin/AdminHome.vue";
+import AdminManage from "../views/admin/AdminManage.vue";
 // 2. Define some routes
 
 const routes = [
   { path: "/", component: Home },
   { path: "/login", component: Login },
   { path: "/student", component: Student },
+  {
+    path: "/admin",
+    component: Admin,
+    children: [
+      { path: "/admin/home", component: AdminHome },
+      { path: "/admin/manage", component: AdminManage },
+    ],
+  },
   {
     path: "/teacher",
     component: Teacher,
@@ -63,22 +73,16 @@ const routes = [
           },
         ],
       },
-      { path: "/teacher/update-information", component: TeacherUpdate },
     ],
   },
   {
     path: "/company",
     component: Company,
     children: [
-      { path: "/student/manage/view-progress", component: ViewProgress },
-      {
-        path: "/student/manage/view-assess-company",
-        component: ViewAssessCompany,
-      },
-      {
-        path: "/student/manage/view-assess-teacher",
-        component: ViewAssessTeacher,
-      },
+      { path: "/company/home", component: HomePage },
+      { path: "/company/students-register", component: StudentsRegister },
+      { path: "/company/detail-task", component: TaskDetail },
+      { path: "/company/students-training", component: StudentsTraining },
     ],
   },
   {
@@ -100,32 +104,7 @@ const routes = [
       },
     ],
   },
-  { path: "/admin", component: Admin, children: [{ path: "/admin/home" }] },
 
-  {
-    path: "/teacher",
-    component: Teacher,
-    children: [
-      { path: "/teacher/home", component: TeacherHome },
-      { path: "/teacher/manage", component: TeacherManage },
-      {
-        path: "/teacher/view",
-        component: TeacherView,
-        children: [
-          { path: "/teacher/view/progress/:id", component: ViewProgress },
-          {
-            path: "/teacher/view/company-assess/:id",
-            component: ViewAssessCompany,
-          },
-          {
-            path: "/teacher/view/assess-student/:id",
-            component: TeacherAssess,
-          },
-        ],
-      },
-      { path: "/teacher/update-information", component: TeacherUpdate },
-    ],
-  },
   {
     path: "/student",
     component: Student,
@@ -147,17 +126,7 @@ const routes = [
           },
         ],
       },
-    ],
-  },
-  { path: "/admin", component: Admin },
-  {
-    path: "/company",
-    component: Company,
-    children: [
-      { path: "/company/home", component: HomePage },
-      { path: "/company/students-register", component: StudentsRegister },
-      { path: "/company/detail-task", component: TaskDetail },
-      { path: "/company/students-training", component: StudentsTraining },
+      { path: "/student/update-infor", component: StudentUpdateInfor },
     ],
   },
 ];

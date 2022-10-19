@@ -32,13 +32,13 @@
                     <td>Đúng format của khoa (Trang bìa, trang lời cảm ơn, trang đánh giá thực tập của khoa, trang mục lục và các nội dung báo
                     cáo). Sử dụng đúng mã và font tiếng Việt (Unicode Times New Roman, Size 13)</td>
                     <td>0.5</td>
-                    <td><input type="text" class="score"></td>
+                    <td><input type="text" class="w-100 form-control"></td>
                 </tr>
                 <tr>
                     <th scope="row">I.2</th>
                     <td>Trình bày mạch lạc, súc tích, không có lỗi chính tả</td>
                     <td>0.5</td>
-                    <td><input type="text" class="score"></td>
+                    <td><input type="text" class="w-100 form-control"></td>
                 </tr>
                 <tr style="font-weight: bold">
                     <th scope="row">II</th>
@@ -50,20 +50,20 @@
                     <th scope="row">II.1</th>
                     <td>Có lịch làm việc đầy đủ cho 8 tuần</td>
                     <td>0.25</td>
-                    <td><input type="text" class="score" style="width: 100%"></td>
+                    <td><input type="text" class="w-100 form-control" style="width: 100%"></td>
                 </tr>
                 <tr>
                     <th scope="row">II.2</th>
                     <td>Số buổi thực tập tại cơ quan trong 1 tuần >=6; ít hơn 6 buổi 0.0 điểm</td>
                     <td>1.0</td>
-                    <td><input type="text" class="score"></td>
+                    <td><input type="text" class="w-100 form-control"></td>
                 </tr>
                 <tr>
                     <th scope="row">II.3</th>
                     <td>Hoàn thành tốt kế hoạch công tác ghi trong lịch làm việc.
                     Cách tính điểm = (Điểm cộng của cán bộ hướng dẫn/100) x 3.5</td>
                     <td>3.5</td>
-                    <td><input type="text" class="score"></td>
+                    <td><input type="text" class="w-100 form-control"></td>
                 </tr>
                 <tr style="font-weight: bold">
                     <th scope="row">III</th>
@@ -75,37 +75,37 @@
                     <th scope="row">III.1</th>
                     <td>Có được sự hiểu biết tốt về cơ quan nơi thực tập</td>
                     <td>0.5</td>
-                    <td><input type="text" class="score"></td>
+                    <td><input type="text" class="w-100 form-control"></td>
                 </tr>
                 <tr>
                     <th scope="row">III.2</th>
                     <td>Phương pháp thực hiện phù hợp với nội dung công việc được giao</td>
                     <td>1.0</td>
-                    <td><input type="text" class="score"></td>
+                    <td><input type="text" class="w-100 form-control"></td>
                 </tr>
                 <tr>
                     <th scope="row">III.3</th>
                     <td>Kết quả củng cố lý thuyết</td>
                     <td>0.5</td>
-                    <td><input type="text" class="score"></td>
+                    <td><input type="text" class="w-100 form-control"></td>
                 </tr>
                 <tr>
                     <th scope="row">III.4</th>
                     <td>Kết quả rèn luyện kỹ năng thực hành</td>
                     <td>0.5</td>
-                    <td><input type="text" class="score"></td>
+                    <td><input type="text" class="w-100 form-control"></td>
                 </tr>
                 <tr>
                     <th scope="row">III.5</th>
                     <td>Kinh nghiệm thực tiễn thu nhận được</td>
                     <td>0.5</td>
-                    <td><input type="text" class="score"></td>
+                    <td><input type="text" class="w-100 form-control"></td>
                 </tr>
                 <tr>
                     <th scope="row">III.6</th>
                     <td>Kết quả công việc có đóng góp cho cơ quan nơi thực tập</td>
                     <td>1.25</td>
-                    <td><input type="text" class="score"></td>
+                    <td><input type="text" class="w-100 form-control"></td>
                 </tr>
                 <tr>
                     <th></th>
@@ -117,7 +117,7 @@
                     <th></th>
                     <td >Điểm trừ</td>
                     <td></td>
-                    <td><input type="text" class="score"></td>
+                    <td><input type="text" class="w-100 form-control"></td>
                 </tr>
                 <tr>
                     <th></th>

@@ -1,5 +1,5 @@
 <template>
-  <div class="teacher-update my-5 animate__animated animate__fadeIn" >
+  <div class="student-update my-5 animate__animated animate__fadeIn" >
     <h2 class="update__title text-center fw-bold" style="color: #555555">Cập nhật thông tin cá nhân</h2>
 
     <div class="form-update row col-6 mt-5 p-4 rounded-3 m-auto justify-content-center">
@@ -39,7 +39,7 @@
 import AvatarComponent from '../../components/GlobalComponent/AvatarComponent.vue'; 
 
 export default {
-    name: "TeacherUpdate",
+    name: "StudentInfor",
     data() {
       return {
         avatar: {
