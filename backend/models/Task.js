@@ -7,7 +7,7 @@ const taskSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Account",
     },
-    time: { type: String },
+    time: { type: Date },
     status: { type: Boolean, default: false },
     message: { type: String },
 });

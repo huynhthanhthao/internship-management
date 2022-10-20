@@ -1,18 +1,17 @@
 import Task from "../../models/Task.js";
-import { ObjectId } from "mongodb";
 
 const getTasks = async function (req, res, next) {
     const { studentId } = req.params;
-
     try {
-        const tasks = await Task.findOne({ studentId: ObjectId(studentId) });
+        const result = await Task.findOne({ studentId });
 
         return res.status(201).json({
             status: true,
-            tasks,
+            message: "Lấy tất cả công việc thành công!",
+            result,
         });
     } catch (error) {
-        console.log(error);
+        next(error);
     }
 };
 

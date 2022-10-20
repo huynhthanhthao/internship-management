@@ -37,13 +37,14 @@
                             >
 
                             <input
+                                type="date"
+                                id="work-time"
+                                name="work-time"
                                 class="form-control"
-                                type="number"
-                                if="workTime"
                             />
                             <div id="workTimelHelp" class="form-text">
-                                Đây là thời gian tối đa mà sinh viên có thể thực
-                                hiện công việc này.
+                                Đây là thời gian trễ nhất mà sinh viên có thể
+                                thực hiện công việc này.
                             </div>
                         </div>
                     </form>

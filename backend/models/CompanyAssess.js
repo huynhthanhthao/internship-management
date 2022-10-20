@@ -11,11 +11,15 @@ const companyAssessSchema = new Schema({
         ref: "Account",
     },
     points: {
-        type: Array,
+        type: [Number],
     },
     message: {
         type: String,
         default: "No Message",
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now(),
     },
 });
 

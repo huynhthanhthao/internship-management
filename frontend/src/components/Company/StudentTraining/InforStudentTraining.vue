@@ -23,10 +23,7 @@
                         <strong>Email: </strong>
                         thaoB1906758@student.ctu.edu.vn
                     </div>
-                    <div class="col-12 my-1">
-                        <strong>Vị trí thực tập: </strong>
-                        Frontend Fresher
-                    </div>
+
                     <div class="col-12 my-1">
                         <strong>Tiến độ: </strong>
                         <div class="progress w-100 my-3">

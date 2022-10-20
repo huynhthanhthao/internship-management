@@ -26,7 +26,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Router
-app.use("/ministry", ministryRouter);
+app.use(
+    "/ministry",
+    (req, res, next) => {
+        middlewareRouter(req, res, next, "MINISTRY");
+    },
+    ministryRouter
+);
 
 app.use(
     "/teacher",
@@ -47,7 +53,7 @@ app.use(
 app.use("/auth", authRouter);
 
 app.use(
-    "/",
+    "/student",
     (req, res, next) => {
         middlewareRouter(req, res, next, "STUDENT");
     },

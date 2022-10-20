@@ -11,8 +11,8 @@ const confirmStudent = async function (req, res, next) {
         });
 
         return res.status(201).json({
-            status: "success",
-            message: "Confirm Student Completed",
+            status: true,
+            message: "Xác nhận thành công!",
             resultConfirm,
         });
     } catch (error) {

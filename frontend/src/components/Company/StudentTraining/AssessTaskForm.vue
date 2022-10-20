@@ -34,10 +34,29 @@
                             >
                         </div>
                         <div class="mb-3">
-                            <label class="form-label"
-                                ><strong>Trạng thái: </strong>Đã hoàn
-                                thành</label
-                            >
+                            <strong>Trạng thái: </strong>
+                            <div class="input-group mt-2">
+                                <div class="check-group me-3">
+                                    <input
+                                        type="radio"
+                                        id="finished"
+                                        name="status_result"
+                                        class="me-2"
+                                    />
+                                    <label for="finished"> Hoàn thành</label>
+                                </div>
+                                <div class="check-group">
+                                    <input
+                                        type="radio"
+                                        id="unfinished"
+                                        name="status_result"
+                                        class="me-2"
+                                    />
+                                    <label for="unfinished">
+                                        Chưa hoàn thành</label
+                                    >
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3">
@@ -48,6 +67,7 @@
                                 type="text"
                                 class="form-control"
                                 id="AssessTask"
+                                placeholder="Viết đánh giá..."
                             ></textarea>
                         </div>
                     </form>

@@ -12,7 +12,7 @@
                 ></button>
                 <div
                     class="col-5 d-flex justify-content-center"
-                    style="min-height: 180px; width: 200px"
+                    style="height: 180px; width: 200px"
                 >
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/2302/2302834.png"
@@ -31,9 +31,9 @@
                         <strong>Email: </strong> thaoB1906758@student.ctu.edu.vn
                     </div>
                     <div class="col-12 my-1">
-                        <strong>Vị trí thực tập: </strong>
-                        Frontend Fresher
+                        <strong>Số điện thoại: </strong> 0939110619
                     </div>
+
                     <div class="col-12 my-1">
                         <strong>Tiến độ: </strong>
                         <div class="progress w-100 mt-2">

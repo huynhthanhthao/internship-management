@@ -1,19 +1,37 @@
 import Account from "../../models/Account.js";
+import TeacherAccount from "../../models/TeacherAccount.js";
+import { ObjectId } from "mongodb";
 
 const getInforTeacher = async function (req, res, next) {
-  const { username } = req.params;
-  try {
-    const result = await Account.findOne({ username });
+    const { teacherId } = req.body;
+    try {
+        const { username, name, email, phoneNumber, urlAvatar } =
+            await Account.findOne({
+                _id: ObjectId(teacherId),
+            });
 
-    return res.status(201).json({
-      status: "success",
-      message: "Get infor teacher successfully!",
+        const { classesManagement } = await TeacherAccount.findOne({
+            teacherId: ObjectId(teacherId),
+        });
 
-      result,
-    });
-  } catch (error) {
-    next(error);
-  }
+        const result = {
+            username,
+            name,
+            email,
+            phoneNumber,
+            urlAvatar,
+            classesManagement,
+        };
+
+        return res.status(201).json({
+            status: true,
+            message: "Lấy thông tin thành công!",
+
+            result,
+        });
+    } catch (error) {
+        next(error);
+    }
 };
 
 export default getInforTeacher;

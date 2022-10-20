@@ -1,17 +1,16 @@
 import TeacherAssess from "../../models/TeacherAccess.js";
 const assessResult = async function (req, res, next) {
     try {
-        const { studentId, formPoint, followPoint, reportPoint, minusPoint } =
-            req.body;
+        const { studentId, points } = req.body;
 
         const result = await TeacherAssess.findOneAndUpdate(
             { studentId },
-            { formPoint, followPoint, reportPoint, minusPoint },
+            { points },
             { new: true, upsert: true }
         );
         return res.json({
             status: true,
-            message: "Assess Successfully!",
+            message: "Đánh giá thành công!",
             result,
         });
     } catch (error) {

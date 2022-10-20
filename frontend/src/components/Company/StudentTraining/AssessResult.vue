@@ -195,10 +195,24 @@
                                             />
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th></th>
-                                        <td style="font-weight: bold">Cộng</td>
+
+                                    <tr class="text-danger">
+                                        <td style="font-weight: bold">Tổng</td>
+                                        <td></td>
+
                                         <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <textarea
+                                                name=""
+                                                id=""
+                                                cols="10"
+                                                rows="3"
+                                                class="form-control"
+                                                placeholder="Nhận xét thêm..."
+                                            ></textarea>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -7,9 +7,8 @@ const teacherAccessSchema = new Schema({
         ref: "Account",
     },
     points: {
-        type: Array,
+        type: [Number],
     },
-    message: String,
 });
 
 export default mongoose.model("TeacherAccess", teacherAccessSchema);

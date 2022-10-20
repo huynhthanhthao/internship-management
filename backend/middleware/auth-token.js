@@ -13,7 +13,6 @@ const verifyToken = (res, req, next) => {
 
     try {
         const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        console.log(decoded);
 
         next();
     } catch (error) {
@@ -21,3 +20,5 @@ const verifyToken = (res, req, next) => {
         return res.status(403).json({ status: false, message: "Server Error" });
     }
 };
+
+export default verifyToken;
