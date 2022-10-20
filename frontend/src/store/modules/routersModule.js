@@ -30,7 +30,7 @@ const routersModule = {
             { name: "Trang chủ", path: "/admin/home" },
             {
                 name: "Quản lý tài khoản",
-                path: "/admin/account",
+                path: "/admin/manage",
             },
         ],
         studentRoutes: [

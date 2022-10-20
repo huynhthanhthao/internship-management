@@ -1,6 +1,9 @@
 <template>
    <div class="p-4 animate__animated animate__fadeIn">
-    <ViewListStructure :title="title" />
+    <div class="col-12 d-flex">
+        <TitleStructure :title="`Đơn vị thực tập`" class="col-6 me-4"></TitleStructure>
+        <TitleStructure :title="`Quản lý thực tập`" class="col-6"></TitleStructure>
+    </div>
     <div>
         <div class="infor row m-0 pt-3 pb-5 border-bottom justify-content-between">
             <ObjectInfor :infor="infor" />
@@ -37,17 +40,13 @@
 </template>
 
 <script>
-import ViewListStructure from '@/components/GlobalComponent/ViewListStructure.vue';
+import TitleStructure from "@/components/GlobalComponent/TitleStructure.vue"
 import ObjectInfor from '@/components/GlobalComponent/ObjectInfor.vue';
 
 export default {
-    components: { ViewListStructure, ObjectInfor },
+    components: { ObjectInfor, TitleStructure },
     data(){
         return {
-            title: {
-                headerList: "Đơn vị thực tập",
-                headerDetail: "Quản lý thông tin thực tập"
-            },
             infor: {
                 "Đơn vị": "Tập đoàn viễn thông quân đội Viettel",
                 "Email": "contacts@viettel.com.vn",

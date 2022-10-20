@@ -12,13 +12,10 @@
             :data-bs-parent="`#accordion${itemId}`">
             <div class="accordion-body row">
                 <div class="col-12 mb-2">
-                    <strong>Số điện thoại: </strong> {{infor.phone}}
-                </div>
-                <div class="col-12 mb-2">
-                    <strong>Email: </strong> {{infor.email}}
+                    <strong>{{layout.identify}} </strong> {{infor.identify}}
                 </div>
                 <div class="col-12">
-                    <strong>{{layout.optionField}}: </strong> {{infor.option}}
+                    <strong>{{layout["unit-address"]}}: </strong> {{infor["unit-address"]}}
                 </div>
                 <slot></slot>
             </div>
@@ -33,13 +30,14 @@ export default {
     props: {
         itemId: {type: String},
         layout: {
-            optionField: {type:String},
+            identify: {type: String},
+            "unit-address": {type: String},
         },
         infor: {
             avatar: {type:String},
             name: {type: String},
-            email: {type: String},
-            option: {type: String}
+            identify: {type: String},
+            "unit-address": {type: String}
         }
     },
 }

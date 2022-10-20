@@ -55,7 +55,7 @@ export default {
             closeDetailStudent: "CLOSE_DETAIL_STUDENT",
         }),
         closeDetail() {
-            const headerDetail = document.querySelector(".header-detail");
+            const headerDetail = document.querySelector(".title-detail .label");
             headerDetail.innerText = "Tổng quan";
             this.closeDetailStudent();
         }

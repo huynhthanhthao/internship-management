@@ -56,7 +56,7 @@ export default {
             closeDetailCompany: "CLOSE_DETAIL_COMPANY"
         }),
         closeDetail() {
-            const headerDetail = document.querySelector(".header-detail");
+            const headerDetail = document.querySelector(".title-detail h2");
             headerDetail.innerText = "Tổng quan";
             this.closeDetailCompany();
         }

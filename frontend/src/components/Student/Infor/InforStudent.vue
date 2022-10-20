@@ -1,5 +1,5 @@
 <template>
-    <div class="infor-teacher start-0 p-0" >
+    <div class="infor-student start-0 p-0" >
         <a class="btn btn-primary btn-infor position-fixed top-50" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <i class="bi bi-info-circle-fill"></i>
         </a>
@@ -12,25 +12,25 @@
             </div>
 
             <div class="offcanvas-body mt-5 ">
-                <div class="infor-teacher-header d-flex flex-column align-items-center">
+                <div class="infor-student-header d-flex flex-column align-items-center">
                     <Avatar :avatar="avatar"/>
-                    <h3 class="infor-teacher-name mt-3">Le Duy Tan</h3>
+                    <h3 class="infor-student-name mt-3">Le Duy Tan</h3>
                 </div>
 
-                <ul class="infor-teacher-detail fs-6 mt-5 ps-0">
-                    <li class="infor-teacher-item mb-2">
+                <ul class="infor-student-detail fs-6 mt-5 ps-0">
+                    <li class="infor-student-item mb-2">
                         <span class="item__title me-3">
                             <i class="bi bi-person-circle"></i>
                         </span>
                         <span class="item__value">B1906758</span>
                     </li>
-                    <li class="infor-teacher-item mb-2">
+                    <li class="infor-student-item mb-2">
                         <span class="item__title me-3">
                             <i class="bi bi-envelope-fill"></i>
                         </span>
                         <span class="item__value">tanb1906758@student.ctu.edu.vn</span>
                     </li>
-                    <li class="infor-teacher-item mb-2">
+                    <li class="infor-student-item mb-2">
                         <span class="item__title me-3">
                             <i class="bi bi-phone-fill"></i>
                         </span>
@@ -39,11 +39,10 @@
                 </ul>
 
                 <button class="btn btn-primary rounded-pill mt-5 d-flex m-auto " data-bs-dismiss="offcanvas" >
-                    <router-link to="/teacher/update-information" style="text-decoration: none; color: inherit;">
+                    <router-link to="/student/update-infor" style="text-decoration: none; color: inherit;">
                         <i class="bi bi-pencil-square"></i> &nbsp; Cập nhật thông tin
                     </router-link>
                 </button>
-
             </div>
         </div>
     </div>
@@ -53,7 +52,7 @@
 import Avatar from '../../GlobalComponent/AvatarComponent.vue';
 
 export default {
-    name: "InforTeacher",
+    name: "InforStudent",
     data(){
         return{
             avatar:{
@@ -78,7 +77,7 @@ export default {
         background-color: #1f5caa ;
     }
 
-    .infor-teacher-detail{
+    .infor-student-detail{
         list-style-type: none;
     }
 
