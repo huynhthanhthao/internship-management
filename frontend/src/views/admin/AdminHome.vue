@@ -7,12 +7,13 @@
 </template>
 
 <script>
+
+import DashBoard from '@/components/Admin/DashBoard/DashBoard.vue';
+import LineChartAccount from '../../components/Admin/DashBoard/LineChartAccount.vue';
 import TitleStructure from '@/components/GlobalComponent/TitleStructure.vue';
-import DashBoard from '@/components/Admin/DashBoard.vue';
-import LineChartAccount from '../../components/Admin/LineChartAccount.vue';
 export default {
     name: "AdminHome",
-    components: { TitleStructure, DashBoard, LineChartAccount },
+    components: { DashBoard, LineChartAccount, TitleStructure },
 }
 </script>
 

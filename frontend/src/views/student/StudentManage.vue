@@ -11,7 +11,7 @@
                 <div class="col-3 me-5">
                     <router-link to="/student/manage/view-progress" class="router-link">
                         <button type="button" class="btn btn-primary btn-progress" @click="viewInforInternship($event)"> 
-                            <i class="bi bi-eye fs-2 me-2"></i> 
+                            <i class="bi bi-calendar-week fs-2 me-2"></i>
                             <span>Xem tiến độ thực tập</span>
                         </button>
                     </router-link>
@@ -19,7 +19,7 @@
                 <div class="col-3 me-5">
                     <router-link to="/student/manage/view-assess-company" class="router-link">
                         <button type="button" class="btn btn-primary btn-company" @click="viewInforInternship($event)">
-                            <i class="bi bi-eye fs-2 me-2"></i>
+                            <i class="bi bi-clipboard-check fs-2 me-2"></i>
                             <span>Xem đánh giá của đơn vị</span>
                         </button>
                     </router-link>
@@ -27,7 +27,7 @@
                 <div class="col-3">
                     <router-link to="/student/manage/view-assess-teacher" class="router-link">
                         <button type="button" class="btn btn-primary btn-teacher" @click="viewInforInternship($event)">
-                            <i class="bi bi-eye fs-2 me-2"></i>
+                            <i class="bi bi-person-video3 fs-2 me-2"></i>
                             <span>Xem đánh giá của giảng viên</span>
                         </button>
                     </router-link>

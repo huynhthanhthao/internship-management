@@ -11,7 +11,7 @@
             <div class="col-2 me-2">
                 <router-link to="/teacher/view/progress/id" class="router-link">
                     <button type="button" class="btn btn-primary btn-progress" @click="viewInforInternship($event)">
-                        <i class="bi bi-eye fs-4 me-2"></i>
+                        <i class="bi bi-calendar-week fs-4 me-2"></i>
                         <span>Xem tiến độ thực tập</span>
                     </button>
                 </router-link>
@@ -19,7 +19,7 @@
             <div class="col-2 me-2">
                 <router-link to="/teacher/view/company-assess/id" class="router-link">
                     <button type="button" class="btn btn-primary btn-company" @click="viewInforInternship($event)">
-                        <i class="bi bi-eye fs-4 me-2"></i>
+                        <i class="bi bi-clipboard-check fs-4 me-2"></i>
                         <span>Xem đánh giá của đơn vị</span>
                     </button>
                 </router-link>

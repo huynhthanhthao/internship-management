@@ -22,7 +22,8 @@ import {
     PointElement,
     CategoryScale,
 } from "chart.js";
-import TitleStructure from "../GlobalComponent/TitleStructure.vue";
+import TitleStructure from "@/components/GlobalComponent/TitleStructure.vue";
+
 
 ChartJS.register(
     Title,
