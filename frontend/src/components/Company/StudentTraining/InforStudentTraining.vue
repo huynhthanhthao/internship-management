@@ -4,7 +4,7 @@
             <div class="col-12 row p-3 align-items-center border rounded-2">
                 <div
                     class="col-5 d-flex justify-content-center"
-                    style="height: 200px; width: 200px"
+                    style="height: 180px; width: 200px"
                 >
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/2302/2302834.png"

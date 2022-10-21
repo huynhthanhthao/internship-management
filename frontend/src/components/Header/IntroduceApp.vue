@@ -33,8 +33,8 @@
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <button class="dropdown-item" @click="LOGOUT">
-                        <i class="bi bi-box-arrow-right"></i>&nbsp; Logout
+                    <button class="dropdown-item" @click="handleLogout">
+                        <i class="bi bi-box-arrow-right"></i>&nbsp; Đăng xuất
                     </button>
                 </li>
             </ul>
@@ -43,12 +43,18 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
     name: "IntroduceApp",
     computed: mapGetters(["getIsLogin"]),
-    methods: mapMutations(["LOGOUT"]),
+    methods: {
+        ...mapActions(["logout"]),
+        handleLogout() {
+            this.logout();
+            this.$router.push("/login");
+        },
+    },
 };
 </script>
 

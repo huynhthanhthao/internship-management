@@ -17,9 +17,21 @@ const toastModules = {
         },
         SHOW_TOAST(state) {
             state.toast.isShow = true;
+            setTimeout(() => {
+                state.toast.isShow = false;
+            }, 4000);
+        },
+        SET_TOAST(state, toast) {
+            state.toast.isSuccess = toast.isSuccess;
+            state.toast.message = toast.message;
+            this.commit("SHOW_TOAST");
         },
     },
-    actions: {},
+    actions: {
+        setToast({ commit }, toast) {
+            commit("SET_TOAST", toast);
+        },
+    },
 };
 
 export default toastModules;

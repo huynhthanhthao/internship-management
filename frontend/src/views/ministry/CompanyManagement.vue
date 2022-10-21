@@ -26,7 +26,7 @@
                     class="accordion"
                     style="height: 500px; overflow-y: scroll"
                 >
-                    <CompanyItem class="mb-2" />
+                    <CompanyItem class="mb-2 me-2" />
                 </div>
             </div>
 

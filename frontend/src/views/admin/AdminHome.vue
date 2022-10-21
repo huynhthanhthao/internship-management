@@ -1,21 +1,19 @@
 <template>
-  <div class="admin-home">
-    <TitleStructure :title="`Tổng quan`" class="col-12"></TitleStructure>
-    <DashBoard></DashBoard>
-    <LineChartAccount></LineChartAccount>
-  </div>
+    <div class="admin-home">
+        <TitleStructure :title="`Tổng quan`" class="col-12"></TitleStructure>
+        <DashBoard></DashBoard>
+        <LineChartAccount></LineChartAccount>
+    </div>
 </template>
 
 <script>
-import TitleStructure from '@/components/GlobalComponent/TitleStructure.vue';
-import DashBoard from '@/components/Admin/DashBoard.vue';
-import LineChartAccount from '../../components/Admin/LineChartAccount.vue';
+import TitleStructure from "@/components/GlobalComponent/TitleStructure.vue";
+import DashBoard from "@/components/admin/DashBoard.vue";
+import LineChartAccount from "@/components/admin/LineChartAccount.vue";
 export default {
     name: "AdminHome",
     components: { TitleStructure, DashBoard, LineChartAccount },
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

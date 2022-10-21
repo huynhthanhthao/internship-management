@@ -82,10 +82,6 @@ const routes = [
                             },
                         ],
                     },
-                    {
-                        path: "/teacher/update-information",
-                        component: TeacherUpdate,
-                    },
                 ],
             },
         ],

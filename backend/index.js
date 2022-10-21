@@ -2,6 +2,7 @@ import express from "express";
 import connectDB from "./database/connectDB.js";
 
 import bodyParser from "body-parser";
+import cors from "cors";
 
 // import router
 import ministryRouter from "./routes/ministry-router.js";
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+app.use(cors());
 
 // Router
 app.use(
@@ -50,8 +52,6 @@ app.use(
     companyRouter
 );
 
-app.use("/auth", authRouter);
-
 app.use(
     "/student",
     (req, res, next) => {
@@ -59,6 +59,8 @@ app.use(
     },
     studentRouter
 );
+
+app.use("/", authRouter);
 
 //Catch
 app.use((req, res, next) => {

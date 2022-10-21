@@ -1,6 +1,6 @@
 <template>
     <div
-        class="information-detail position-relative border p-3 py-4 row animate__fadeIn animate__animated"
+        class="information-detail position-relative border ms-2 py-4 row animate__fadeIn animate__animated"
     >
         <button
             type="button"
