@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import TitleStructure from "@/components/GlobalComponent/TitleStructure.vue";
-import DashBoard from "@/components/admin/DashBoard.vue";
-import LineChartAccount from "@/components/admin/LineChartAccount.vue";
+import TitleStructure from "../../components/GlobalComponent/TitleStructure.vue";
+import DashBoard from "../../components/Admin/DashBoard/DashBoard.vue";
+import LineChartAccount from "../../components/Admin/DashBoard/LineChartAccount.vue";
 export default {
     name: "AdminHome",
     components: { TitleStructure, DashBoard, LineChartAccount },
