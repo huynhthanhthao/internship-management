@@ -5,23 +5,17 @@ import jwt from "jsonwebtoken";
 
 import Account from "../models/Account.js";
 
-const authController = async (req, res, next) => {
+const login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const account = await Account.findOne({ username });
 
-    // Check exist account
-    if (!account) {
-      return res
-        .status(401)
-        .json({ success: false, message: "Account does not exist!" });
-    }
-
     // Check valid password
-    if (account.password != password) {
-      return res
-        .status(401)
-        .json({ success: false, message: "Incorrect password!" });
+    if (!account || account.password != password) {
+      return res.json({
+        status: false,
+        message: "Tài khoản hoặc mật khẩu không đúng!",
+      });
     }
 
     // All good
@@ -31,13 +25,14 @@ const authController = async (req, res, next) => {
       process.env.ACCESS_TOKEN_SECRET
     );
     return res.json({
-      success: true,
-      message: "Login successful!",
+      status: true,
+      message: "Đăng nhập thành công!",
       accessToken,
+      rule: account.rule,
     });
   } catch (error) {
     return res.status(400).json({ success: false, message: "Server Error!" });
   }
 };
 
-export default authController;
+export default login;

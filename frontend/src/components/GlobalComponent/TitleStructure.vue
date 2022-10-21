@@ -1,21 +1,22 @@
 <template>
-<div class="m-0">
-    <h2 class="label fw-bold" style="color: #555555">
-        {{title}}
-    </h2>
-    <div class="line my-3"></div>
-</div>
+    <div class="m-0">
+        <div class="d-flex">
+            <h2 class="label fw-bold me-3" style="color: #555555">
+                {{ title }}
+            </h2>
+            <slot></slot>
+        </div>
+        <div class="line my-3"></div>
+    </div>
 </template>
 
 <script>
 export default {
     name: "TitleStructure",
-    props:{
-        title: {type: String}
-    }
-}
+    props: {
+        title: { type: String },
+    },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

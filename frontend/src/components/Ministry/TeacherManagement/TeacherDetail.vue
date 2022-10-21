@@ -1,7 +1,7 @@
 <template>
     <div class="teacher-detail">
         <div
-            class="information-detail position-relative border rounded-2 p-3 py-4 row col-12 animate__fadeIn animate__animated"
+            class="information-detail position-relative border rounded-2 ms-2 py-4 row col-12 animate__fadeIn animate__animated"
         >
             <div
                 class="col-5 d-flex justify-content-center"

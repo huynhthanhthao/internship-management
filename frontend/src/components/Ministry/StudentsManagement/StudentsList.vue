@@ -1,39 +1,16 @@
 <template>
     <div>
         <div class="d-flex">
-            <h2
-                class="header-list label m-0 p-2 pt-3 fw-bold col-6"
-                style="color: #555555"
-            >
-                Danh sách sinh viên đang quản lý
-                <div class="line mt-3 mb-2"></div>
-            </h2>
-        </div>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#"
-                            >DI1996A2</a
-                        >
-                        <a class="nav-link" href="#">DI1996A3</a>
-                        <a class="nav-link" href="#">DI1996A4</a>
-                        <a class="nav-link" href="#">DI1996A5</a>
-                    </div>
+            <div class="header-list m-0 p-2 pt-3 col-6" style="color: #555555">
+                <div class="d-flex">
+                    <h2 class="me-3 fw-bold">
+                        Danh sách sinh viên đang quản lý
+                    </h2>
+                    <StudentFilter />
                 </div>
+                <div class="line mt-3 mb-2"></div>
             </div>
-        </nav>
+        </div>
 
         <table class="table table-striped text-center">
             <thead>
@@ -64,8 +41,10 @@
 </template>
 
 <script>
+import StudentFilter from "@/components/StudentFilter/StudentFilter.vue";
 export default {
     name: "StudentsList",
+    components: { StudentFilter },
 };
 </script>
 

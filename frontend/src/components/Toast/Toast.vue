@@ -1,31 +1,31 @@
 <template>
     <div
-        class="toast d-block d-none animate__fadeInRight animate__animated"
+        class="toast d-block animate__fadeInRight animate__animated"
         role="alert"
         aria-live="assertive"
         aria-atomic="true"
+        v-if="toast.isShow"
     >
         <div class="toast-header">
             <i
                 :class="
                     toast.isSuccess
                         ? 'bi bi-check-square-fill text-success'
-                        : 'bi bi-check-square-fill text-danger'
+                        : 'bi bi-x-square-fill text-danger'
                 "
             ></i>
-            <strong class="me-auto ms-2">Notify</strong>
+            <strong class="me-auto ms-2 fs-6">Thông báo</strong>
             <button
                 type="button"
                 class="btn-close"
-                data-bs-dismiss="toast"
-                aria-label="Close"
+                @click="closeToast"
             ></button>
         </div>
         <div
             :class="
                 toast.isSuccess
-                    ? 'toast-body text-success fw-bold'
-                    : 'toast-body text-danger fw-bold'
+                    ? 'toast-body text-success '
+                    : 'toast-body text-danger '
             "
         >
             {{ toast.message }}
@@ -34,13 +34,14 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
     name: "ToastComponent",
     computed: mapGetters({
         toast: "getToast",
     }),
+    methods: mapMutations({ closeToast: "CLOSE_TOAST" }),
 };
 </script>
 
