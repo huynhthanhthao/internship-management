@@ -1,0 +1,33 @@
+import express from "express";
+import createAccount from "../controllers/admin-controllers/create-account.js";
+import deleteAccount from "../controllers/admin-controllers/delete-account.js";
+import getAllAccount from "../controllers/admin-controllers/get-all-account.js";
+import updateAccount from "../controllers/admin-controllers/update-account.js";
+import getName from "../controllers/global/get-name.js";
+import getTimeInternship from "../controllers/global/get-time-internship.js";
+import getAccount from "../controllers/global/getAccount.js";
+
+const router = express.Router();
+
+router.get("/", (req, res) => {
+  res.send("Admin");
+});
+
+//Get All Account
+router.get("/get-all-account", getAllAccount);
+
+//Create New Account
+router.post("/create-account", createAccount);
+
+//Delete Account
+router.delete("/delete-account", deleteAccount);
+
+//Update Account
+router.patch("/update-account", updateAccount);
+
+router.get("/get-account", getAccount);
+
+router.get("/get-name", getName);
+
+router.get("/get-time", getTimeInternship);
+export default router;
