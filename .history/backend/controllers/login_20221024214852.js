@@ -39,7 +39,7 @@ const login = async (req, res, next) => {
       status: true,
       message: "Đăng nhập thành công!",
       accessToken,
-      accountInfor,
+      account,
       rule: account.rule,
     });
   } catch (error) {

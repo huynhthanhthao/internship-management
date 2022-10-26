@@ -6,7 +6,7 @@ import routersModule from "./modules/routersModule";
 import companyModule from "./modules/company-module/index.js";
 import modalModule from "./modules/modalModel.js";
 import toastModule from "./modules/toastModule.js";
-import accountModule from "./modules/account.js";
+import account from "./modules/account.js";
 
 // Create a new store instance.
 const store = createStore({
@@ -18,7 +18,7 @@ const store = createStore({
     companyModule,
     modalModule,
     toastModule,
-    accountModule,
+    account,
   },
 });
 

@@ -4,9 +4,7 @@ import deleteAccount from "../controllers/admin-controllers/delete-account.js";
 import getAllAccount from "../controllers/admin-controllers/get-all-account.js";
 import updateAccount from "../controllers/admin-controllers/update-account.js";
 import confirmStudent from "../controllers/company-controllers/confirm-student.js";
-import createTask from "../controllers/company-controllers/create-task.js";
 import getCompanyAssess from "../controllers/other/get-company-assess.js";
-import assessTask from "../controllers/company-controllers/assess-task.js";
 
 const router = express.Router();
 
@@ -33,9 +31,4 @@ router.post("/create-company-assess", confirmStudent);
 // Get all company assess
 router.get("/get-company-assess", getCompanyAssess); // other controllers
 
-//Create Task
-router.post("/create-task", createTask);
-
-//Assess Task
-router.patch("/assess-task", assessTask);
 export default router;

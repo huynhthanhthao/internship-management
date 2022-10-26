@@ -1,5 +1,5 @@
 <template>
-    <div class="animate__animated animate__fadeIn">
+    <div>
         <Header />
         <div
             class="login py-5 col-sm-8 m-auto d-flex flex-column align-items-center"
@@ -63,7 +63,6 @@
 </template>
 
 <script>
-
 import Header from "@/components/Header/Header.vue";
 import { mapActions } from "vuex";
 export default {
@@ -88,9 +87,7 @@ export default {
                 password: this.password,
             });
         },
-
     },
- 
 };
 </script>
 

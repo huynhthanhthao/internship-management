@@ -1,5 +1,5 @@
 <template>
-    <div class="animate__animated animate__fadeIn">
+    <div>
         <Header />
         <div
             class="login py-5 col-sm-8 m-auto d-flex flex-column align-items-center"
@@ -88,7 +88,6 @@ export default {
                 password: this.password,
             });
         },
-
     },
  
 };

@@ -6,7 +6,6 @@ import updateAccount from "../controllers/admin-controllers/update-account.js";
 import confirmStudent from "../controllers/company-controllers/confirm-student.js";
 import createTask from "../controllers/company-controllers/create-task.js";
 import getCompanyAssess from "../controllers/other/get-company-assess.js";
-import assessTask from "../controllers/company-controllers/assess-task.js";
 
 const router = express.Router();
 
@@ -37,5 +36,5 @@ router.get("/get-company-assess", getCompanyAssess); // other controllers
 router.post("/create-task", createTask);
 
 //Assess Task
-router.patch("/assess-task", assessTask);
+router.patch("/assess-task");
 export default router;

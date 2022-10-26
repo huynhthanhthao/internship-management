@@ -21,25 +21,14 @@ const login = async (req, res, next) => {
     // All good
     // Create token
     const accessToken = jwt.sign(
-      account.username,
+      // account.username,
+      account._id,
       process.env.ACCESS_TOKEN_SECRET
     );
-
-    //Account Infor Response
-    const accountInfor = {
-      id: account._id,
-      name: account.name,
-      username: account.username,
-      email: account.email,
-      phoneNumber: account.phoneNumber,
-      urlAvatar: account.urlAvatar,
-    };
-
     return res.json({
       status: true,
       message: "Đăng nhập thành công!",
       accessToken,
-      accountInfor,
       rule: account.rule,
     });
   } catch (error) {
