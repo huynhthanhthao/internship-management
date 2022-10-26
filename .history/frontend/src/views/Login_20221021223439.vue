@@ -63,7 +63,6 @@
 </template>
 
 <script>
-
 import Header from "@/components/Header/Header.vue";
 import { mapActions } from "vuex";
 export default {
@@ -88,9 +87,7 @@ export default {
                 password: this.password,
             });
         },
-
     },
- 
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <HomePage :name="account.name" />
+  <HomePage :name="name" />
 </template>
 
 <script>
@@ -8,10 +8,14 @@ import { mapGetters } from 'vuex';
 export default {
   name: "TeacherHome",
   components: { HomePage },
+  data() {
+    return {
+      name: "Nguyễn Văn A"
+    }
+  },
   computed: {
     ...mapGetters({account: "getAccount"})
-  },
-
+  }
 }
 </script>
 

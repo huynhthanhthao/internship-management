@@ -34,7 +34,7 @@ const authModules = {
       const rule = response.data.rule;
       const accessToken = response.data.accessToken;
       const accountInfor = response.data.accountInfor;
-
+      console.log(accountInfor);
       if (response.data.accessToken) {
         localStorage.setItem("user", accessToken);
         localStorage.setItem("rule", rule);

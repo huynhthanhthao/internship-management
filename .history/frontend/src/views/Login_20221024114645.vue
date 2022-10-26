@@ -88,7 +88,6 @@ export default {
                 password: this.password,
             });
         },
-
     },
  
 };

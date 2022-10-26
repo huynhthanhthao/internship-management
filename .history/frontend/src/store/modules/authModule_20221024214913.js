@@ -48,7 +48,6 @@ const authModules = {
         else if (rule == "COMPANY") router.push("/company/home");
 
         commit("LOGIN");
-        // Save account login to store account
         commit("SET_ACCOUNT", accountInfor);
       }
 

@@ -10,8 +10,7 @@ export default {
   components: { HomePage },
   computed: {
     ...mapGetters({account: "getAccount"})
-  },
-
+  }
 }
 </script>
 

@@ -33,7 +33,7 @@ const authModules = {
 
       const rule = response.data.rule;
       const accessToken = response.data.accessToken;
-      const accountInfor = response.data.accountInfor;
+      const account = response.data.account;
 
       if (response.data.accessToken) {
         localStorage.setItem("user", accessToken);
@@ -48,8 +48,7 @@ const authModules = {
         else if (rule == "COMPANY") router.push("/company/home");
 
         commit("LOGIN");
-        // Save account login to store account
-        commit("SET_ACCOUNT", accountInfor);
+        commit("SET_ACCOUNT", account);
       }
 
       // Hien thi thong bao
