@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import guardRouter from "./guard-router.js";
 
 // 1. Define route components.
 import Home from "../views/Home.vue";
@@ -7,6 +8,7 @@ import Teacher from "../views/Teacher";
 import Ministry from "../views/Ministry";
 import Company from "../views/Company";
 import Login from "../views/Login.vue";
+import Error from "../views/Error.vue";
 
 // Company router
 import HomePage from "../views/company/HomePage.vue";
@@ -44,6 +46,7 @@ const routes = [
     { path: "/", component: Home },
     { path: "/login", component: Login },
     { path: "/student", component: Student },
+    { path: "/error", component: Error },
     {
         path: "/admin",
         component: Admin,
@@ -51,6 +54,10 @@ const routes = [
             { path: "/admin/home", component: AdminHome },
             { path: "/admin/manage", component: AdminManage },
         ],
+        beforeRouteLeave: (to, from) => {
+            console.log(to, from);
+            console.log(1253);
+        },
     },
     {
         path: "/teacher",
@@ -152,5 +159,7 @@ const router = createRouter({
     routes,
     linkActiveClass: "active-link",
 });
+
+guardRouter(router);
 
 export default router;

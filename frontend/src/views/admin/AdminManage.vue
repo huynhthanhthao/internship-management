@@ -1,5 +1,5 @@
 <template>
-    <div class="admin-manage">
+    <div class="admin-manage animate__animated animate__fadeIn">
         <TitleStructure :title="`Danh sách tài khoản`"></TitleStructure>
         <div class="type-account col-12 d-flex justify-content-center">
             <div class="type__item">Tài khoản giảng viên</div>
@@ -78,8 +78,9 @@
             </div>
         </div>
         <CreateAccount></CreateAccount>
-        <EditInforAccount></EditInforAccount>
+        <EditInforAccount></EditInforAccount> 
     </div>
+  
 </template>
 
 <script>

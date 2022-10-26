@@ -1,6 +1,6 @@
 <template>
     <div class="admin">
-        <Header rule="admin" />
+        <Header />
         <router-view class="p-3"></router-view>
     </div>
 </template>

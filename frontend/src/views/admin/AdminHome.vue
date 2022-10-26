@@ -1,5 +1,5 @@
 <template>
-    <div class="admin-home">
+    <div class="admin-home animate__animated animate__fadeIn">
         <TitleStructure :title="`Tổng quan`" class="col-12"></TitleStructure>
         <DashBoard></DashBoard>
         <LineChartAccount></LineChartAccount>

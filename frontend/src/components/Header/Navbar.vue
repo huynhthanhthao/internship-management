@@ -46,29 +46,55 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
+import { mapGetters, mapMutations } from "vuex";
+import axios from "axios";
+import config from "../../config/index";
 export default {
     name: "NavbarComponent",
-    props: ["rule"],
+    data() {
+        return {
+            rule: "",
+        };
+    },
     computed: {
         ...mapGetters({
             isLogin: "getIsLogin",
             getRouters: "getRouters",
         }),
+        ...mapMutations({ login: "LOGIN" }),
         routers() {
-            if (this.rule == "company") {
+            if (this.rule == "COMPANY") {
                 return this.getRouters.companyRoutes;
-            } else if (this.rule == "teacher") {
+            } else if (this.rule == "TEACHER") {
                 return this.getRouters.teacherRoutes;
-            } else if (this.rule == "ministry") {
+            } else if (this.rule == "MINISTRY") {
                 return this.getRouters.ministryRoutes;
-            } else if (this.rule == "admin") {
+            } else if (this.rule == "ADMIN") {
                 return this.getRouters.adminRoutes;
-            } else {
+            } else if (this.rule == "STUDENT") {
                 return this.getRouters.studentRoutes;
             }
+            return "";
         },
+    },
+    async created() {
+        const token = localStorage.getItem("token");
+
+        const res = await axios.post(
+            `${config.domain}/get-rule`,
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        const rule = res.data.rule;
+        this.rule = rule;
+        if (rule) {
+            this.login;
+        }
     },
 };
 </script>

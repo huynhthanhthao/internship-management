@@ -10,6 +10,7 @@ import studentRouter from "./routes/student-router.js";
 import teacherRouter from "./routes/teacher-router.js";
 import companyRouter from "./routes/company-router.js";
 import authRouter from "./routes/auth-router.js";
+import getRule from "./routes/get-rule.js";
 
 // import midleware
 import middlewareRouter from "./middleware/check-rule.js";
@@ -59,6 +60,8 @@ app.use(
     },
     studentRouter
 );
+
+app.use("/get-rule", getRule);
 
 app.use("/", authRouter);
 
