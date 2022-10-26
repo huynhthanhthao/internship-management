@@ -10,31 +10,25 @@
                 <form action="" class="row col-12  p-0 my-3 mx-2">
                     <div class="avatar col-5 d-flex flex-column align-items-center ps-0 ">
                         <AvatarComponent :avatar="avatar" class="col-12" />
-                        <input type="text" id="fullName" class="fullName col-9 text-center fs-5 fw-bold mt-3" value="Nguyen Thanh Thanh">
+                        <input type="text" id="fullName" class="fullName col-9 text-center fs-5 fw-bold mt-3" value="Nguyen Thanh Thanh" name="name">
                     </div>
                     <div class="infor col-6">
                         <div class="mb-3 row">
-                            <label for="inputUsername" class="col-3 col-form-label px-0"><strong>Username:</strong></label>
-                            <div class="col-9">
-                                <input type="text" class="form-control" id="inputUsername">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
                             <label for="inputEmail" class="col-3 col-form-label px-0"><strong>Email:</strong></label>
                             <div class="col-9">
-                                <input type="email" class="form-control" id="inputEmail">
+                                <input type="email" class="form-control" id="inputEmail" name="email">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="inputPhone" class="col-3 col-form-label px-0"><strong>Điện thoại:</strong></label>
                             <div class="col-9">
-                                <input type="text" class="form-control" id="inputPhone">
+                                <input type="text" class="form-control" id="inputPhone" name="phoneNumber">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="inputTypeAccount" class="col-3 col-form-label px-0"><strong>Tài khoản:</strong></label>
                             <div class="col-9">
-                                <select class="form-select select-type-account" aria-label="Select Type Account" id="inputTypeAccount"  @change="selectTypeAccount($event)" >
+                                <select class="form-select select-type-account" aria-label="Select Type Account" id="inputTypeAccount" name="typeAccount" @change="selectTypeAccount($event)" >
                                     <option selected>Chọn loại tài khoản</option>
                                     <option value="1">Giảng viên</option>
                                     <option value="2">Sinh viên</option>
@@ -45,7 +39,7 @@
                         <div class="mb-3 row student-class-update d-none">
                             <label for="inputClass" class="col-3 col-form-label px-0"><strong>Lớp:</strong></label>
                             <div class="col-9">
-                                <input type="text" class="form-control" id="inputClass">
+                                <input type="text" class="form-control" id="inputClass" name="studentClass">
                             </div>
                         </div>
                     </div>

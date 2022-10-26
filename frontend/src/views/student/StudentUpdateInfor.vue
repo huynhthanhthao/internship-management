@@ -4,70 +4,37 @@
             Cập nhật thông tin cá nhân
         </h2>
 
-        <div
-            class="form-update row col-6 mt-5 p-4 rounded-3 m-auto justify-content-center"
-        >
-            <AvatarComponent :avatar="avatar" />
-            <form class="form-update-infor ms-5 col-6">
-                <div class="mb-3">
-                    <label for="fullname" class="form-label"
-                        ><strong>Họ và tên</strong></label
-                    >
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="fullname"
-                        aria-describedby="name"
-                    />
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label"
-                        ><strong>Email</strong></label
-                    >
-                    <input
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        aria-describedby="emailHelp"
-                    />
-                </div>
-                <div class="mb-3">
-                    <label for="phone" class="form-label"
-                        ><strong>Số điện thoại</strong></label
-                    >
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="phone"
-                        aria-describedby="name"
-                    />
-                </div>
-                <div class="mb-3">
-                    <label for="avatar" class="form-label"
-                        ><strong>Cập nhật ảnh đại diện</strong></label
-                    >
-                    <input
-                        type="file"
-                        id="avatar"
-                        name="avatar"
-                        accept="image/png, image/jpeg"
-                    />
-                </div>
-                <div class="form__footer d-flex justify-content-around mt-5">
-                    <button
-                        type="submit"
-                        class="btn btn-danger"
-                        @click="btnPreventDefault"
-                    >
-                        <i class="bi bi-arrow-clockwise"></i>&nbsp;Đặt lại
-                    </button>
-                    <button type="submit" class="btn btn-primary btn-save">
-                        <i class="bi bi-calendar4"></i>&nbsp;Lưu
-                    </button>
-                </div>
-            </form>
-        </div>
+    <div class="form-update row col-6 mt-5 p-4 rounded-3 m-auto justify-content-center">
+      <AvatarComponent :avatar="avatar"/>
+      <form class="form-update-infor ms-5 col-6 " >
+          <div class="mb-3 ">
+            <label for="fullname" class="form-label"><strong>Họ và tên</strong></label>
+            <input type="text" class="form-control" id="fullname" aria-describedby="name" name="name">
+          </div>
+          <div class="mb-3">
+              <label for="email" class="form-label"><strong>Email</strong></label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+          </div>
+          <div class="mb-3 ">
+            <label for="phone" class="form-label"><strong>Số điện thoại</strong></label>
+            <input type="text" class="form-control" id="phone" aria-describedby="name" name="phoneNumber">
+          </div>
+          <div class="mb-3">
+            <label for="avatar" class="form-label"><strong>Cập nhật ảnh đại diện</strong></label>
+            <input type="file" id="avatar" name="avatar"
+            accept="image/png, image/jpeg"/>
+          </div>
+          <div class="form__footer d-flex justify-content-around mt-5">
+            <button type="submit" class="btn btn-danger" @click="btnPreventDefault">
+              <i class="bi bi-arrow-clockwise"></i>&nbsp;Đặt lại
+            </button>
+            <button type="submit" class="btn btn-primary btn-save">
+              <i class="bi bi-calendar4"></i>&nbsp;Lưu
+            </button>
+          </div>
+      </form>
     </div>
+  </div>
 </template>
 
 <script>

@@ -123,41 +123,41 @@ const routes = [
         ],
     },
 
-    {
-        path: "/student",
-        component: Student,
+  {
+    path: "/student",
+    component: Student,
+    children: [
+      { path: "/student/home", component: StudentHome },
+      { path: "/student/register", component: StudentRegister },
+      {
+        path: "/student/manage",
+        component: StudentManage,
         children: [
-            { path: "/student/home", component: StudentHome },
-            { path: "/student/register", component: StudentRegister },
-            {
-                path: "/student/manage",
-                component: StudentManage,
-                children: [
-                    {
-                        path: "/student/manage/view-progress",
-                        component: ViewProgress,
-                    },
-                    {
-                        path: "/student/manage/view-assess-company",
-                        component: ViewAssessCompany,
-                    },
-                    {
-                        path: "/student/manage/view-assess-teacher",
-                        component: ViewAssessTeacher,
-                    },
-                ],
-            },
-            { path: "/student/update-infor", component: StudentUpdateInfor },
+          {
+            path: "/student/manage/view-progress",
+            component: ViewProgress,
+          },
+          {
+            path: "/student/manage/view-assess-company",
+            component: ViewAssessCompany,
+          },
+          {
+            path: "/student/manage/view-assess-teacher",
+            component: ViewAssessTeacher,
+          },
         ],
-    },
+      },
+      { path: "/student/update-infor", component: StudentUpdateInfor },
+    ],
+  },
 ];
 
 // 3. Create the router instance and pass the `routes` option
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
-    linkActiveClass: "active-link",
+  history: createWebHistory(),
+  routes,
+  linkActiveClass: "active-link",
 });
 
 guardRouter(router);
