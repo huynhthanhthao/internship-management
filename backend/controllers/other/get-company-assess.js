@@ -2,7 +2,7 @@ import CompanyAssess from "../../models/CompanyAssess.js";
 
 const getCompanyAssess = async (req, res, next) => {
   try {
-    const result = CompanyAssess.find({});
+    const result = await CompanyAssess.find({});
     return res.json({
       result,
     });

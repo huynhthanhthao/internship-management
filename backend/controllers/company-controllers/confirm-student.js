@@ -1,23 +1,30 @@
 import CompanyAssess from "../../models/CompanyAssess.js";
 import { ObjectId } from "mongodb";
+import StudentAccount from "../../models/StudentAccount.js";
 const confirmStudent = async function (req, res, next) {
-    const { studentId, companyId } = req.body;
-    console.log("123");
+  const { studentId, companyId } = req.body;
 
-    try {
-        const resultConfirm = await CompanyAssess.create({
-            studentId: ObjectId(studentId),
-            companyId: ObjectId(companyId),
-        });
+  try {
+    const resultConfirm = await CompanyAssess.create({
+      studentId: ObjectId(studentId),
+      companyId: ObjectId(companyId),
+    });
 
-        return res.status(201).json({
-            status: true,
-            message: "Xác nhận thành công!",
-            resultConfirm,
-        });
-    } catch (error) {
-        next(error);
-    }
+    const resultUpdate = await StudentAccount.findOneAndUpdate(
+      { studentId: ObjectId(studentId) },
+      { companyId: ObjectId(companyId) },
+      { new: true }
+    );
+
+    return res.status(201).json({
+      status: true,
+      message: "Xác nhận thành công!",
+      resultConfirm,
+      resultUpdate,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export default confirmStudent;

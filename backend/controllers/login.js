@@ -1,17 +1,16 @@
+import argon2 from "argon2";
 import * as dotenv from "dotenv";
-dotenv.config();
-
 import jwt from "jsonwebtoken";
-
 import Account from "../models/Account.js";
+dotenv.config();
 
 const login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const account = await Account.findOne({ username });
-
+    const passwordValid = await argon2.verify(account.password, password);
     // Check valid password
-    if (!account || account.password != password) {
+    if (!account || !passwordValid) {
       return res.json({
         status: false,
         message: "Tài khoản hoặc mật khẩu không đúng!",

@@ -2,22 +2,41 @@ import Account from "../../models/Account.js";
 import CompanyAccount from "../../models/CompanyAccount.js";
 import StudentAccount from "../../models/StudentAccount.js";
 import TeacherAccount from "../../models/TeacherAccount.js";
-
+import argon2 from "argon2";
 const createAccount = async (req, res, next) => {
-  const { username, password, name, typeAccount } = req.body;
+  const {
+    username,
+    password,
+    name,
+    email,
+    phoneNumber,
+    address,
+    message,
+    typeAccount,
+  } = req.body;
   const urlAvatar = "https://cdn-icons-png.flaticon.com/512/1053/1053244.png";
   try {
     const findAccount = await Account.findOne({ username });
     if (!findAccount) {
+      const hashPassword = await argon2.hash(password);
       const newAccount = await Account.create({
         username,
-        password,
+        password: hashPassword,
         name,
+        email,
+        phoneNumber,
         urlAvatar,
         rule: typeAccount,
         createdAt: Date.now(),
       });
 
+      if (typeAccount === "MINISTRY" || typeAccount === "ADMIN") {
+        return res.json({
+          status: true,
+          message: "Tạo mới một tài khoản thành công!",
+          newAccount,
+        });
+      }
       if (typeAccount === "TEACHER") {
         const teacherAccount = await TeacherAccount.create({
           teacherId: newAccount._id,
