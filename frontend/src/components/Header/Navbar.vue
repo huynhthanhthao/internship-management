@@ -47,8 +47,7 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import axios from "axios";
-import config from "../../config/index";
+
 export default {
     name: "NavbarComponent",
     data() {
@@ -77,20 +76,9 @@ export default {
             return "";
         },
     },
-    async created() {
-        const token = localStorage.getItem("token");
+    created() {
+        const rule = localStorage.getItem("rule");
 
-        const res = await axios.post(
-            `${config.domain}/get-rule`,
-            {},
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            }
-        );
-
-        const rule = res.data.rule;
         this.rule = rule;
         if (rule) {
             this.login;

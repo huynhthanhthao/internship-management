@@ -47,7 +47,14 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
     name: "IntroduceApp",
+    data() {
+        return {
+            name: "",
+        };
+    },
+    async created() {},
     computed: mapGetters(["getIsLogin"]),
+
     methods: {
         ...mapActions(["logout"]),
         handleLogout() {

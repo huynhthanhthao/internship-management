@@ -72,6 +72,9 @@ app.use(
 
 app.use("/get-rule", getRule);
 
+
+
+
 app.use("/", authRouter);
 
 //Catch
