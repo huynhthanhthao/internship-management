@@ -15,8 +15,8 @@
                 </h5>
             </div>
         </div>
-        <div v-if="getIsLogin" class="dropdown d-flex align-items-center">
-            <span class="fw-bold">Diagrams</span>
+        <div v-if="isLogin" class="dropdown d-flex align-items-center">
+            <span class="fw-bold">{{ account.name }}</span>
 
             <button
                 class="avatar-icon border border-light bg-white d-flex align-items-center dropdown-toggle"
@@ -47,13 +47,7 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
     name: "IntroduceApp",
-    data() {
-        return {
-            name: "",
-        };
-    },
-    async created() {},
-    computed: mapGetters(["getIsLogin"]),
+    computed: mapGetters({ isLogin: "getIsLogin", account: "getAccount" }),
 
     methods: {
         ...mapActions(["logout"]),

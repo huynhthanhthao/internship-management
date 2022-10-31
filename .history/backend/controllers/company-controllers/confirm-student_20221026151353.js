@@ -10,17 +10,15 @@ const confirmStudent = async function (req, res, next) {
       companyId: ObjectId(companyId),
     });
 
-    const resultUpdate = await StudentAccount.findOneAndUpdate(
+    await StudentAccount.findOneAndUpdate(
       { studentId: ObjectId(studentId) },
       { companyId: ObjectId(companyId) },
       { new: true }
     );
-
     return res.status(201).json({
       status: true,
       message: "Xác nhận thành công!",
       resultConfirm,
-      resultUpdate,
     });
   } catch (error) {
     next(error);

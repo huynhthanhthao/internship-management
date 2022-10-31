@@ -1,7 +1,7 @@
 <template>
     <div class="admin">
         <Header />
-        <router-view class="p-3"></router-view>
+        <router-view class="px-5 py-4"></router-view>
     </div>
 </template>
 

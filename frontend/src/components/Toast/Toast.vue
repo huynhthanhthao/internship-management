@@ -47,7 +47,6 @@ export default {
 
 <style>
 .toast {
-    z-index: 2;
     position: fixed;
     bottom: 10px;
     right: 10px;

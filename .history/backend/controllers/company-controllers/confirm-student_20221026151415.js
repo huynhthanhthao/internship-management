@@ -10,7 +10,7 @@ const confirmStudent = async function (req, res, next) {
       companyId: ObjectId(companyId),
     });
 
-    const resultUpdate = await StudentAccount.findOneAndUpdate(
+    await StudentAccount.findOneAndUpdate(
       { studentId: ObjectId(studentId) },
       { companyId: ObjectId(companyId) },
       { new: true }
@@ -20,7 +20,6 @@ const confirmStudent = async function (req, res, next) {
       status: true,
       message: "Xác nhận thành công!",
       resultConfirm,
-      resultUpdate,
     });
   } catch (error) {
     next(error);

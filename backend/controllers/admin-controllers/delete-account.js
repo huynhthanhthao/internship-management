@@ -9,55 +9,64 @@ import TeacherAccess from "../../models/TeacherAccess.js";
 import { ObjectId } from "mongodb";
 
 const deleteAccount = async (req, res, next) => {
-  const { accountId } = req.body;
-  try {
-    const accountDeleted = await Account.findOneAndDelete({
-      _id: ObjectId(accountId),
-    });
-
-    if (accountDeleted) {
-      const rule = accountDeleted.rule;
-
-      if (rule === "TEACHER") {
-        await TeacherAccount.findOneAndDelete({
-          teacherId: accountDeleted._id,
+    const { accountId } = req.body;
+    try {
+        const accountDeleted = await Account.findOneAndDelete({
+            _id: ObjectId(accountId),
         });
-      }
 
-      if (rule === "COMPANY") {
-        await CompanyAccount.findOneAndDelete({
-          companyId: accountDeleted._id,
-        });
-        await CompanyAssess.deleteMany({ companyId: accountDeleted._id });
-        await FormRegister.deleteMany({ companyId: accountDeleted._id });
-        await StudentAccount.updateMany(
-          { companyId: accountDeleted._id },
-          { $set: { companyId: "" } }
-        );
-      }
+        if (accountDeleted) {
+            const rule = accountDeleted.rule;
+            if (rule === "TEACHER") {
+                await TeacherAccount.findOneAndDelete({
+                    teacherId: accountDeleted._id,
+                });
+            }
 
-      if (rule === "STUDENT") {
-        await CompanyAssess.findOneAndDelete({ studentId: accountDeleted._id });
-        await TeacherAccess.findOneAndDelete({ studentId: accountDeleted._id });
-        await FormRegister.deleteMany({ studentId: accountDeleted._id });
-        await StudentAccount.findOneAndDelete({
-          studentId: accountDeleted._id,
-        });
-        await Task.deleteMany({ studentId: accountDeleted._id });
-      }
-      return res.json({
-        status: true,
-        message: "Xóa tài khoản thành công!",
-      });
-    } else {
-      return res.json({
-        status: false,
-        message: "Không tìm thấy tài khoản để xóa!",
-      });
+            if (rule === "COMPANY") {
+                await CompanyAccount.findOneAndDelete({
+                    companyId: accountDeleted._id,
+                });
+                await CompanyAssess.deleteMany({
+                    companyId: accountDeleted._id,
+                });
+                await FormRegister.deleteMany({
+                    companyId: accountDeleted._id,
+                });
+                await StudentAccount.updateMany(
+                    { companyId: accountDeleted._id },
+                    { companyId: ObjectId("55153a8014829a865bbf700d") }
+                );
+            }
+
+            if (rule === "STUDENT") {
+                await CompanyAssess.findOneAndDelete({
+                    studentId: accountDeleted._id,
+                });
+                await TeacherAccess.findOneAndDelete({
+                    studentId: accountDeleted._id,
+                });
+                await FormRegister.deleteMany({
+                    studentId: accountDeleted._id,
+                });
+                await StudentAccount.findOneAndDelete({
+                    studentId: accountDeleted._id,
+                });
+                await Task.deleteMany({ studentId: accountDeleted._id });
+            }
+            return res.json({
+                status: true,
+                message: "Xóa tài khoản thành công!",
+            });
+        } else {
+            return res.json({
+                status: false,
+                message: "Không tìm thấy tài khoản để xóa!",
+            });
+        }
+    } catch (error) {
+        next(error);
     }
-  } catch (error) {
-    next(error);
-  }
 };
 
 export default deleteAccount;

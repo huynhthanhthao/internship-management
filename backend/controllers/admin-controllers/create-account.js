@@ -7,6 +7,14 @@ import argon2 from "argon2";
 const createAccount = async (req, res, next) => {
     const { username, password, name, typeAccount } = req.body;
     const urlAvatar = "https://cdn-icons-png.flaticon.com/512/1053/1053244.png";
+
+    // simple validate
+    if (!username || !password || !name || !typeAccount) {
+        return res.json({
+            status: false,
+            message: "Vui lòng điền đầy đủ thông tin!",
+        });
+    }
     try {
         const findAccount = await Account.findOne({ username });
         if (!findAccount) {
@@ -34,6 +42,15 @@ const createAccount = async (req, res, next) => {
 
             if (typeAccount === "STUDENT") {
                 const { studentClass } = req.body;
+
+                // simple validate
+                if (!studentClass) {
+                    return res.json({
+                        status: false,
+                        message: "Vui lòng điền đầy đủ thông tin!",
+                    });
+                }
+
                 const studentAccount = await StudentAccount.create({
                     studentId: newAccount._id,
                     class: studentClass,

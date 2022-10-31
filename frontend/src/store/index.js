@@ -7,19 +7,23 @@ import companyModule from "./modules/company-module/index.js";
 import modalModule from "./modules/modalModel.js";
 import toastModule from "./modules/toastModule.js";
 import accountModule from "./modules/account.js";
+import accountListModule from "./modules/admin-module/accountList.js";
+import accountUpdate from "./modules/admin-module/accountUpdate.js";
 
 // Create a new store instance.
 const store = createStore({
-  modules: {
-    teacherModule,
-    studentModule,
-    authModule,
-    routersModule,
-    companyModule,
-    modalModule,
-    toastModule,
-    accountModule,
-  },
+    modules: {
+        teacherModule,
+        studentModule,
+        authModule,
+        routersModule,
+        companyModule,
+        modalModule,
+        toastModule,
+        accountModule,
+        accountListModule,
+        accountUpdate,
+    },
 });
 
 export default store;

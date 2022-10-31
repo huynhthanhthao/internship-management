@@ -1,10 +1,9 @@
-import * as dotenv from "dotenv";
 import argon2 from "argon2";
+import * as dotenv from "dotenv";
 
 dotenv.config();
 
 import jwt from "jsonwebtoken";
-
 import Account from "../models/Account.js";
 
 const login = async (req, res, next) => {

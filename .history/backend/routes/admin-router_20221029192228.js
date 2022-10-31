@@ -3,14 +3,14 @@ import createAccount from "../controllers/admin-controllers/create-account.js";
 import deleteAccount from "../controllers/admin-controllers/delete-account.js";
 import getAllAccount from "../controllers/admin-controllers/get-all-account.js";
 import updateAccount from "../controllers/admin-controllers/update-account.js";
-// import confirmStudent from "../controllers/company-controllers/confirm-student.js";
-// import createTask from "../controllers/company-controllers/create-task.js";
-// import getCompanyAssess from "../controllers/other/get-company-assess.js";
-// import assessTask from "../controllers/company-controllers/assess-task.js";
-// import getTask from "../controllers/global/get-all-tasks.js";
-// import getTeacherAssess from "../controllers/other/get-all-teacher-assess.js";
-// import assignClass from "../controllers/ministry-controllers/assign-teacher.js";
-// import getTeacherAccount from "../controllers/other/get-teacher-account.js";
+import confirmStudent from "../controllers/company-controllers/confirm-student.js";
+import createTask from "../controllers/company-controllers/create-task.js";
+import getCompanyAssess from "../controllers/other/get-company-assess.js";
+import assessTask from "../controllers/company-controllers/assess-task.js";
+import getTask from "../controllers/global/get-all-tasks.js";
+import getTeacherAssess from "../controllers/other/get-all-teacher-assess.js";
+import assignClass from "../controllers/ministry-controllers/assign-teacher.js";
+import getTeacherAccount from "../controllers/other/get-teacher-account.js";
 
 const router = express.Router();
 
