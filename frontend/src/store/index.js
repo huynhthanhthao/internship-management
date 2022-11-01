@@ -7,8 +7,9 @@ import companyModule from "./modules/company-module/index.js";
 import modalModule from "./modules/modalModel.js";
 import toastModule from "./modules/toastModule.js";
 import accountModule from "./modules/account.js";
-import accountListModule from "./modules/admin-module/accountList.js";
-import accountUpdate from "./modules/admin-module/accountUpdate.js";
+
+import adminModule from "./modules/admin-module";
+import ministryModule from "./modules/ministry-module";
 
 // Create a new store instance.
 const store = createStore({
@@ -21,8 +22,8 @@ const store = createStore({
         modalModule,
         toastModule,
         accountModule,
-        accountListModule,
-        accountUpdate,
+        adminModule,
+        ministryModule,
     },
 });
 

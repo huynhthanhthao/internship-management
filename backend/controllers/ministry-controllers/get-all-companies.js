@@ -29,7 +29,7 @@ const getAllCompanies = async function (req, res, next) {
         return res.status(201).json({
             status: true,
             message: "Lấy thông tin thành công!",
-            result: companies,
+            result,
         });
     } catch (error) {
         next(error);

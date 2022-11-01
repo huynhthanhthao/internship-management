@@ -21,11 +21,16 @@
                     </h2>
                 </div>
             </div>
-            <div
-                class="accordion col-6"
-                style="height: 500px; overflow-y: scroll"
-            >
-                <TeacherItem class="mb-2" />
+            <div class="col-6" style="height: 500px; overflow-y: scroll">
+                <div class="accordion">
+                    <TeacherItem
+                        v-for="(teacher, index) in teacherList"
+                        :key="index"
+                        class="mb-2"
+                        :teacher="teacher"
+                        :index="index"
+                    />
+                </div>
             </div>
             <div class="col-6">
                 <TeacherDetail v-if="isShowDetail">
@@ -52,6 +57,8 @@
 </template>
 
 <script>
+import axios from "axios";
+import config from "@/config/index.js";
 import TeacherItem from "../../components/Ministry/TeacherManagement/TeacherItem.vue";
 import TeacherDetail from "../../components/Ministry/TeacherManagement/TeacherDetail.vue";
 import Statistics from "../../components/Ministry/TeacherManagement/Statistics.vue";
@@ -60,11 +67,36 @@ import { mapGetters, mapMutations } from "vuex";
 export default {
     name: "TeacherManagement",
     components: { TeacherItem, TeacherDetail, Statistics },
-    computed: mapGetters({ isShowDetail: "getShowDetailRegister" }),
+    computed: mapGetters({
+        isShowDetail: "getShowDetail",
+        teacherDetail: "getTeacherDetail",
+        teacherList: "getTeacherList",
+    }),
     methods: {
         ...mapMutations({
-            closeDetail: "CLOSE_DETAIL_REGISTER",
+            closeDetail: "CLOSE_DETAIL",
         }),
+    },
+    async created() {
+        try {
+            // Dong xem chi tiet
+            this.$store.commit("CLOSE_DETAIL");
+
+            // Xu ly load du lieu
+            const token = localStorage.getItem("token");
+            const res = await axios.get(
+                `${config.domain}/ministry/get-all-teachers`,
+                {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                }
+            );
+
+            this.$store.commit("SET_TEACHER_LIST", res.data.result);
+        } catch (error) {
+            console.log(error);
+        }
     },
 };
 </script>

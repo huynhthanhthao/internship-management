@@ -8,7 +8,7 @@ const teacherAccountSchema = new Schema({
         ref: "Account",
     },
     classesManagement: {
-        type: [String],
+        type: [Object],
     },
 });
 

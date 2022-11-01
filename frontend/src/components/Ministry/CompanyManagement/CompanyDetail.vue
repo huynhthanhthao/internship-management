@@ -21,30 +21,26 @@
             </div>
             <div class="col-7 flex-grow-1" style="min-height: 200px">
                 <div class="col-12 my-1">
-                    <strong>Tên đơn vị: </strong> Axon Active
+                    <strong>Tên đơn vị: </strong> {{ company.name }}
                 </div>
                 <div class="col-12 my-1">
-                    <strong>Email: </strong> axonacitve@gmail.vn
+                    <strong>Mã đơn vị: </strong> {{ company.username }}
                 </div>
                 <div class="col-12 my-1">
-                    <strong>Điện thoại: </strong> 0939 105 554
+                    <strong>Email: </strong> {{ company.email }}
                 </div>
                 <div class="col-12 my-1">
-                    <strong>Địa chỉ: </strong> Can Tho, Viet Nam
+                    <strong>Điện thoại: </strong> {{ company.phoneNumber }}
+                </div>
+                <div class="col-12 my-1">
+                    <strong>Địa chỉ: </strong> {{ company.address }}
                 </div>
                 <div class="col-12 my-1">
                     <strong>Số lượng sinh viên đang thực tập: </strong> 150
                 </div>
             </div>
             <div class="col-12 my-1">
-                <strong>Giới thiệu: </strong> With over 26 years of advancing
-                technology, Axon is dedicated to a bold and powerful mission to
-                Protect Life and Obsolete the Bullet. Axon is the global leader
-                of connected public safety technologies. We stand for protecting
-                life, protecting truth, transparency, and accountability. Rick
-                Smith founded Axon (formerly TASER International) following the
-                deaths of two high school friends who were gunned down in an act
-                of road rage. This tragedy sparked a passion in
+                <strong>Giới thiệu: </strong> {{ company.message }}
             </div>
         </div>
         <div class="col-12"></div>
@@ -52,15 +48,16 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
     name: "TeacherDetail",
     methods: {
         ...mapMutations({
-            closeDetail: "CLOSE_DETAIL_REGISTER",
+            closeDetail: "CLOSE_DETAIL",
         }),
     },
+    computed: mapGetters({ company: "getCompanyDetail" }),
 };
 </script>
 

@@ -13,6 +13,12 @@ const studentAccountSchema = new Schema({
     class: {
         type: String,
     },
+    semester: {
+        type: String,
+    },
+    schoolYear: {
+        type: String,
+    },
 });
 
 export default mongoose.model("StudentAccount", studentAccountSchema);
