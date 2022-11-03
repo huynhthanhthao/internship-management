@@ -3,14 +3,15 @@ import createAccount from "../controllers/admin-controllers/create-account.js";
 import deleteAccount from "../controllers/admin-controllers/delete-account.js";
 import getAllAccount from "../controllers/admin-controllers/get-all-account.js";
 import updateAccount from "../controllers/admin-controllers/update-account.js";
-// import confirmStudent from "../controllers/company-controllers/confirm-student.js";
-// import createTask from "../controllers/company-controllers/create-task.js";
-// import getCompanyAssess from "../controllers/other/get-company-assess.js";
-// import assessTask from "../controllers/company-controllers/assess-task.js";
-// import getTask from "../controllers/global/get-all-tasks.js";
-// import getTeacherAssess from "../controllers/other/get-all-teacher-assess.js";
-// import assignClass from "../controllers/ministry-controllers/assign-teacher.js";
-// import getTeacherAccount from "../controllers/other/get-teacher-account.js";
+import confirmStudent from "../controllers/company-controllers/confirm-student.js";
+import createTask from "../controllers/company-controllers/create-task.js";
+import getCompanyAssess from "../controllers/other/get-company-assess.js";
+import assessTask from "../controllers/company-controllers/assess-task.js";
+import getTask from "../controllers/global/get-all-tasks.js";
+import getTeacherAssess from "../controllers/other/get-all-teacher-assess.js";
+import assignClass from "../controllers/ministry-controllers/assign-teacher.js";
+import getTeacherAccount from "../controllers/other/get-teacher-account.js";
+import getStudentAccount from "../controllers/other/get-student-account.js";
 
 const router = express.Router();
 
@@ -30,7 +31,6 @@ router.delete("/delete-account", deleteAccount);
 //Update Account
 router.patch("/update-account", updateAccount);
 
-/*
 //Cac router su dung tam thoi de tao du lieu cho he thong
 //Create Company Assess
 router.post("/create-company-assess", confirmStudent);
@@ -54,5 +54,8 @@ router.get("/teacher-assess", getTeacherAssess);
 router.get("/get-teacher-account", getTeacherAccount);
 
 router.patch("/assign-class", assignClass);
-*/
+
+//Get Student Account
+router.get("/get-student-account", getStudentAccount);
+
 export default router;

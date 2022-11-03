@@ -66,6 +66,8 @@ const createAccount = async (req, res, next) => {
       if (typeAccount === "COMPANY") {
         const companyAccount = await CompanyAccount.create({
           companyId: newAccount._id,
+          message,
+          address,
         });
         return res.json({
           status: true,
