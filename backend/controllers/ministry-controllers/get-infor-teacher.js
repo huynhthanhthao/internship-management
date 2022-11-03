@@ -3,7 +3,7 @@ import TeacherAccount from "../../models/TeacherAccount.js";
 import { ObjectId } from "mongodb";
 
 const getInforTeacher = async function (req, res, next) {
-    const { teacherId } = req.body;
+    const { teacherId } = req.query;
     try {
         const { username, name, email, phoneNumber, urlAvatar } =
             await Account.findOne({
@@ -25,7 +25,7 @@ const getInforTeacher = async function (req, res, next) {
 
         return res.status(201).json({
             status: true,
-            message: "Lấy thông tin thành công!",
+            message: "Lấy thông tin giảng viên thành công!",
 
             result,
         });

@@ -15,7 +15,7 @@ import updateAccount from "../controllers/admin-controllers/update-account.js";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.send("Admin");
+    res.send("Admin");
 });
 
 //Get All Account
