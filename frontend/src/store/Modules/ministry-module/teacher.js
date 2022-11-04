@@ -1,3 +1,5 @@
+import axios from "axios";
+import config from "@/config/index.js";
 const teacherModule = {
     state: {
         teacherList: [],
@@ -19,7 +21,22 @@ const teacherModule = {
             state.teacherDetail = teacher;
         },
     },
-    actions: {},
+    actions: {
+        async setTeacherDetail({ commit }, teacherId) {
+            const token = localStorage.getItem("token");
+
+            const res = await axios.get(
+                `${config.domain}/ministry/get-infor-teacher`,
+                {
+                    params: { teacherId },
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                }
+            );
+            commit("SET_TEACHER_DETAIL", res.data.result);
+        },
+    },
 };
 
 export default teacherModule;

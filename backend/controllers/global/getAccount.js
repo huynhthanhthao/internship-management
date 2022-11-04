@@ -12,11 +12,17 @@ const getAccount = async function (req, res, next) {
         // decoded is username
         const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
-        const { username, name, email, phoneNumber, address } =
+        const { _id, username, name, email, phoneNumber, address } =
             await Account.findOne({ username: decoded });
 
-        const account = { username, name, email, phoneNumber, address };
-
+        const account = {
+            id: _id,
+            username,
+            name,
+            email,
+            phoneNumber,
+            address,
+        };
         // return account
 
         return res.json({

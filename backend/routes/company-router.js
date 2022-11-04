@@ -34,7 +34,7 @@ router.delete("/delete-task", deleteTask);
 router.delete("/refuse-register", refuseRegister);
 
 // Get students register
-router.get("/get-students-register", getStudentsRegister);
+router.get("/get-students-register/", getStudentsRegister);
 
 // Get students training
 router.get("/get-students-training", getStudentsTraining);

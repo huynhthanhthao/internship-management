@@ -36,14 +36,14 @@
 </template>
 
 <script>
-import RegisterItem from "../../components/Company/StudentsRegister/ItemStudent.vue";
+// import RegisterItem from "../../components/Company/StudentsRegister/ItemStudent.vue";
 import TrainingDetail from "../../components/Company/StudentTraining/TrainingDetail.vue";
 import Statistics from "../../components/Company/StudentTraining/Statistics.vue";
 import { mapGetters } from "vuex";
 export default {
     name: "StudentsTraining",
-    components: { RegisterItem, TrainingDetail, Statistics },
-    computed: mapGetters({ isShowDetail: "getShowDetailRegister" }),
+    components: { TrainingDetail, Statistics },
+    computed: mapGetters({ isShowDetail: "getShowDetail" }),
 };
 </script>
 

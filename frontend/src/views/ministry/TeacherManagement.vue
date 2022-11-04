@@ -34,18 +34,31 @@
             </div>
             <div class="col-6">
                 <TeacherDetail v-if="isShowDetail">
-                    <div class="col-12 d-flex justify-content-around mt-3">
+                    <div class="col-12 d-flex justify-content-center mt-3">
                         <button
                             type="button"
                             class="btn-close position-absolute"
                             aria-label="Close"
                             @click="closeDetail"
                         ></button>
-                        <router-link
-                            to="/ministry/teacher-management/students"
+                        <button
                             type="button"
-                            class="btn btn-outline-secondary d-flex align-items-center p-2"
+                            class="btn btn-outline-secondary d-flex align-items-center me-3"
+                            data-bs-toggle="modal"
+                            data-bs-target="#assignModal"
                         >
+                            <i class="bi bi-pass me-1"></i>
+                            Phân công
+                        </button>
+                        <router-link
+                            :to="
+                                '/ministry/teacher-management/' +
+                                teacherDetail._id
+                            "
+                            type="button"
+                            class="btn btn btn-outline-primary d-flex align-items-center"
+                        >
+                            <i class="bi bi-eye me-1"></i>
                             Xem danh sách sinh viên đang quản lý
                         </router-link>
                     </div>
@@ -53,6 +66,7 @@
                 <Statistics v-else />
             </div>
         </div>
+        <AssignForm />
     </div>
 </template>
 
@@ -62,11 +76,12 @@ import config from "@/config/index.js";
 import TeacherItem from "../../components/Ministry/TeacherManagement/TeacherItem.vue";
 import TeacherDetail from "../../components/Ministry/TeacherManagement/TeacherDetail.vue";
 import Statistics from "../../components/Ministry/TeacherManagement/Statistics.vue";
+import AssignForm from "@/components/Ministry/TeacherManagement/AssignForm.vue";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
     name: "TeacherManagement",
-    components: { TeacherItem, TeacherDetail, Statistics },
+    components: { TeacherItem, TeacherDetail, Statistics, AssignForm },
     computed: mapGetters({
         isShowDetail: "getShowDetail",
         teacherDetail: "getTeacherDetail",

@@ -3,7 +3,7 @@ import FormRegister from "../../models/FormRegister.js";
 import { ObjectId } from "mongodb";
 
 const getInforRegister = async function (req, res, next) {
-    const { studentId, companyId } = req.body;
+    const { studentId, companyId } = req.query;
     try {
         const { name, email, phone, username, urlAvatar } =
             await Account.findOne({

@@ -20,30 +20,25 @@
         </div>
         <div class="col-7" style="min-height: 200px">
             <div class="col-12 my-1">
-                <strong>Họ và tên: </strong> Huynh Thanh Thao
+                <strong>Họ và tên: </strong> {{ student.name }}
             </div>
             <div class="col-12 my-1">
-                <strong>Email: </strong> htthao@gmail.com
+                <strong>Email: </strong> {{ student.email }}
             </div>
             <div class="col-12 my-1">
-                <strong>Điện thoại: </strong> 03939 100 100
-            </div>
-            <div class="col-12 my-1"><strong>GPA: </strong> 3.7</div>
-            <div class="col-12 my-1">
-                <strong>Ngôn ngữ: </strong> HTML, CSS, JavaScript
+                <strong>Điện thoại: </strong> {{ student.phoneNumber }}
             </div>
             <div class="col-12 my-1">
-                <strong>Dự án: </strong> Blog Website, Player Music,...
+                <strong>GPA: </strong> {{ student.gpa }}
+            </div>
+            <div class="col-12 my-1">
+                <strong>Ngôn ngữ: </strong> {{ student.languages }}
+            </div>
+            <div class="col-12 my-1">
+                <strong>Dự án: </strong> {{ student.projects }}
             </div>
         </div>
-        <div class="col-12">
-            <strong>Thư: </strong> She wasn't in so I left a message on her
-            answerphone. Can you give Jo a message for me? Tell her I've booked
-            a tennis court for 6.30. When I got home, I found a mysterious
-            message sellotaped to the front door. The president has sent a
-            message of sympathy to the relatives of the dead soldiers. The
-            message on the card said 'Be my Valentine'.
-        </div>
+        <div class="col-12"><strong>Thư: </strong> {{ student.message }}</div>
         <div class="col-12 d-flex justify-content-center mt-3">
             <button
                 type="button"
@@ -66,15 +61,16 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
     name: "InformationDetail",
     methods: {
         ...mapMutations({
-            closeDetail: "CLOSE_DETAIL_REGISTER",
+            closeDetail: "CLOSE_DETAIL",
         }),
     },
+    computed: mapGetters({ student: "getStudentDetail" }),
 };
 </script>
 

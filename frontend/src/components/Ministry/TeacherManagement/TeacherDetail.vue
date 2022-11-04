@@ -31,7 +31,8 @@
                     <span
                         v-for="(item, index) in teacher.classesManagement"
                         :key="index"
-                        >{{ item }} <br
+                        >{{ item.className }} - HK{{ item.semester }} -
+                        {{ item.schoolYear }} <br
                     /></span>
                 </div>
             </div>

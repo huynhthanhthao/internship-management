@@ -4,8 +4,7 @@ import { ObjectId } from "mongodb";
 
 const getStudentsRegister = async function (req, res, next) {
     try {
-        const { companyId } = req.body;
-
+        const { companyId } = req.query;
         if (companyId) {
             const studentsRegister = await FormRegister.find({
                 companyId: ObjectId(companyId),
@@ -14,12 +13,13 @@ const getStudentsRegister = async function (req, res, next) {
             const result = [];
 
             for (let i = 0; i < studentsRegister.length; i++) {
-                const { username, name, email, phoneNumber, urlAvatar } =
+                const { _id, username, name, email, phoneNumber, urlAvatar } =
                     await Account.findOne({
                         _id: studentsRegister[i].studentId,
                     });
 
                 const information = {
+                    id: _id,
                     username,
                     name,
                     email,

@@ -1,5 +1,6 @@
+import studentModule from "./student.js";
 const companyModule = {
-    actions: {},
+    modules: { studentModule },
 };
 
 export default companyModule;

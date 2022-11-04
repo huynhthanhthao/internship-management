@@ -25,7 +25,13 @@
                 class="accordion col-6"
                 style="height: 500px; overflow-y: scroll"
             >
-                <ItemStudent class="mb-2" />
+                <ItemStudent
+                    v-for="(student, index) in studentList"
+                    :key="index"
+                    class="mb-2"
+                    :student="student"
+                    :index="index"
+                />
             </div>
             <div class="col-6">
                 <InformationDetail v-if="isShowDetail" />
@@ -58,6 +64,8 @@
 </template>
 
 <script>
+import axios from "axios";
+import config from "@/config/index.js";
 import ItemStudent from "../../components/Company/StudentsRegister/ItemStudent.vue";
 import InformationDetail from "../../components/Company/StudentsRegister/InformationDetail.vue";
 import Statistics from "../../components/Company/StudentsRegister/Statistics.vue";
@@ -68,8 +76,35 @@ export default {
     name: "StudentsRegister",
     components: { ItemStudent, InformationDetail, Statistics, Modal },
     computed: mapGetters({
-        isShowDetail: "getShowDetailRegister",
+        isShowDetail: "getShowDetail",
+        studentList: "getStudentList",
+        account: "getAccount",
     }),
+    async created() {
+        const token = localStorage.getItem("token");
+
+        // set account store
+        if (token) {
+            const response = await axios.post(`${config.domain}/get-account`, {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            });
+
+            this.$store.commit("SET_ACCOUNT", response.data.result);
+        }
+
+        const res = await axios.get(
+            `${config.domain}/company/get-students-register/`,
+            {
+                params: {
+                    companyId: this.account.id,
+                },
+                headers: { Authorization: "Bearer " + token },
+            }
+        );
+        this.$store.commit("SET_STUDENT_LIST", res.data.result);
+    },
 };
 </script>
 

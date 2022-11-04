@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="d-flex">
+        <div class="student-list d-flex animate__fadeIn animate__animated">
             <div class="header-list m-0 p-2 pt-3 col-6" style="color: #555555">
                 <div class="d-flex">
                     <h2 class="me-3 fw-bold">
@@ -16,6 +16,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Mã số</th>
                     <th scope="col">Họ và tên</th>
                     <th scope="col">Điện thoại</th>
                     <th scope="col">Email</th>
@@ -23,17 +24,12 @@
             </thead>
 
             <tbody style="overflow-y: scroll">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
+                <tr v-for="(student, index) in studentList" :key="index">
+                    <th scope="row">{{ index }}</th>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.phoneNumber }}</td>
+                    <td>{{ student.email }}</td>
                 </tr>
             </tbody>
         </table>
@@ -42,9 +38,42 @@
 
 <script>
 import StudentFilter from "@/components/StudentFilter/StudentFilter.vue";
+import axios from "axios";
+import config from "@/config/index.js";
+import { mapActions, mapGetters } from "vuex";
 export default {
     name: "StudentsList",
     components: { StudentFilter },
+    data() {
+        return {
+            studentList: [],
+        };
+    },
+    computed: mapGetters({ teacher: "getTeacherDetail" }),
+    methods: mapActions(["setTeacherDetail"]),
+    async created() {
+        // get teacherId query
+        const teacherId = this.$route.params.teacherId;
+
+        const token = localStorage.getItem("token");
+
+        // set teacher detail
+        this.setTeacherDetail(teacherId);
+
+        const res = await axios.get(
+            `${config.domain}/ministry/get-student-managed`,
+            {
+                params: {
+                    teacherId,
+                },
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            }
+        );
+
+        this.studentList = res.data.result;
+    },
 };
 </script>
 

@@ -22,7 +22,6 @@ export default {
                     Authorization: "Bearer " + token,
                 },
             });
-
             this.$store.commit("SET_ACCOUNT", response.data.result);
         }
     },
