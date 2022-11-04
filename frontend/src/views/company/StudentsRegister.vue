@@ -71,7 +71,7 @@ import InformationDetail from "../../components/Company/StudentsRegister/Informa
 import Statistics from "../../components/Company/StudentsRegister/Statistics.vue";
 import Modal from "../../components/Modal/Modal.vue";
 
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
     name: "StudentsRegister",
     components: { ItemStudent, InformationDetail, Statistics, Modal },
@@ -80,19 +80,10 @@ export default {
         studentList: "getStudentList",
         account: "getAccount",
     }),
+    methods: mapActions(["setAccount"]),
     async created() {
         const token = localStorage.getItem("token");
-
-        // set account store
-        if (token) {
-            const response = await axios.post(`${config.domain}/get-account`, {
-                headers: {
-                    Authorization: "Bearer " + token,
-                },
-            });
-
-            this.$store.commit("SET_ACCOUNT", response.data.result);
-        }
+        await this.setAccount();
 
         const res = await axios.get(
             `${config.domain}/company/get-students-register/`,

@@ -6,24 +6,16 @@
 </template>
 
 <script>
-import axios from "axios";
-import config from "@/config/index.js";
+// import axios from "axios";
+// import config from "@/config/index.js";
 import Footer from "./components/Footer/Footer.vue";
 import Content from "./components/Content/Content.vue";
 
 export default {
     name: "App",
     components: { Footer, Content },
-    async created() {
-        const token = localStorage.getItem("token");
-        if (token) {
-            const response = await axios.post(`${config.domain}/get-account`, {
-                headers: {
-                    Authorization: "Bearer " + token,
-                },
-            });
-            this.$store.commit("SET_ACCOUNT", response.data.result);
-        }
+    created() {
+        this.$store.dispatch("setAccount");
     },
 };
 </script>
