@@ -2,13 +2,12 @@ import Task from "../../models/Task.js";
 import { ObjectId } from "mongodb";
 
 const assessTask = async function (req, res, next) {
-    const { status, message, studentId, taskId } = req.body;
+    const { status, message, taskId } = req.body;
 
     try {
         const resultAssess = await Task.findOneAndUpdate(
             {
-                studentId: ObjectId(studentId),
-                taskId,
+                _id: taskId,
             },
             {
                 status,

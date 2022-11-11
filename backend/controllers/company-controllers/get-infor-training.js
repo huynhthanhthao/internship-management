@@ -3,20 +3,23 @@ import Task from "../../models/Task.js";
 import { ObjectId } from "mongodb";
 
 const getInforTraining = async function (req, res, next) {
-    const { studentId } = req.body;
+    const { studentId } = req.query;
+
     try {
-        const { name, email, phone, username, urlAvatar } =
+        const { _id, name, email, phoneNumber, username, urlAvatar } =
             await Account.findOne({
                 _id: ObjectId(studentId),
             });
+
         const tasks = await Task.find({
             studentId: ObjectId(studentId),
         });
 
         const result = {
+            id: _id,
             name,
             email,
-            phone,
+            phoneNumber,
             username,
             tasks,
             urlAvatar,

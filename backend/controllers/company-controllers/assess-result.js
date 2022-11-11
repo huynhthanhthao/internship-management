@@ -1,7 +1,7 @@
 import CompanyAssess from "../../models/CompanyAssess.js";
 import { ObjectId } from "mongodb";
 const assessResult = async function (req, res, next) {
-    const { studentId, points } = req.body;
+    const { studentId, points, message } = req.body;
 
     try {
         const findStudent = await CompanyAssess.findOneAndUpdate(

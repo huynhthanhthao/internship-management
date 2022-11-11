@@ -8,7 +8,7 @@
             aria-labelledby="ModalLabel"
             aria-hidden="true"
         >
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title fw-bold" id="ModalLabel">
@@ -22,7 +22,7 @@
                             aria-label="Close"
                         ></button>
                     </div>
-                    <div class="modal-body">{{ modal.message }}</div>
+                    <div class="modal-body">{{ message }}</div>
                     <div class="modal-footer">
                         <slot></slot>
                     </div>
@@ -38,7 +38,7 @@ import { mapGetters } from "vuex";
 export default {
     name: "ModalComponent",
     computed: mapGetters({ modal: "getModal" }),
-    props: ["id"],
+    props: ["id", "message"],
 };
 </script>
 

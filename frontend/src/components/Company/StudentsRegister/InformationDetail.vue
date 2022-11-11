@@ -65,6 +65,7 @@ import { mapGetters, mapMutations } from "vuex";
 
 export default {
     name: "InformationDetail",
+
     methods: {
         ...mapMutations({
             closeDetail: "CLOSE_DETAIL",

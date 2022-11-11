@@ -38,27 +38,43 @@
                 <Statistics v-else />
             </div>
         </div>
-
-        <Modal id="ModalRefuse"
+        <Modal id="ModalRefuse" message="Bạn có chắc muốn xóa ứng viên này?"
             ><button
                 type="button"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
             >
-                account
+                Đóng
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                @click="handleRefuse(student.id)"
+            >
+                Xác nhận
+            </button>
         </Modal>
 
-        <Modal id="ModalAccept"
+        <Modal
+            id="ModalAccept"
+            message="Bạn có chắc muốn xác nhận ứng viên này?"
             ><button
                 type="button"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
             >
-                Close2
+                Đóng
             </button>
-            <button type="button" class="btn btn-primary">Save changes2</button>
+            <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                @click="handleConfirm(student.id)"
+            >
+                Xác nhận
+            </button>
         </Modal>
     </div>
 </template>
@@ -69,7 +85,7 @@ import config from "@/config/index.js";
 import ItemStudent from "../../components/Company/StudentsRegister/ItemStudent.vue";
 import InformationDetail from "../../components/Company/StudentsRegister/InformationDetail.vue";
 import Statistics from "../../components/Company/StudentsRegister/Statistics.vue";
-import Modal from "../../components/Modal/Modal.vue";
+import Modal from "@/components/Modal/Modal.vue";
 
 import { mapActions, mapGetters } from "vuex";
 export default {
@@ -79,8 +95,72 @@ export default {
         isShowDetail: "getShowDetail",
         studentList: "getStudentList",
         account: "getAccount",
+        student: "getStudentDetail",
     }),
-    methods: mapActions(["setAccount"]),
+    methods: {
+        ...mapActions(["setAccount"]),
+        async handleRefuse(studentId) {
+            try {
+                const toast = await this.handleDeleteStudent(studentId);
+
+                console.log(toast);
+
+                this.$store.dispatch("setToast", {
+                    isSuccess: toast.status,
+                    message: toast.message,
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async handleConfirm(studentId) {
+            const token = localStorage.getItem("token");
+            try {
+                const res = await axios.post(
+                    `${config.domain}/company/confirm/`,
+                    { studentId, companyId: this.account.id },
+                    {
+                        headers: { Authorization: "Bearer " + token },
+                    }
+                );
+
+                await this.handleRefuse(studentId);
+
+                if (res.data.status) {
+                    this.$store.dispatch("setToast", {
+                        isSuccess: res.data.status,
+                        message: res.data.message,
+                    });
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async handleDeleteStudent(studentId) {
+            const token = localStorage.getItem("token");
+            try {
+                const res = await axios.delete(
+                    `${config.domain}/company/refuse-register/`,
+                    {
+                        headers: { Authorization: "Bearer " + token },
+
+                        data: {
+                            studentId,
+                            companyId: this.account.id,
+                        },
+                    }
+                );
+
+                if (res.data.status) {
+                    this.$store.commit("DELETE_STUDENT", this.student.id);
+                }
+
+                return { status: res.data.status, message: res.data.message };
+            } catch (error) {
+                console.log(error);
+            }
+        },
+    },
     async created() {
         const token = localStorage.getItem("token");
         await this.setAccount();

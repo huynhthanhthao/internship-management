@@ -12,7 +12,7 @@ const refuseRegister = async function (req, res, next) {
 
             res.json({
                 status: true,
-                message: "Xóa ứng viên thành công!",
+                message: "Từ chối ứng viên thành công!",
                 result,
             });
         } else {

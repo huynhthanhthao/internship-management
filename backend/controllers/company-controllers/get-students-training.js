@@ -5,7 +5,7 @@ import { ObjectId } from "mongodb";
 
 const getStudentsTraining = async function (req, res, next) {
     try {
-        const { companyId } = req.body;
+        const { companyId } = req.query;
 
         if (companyId) {
             const studentsTraining = await CompanyAssess.find({
@@ -15,17 +15,13 @@ const getStudentsTraining = async function (req, res, next) {
             const result = [];
 
             for (let i = 0; i < studentsTraining.length; i++) {
-                console.log(
-                    await Account.findOne({
-                        _id: studentsTraining[i].studentId,
-                    })
-                );
-                const { username, name, email, phoneNumber, urlAvatar } =
+                const { _id, username, name, email, phoneNumber, urlAvatar } =
                     await Account.findOne({
                         _id: studentsTraining[i].studentId,
                     });
 
                 const information = {
+                    id: _id,
                     username,
                     name,
                     email,

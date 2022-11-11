@@ -2,12 +2,19 @@
     <div>
         <div class="student-list d-flex animate__fadeIn animate__animated">
             <div class="header-list m-0 p-2 pt-3 col-6" style="color: #555555">
-                <div class="d-flex">
+                <div class="d-flex align-items-center">
                     <h2 class="me-3 fw-bold">
                         Danh sách sinh viên đang quản lý
                     </h2>
-                    <StudentFilter />
+                    <img
+                        src="https://cdn-icons-png.flaticon.com/512/4426/4426381.png"
+                        alt="Lọc sinh viên"
+                        data-bs-toggle="modal"
+                        data-bs-target="#StudentFilter"
+                        class="filter-icon"
+                    />
                 </div>
+
                 <div class="line mt-3 mb-2"></div>
             </div>
         </div>
@@ -33,6 +40,7 @@
                 </tr>
             </tbody>
         </table>
+        <StudentFilter />
     </div>
 </template>
 

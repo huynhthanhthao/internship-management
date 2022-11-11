@@ -1,12 +1,5 @@
 <template>
-    <div class="filter-student d-flex align-items-center">
-        <img
-            src="https://cdn-icons-png.flaticon.com/512/4426/4426381.png"
-            alt="Lọc sinh viên"
-            data-bs-toggle="modal"
-            data-bs-target="#StudentFilter"
-            class="filter-icon"
-        />
+    <div class="filter-student d-flex align-items-center" data-backdrop="false">
         <div
             class="modal fade"
             id="StudentFilter"
@@ -85,7 +78,11 @@
                         >
                             Đóng
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-dismiss="modal"
+                        >
                             Lọc
                         </button>
                     </div>

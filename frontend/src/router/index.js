@@ -99,7 +99,7 @@ const routes = [
         children: [
             { path: "/company/home", component: HomePage },
             { path: "/company/students-register", component: StudentsRegister },
-            { path: "/company/detail-task", component: TaskDetail },
+            { path: "/company/detail-task/:studentId", component: TaskDetail },
             { path: "/company/students-training", component: StudentsTraining },
         ],
     },

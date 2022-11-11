@@ -25,7 +25,6 @@ export default {
 #app {
     font-family: "Noto Sans", sans-serif;
     box-sizing: border-box;
-
     background-image: url("https://elearning.ctu.edu.vn/pluginfile.php/1/theme_lambda/pagebackground/1662695177/CTU_Blank_white.png");
 }
 </style>

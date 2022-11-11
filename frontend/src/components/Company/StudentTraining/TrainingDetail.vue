@@ -22,28 +22,44 @@
                 </div>
                 <div class="col-7 flex-grow-1" style="min-height: 200px">
                     <div class="col-12 my-1">
-                        <strong>MSSV: </strong> B1906570
+                        <strong>MSSV: </strong> {{ student.username }}
                     </div>
                     <div class="col-12 my-1">
-                        <strong>Họ và tên: </strong> Huỳnh Thanh Thảo
+                        <strong>Họ và tên: </strong> {{ student.name }}
                     </div>
                     <div class="col-12 my-1">
-                        <strong>Email: </strong> thaoB1906758@student.ctu.edu.vn
+                        <strong>Email: </strong> {{ student.email }}
                     </div>
                     <div class="col-12 my-1">
-                        <strong>Số điện thoại: </strong> 0939110619
+                        <strong>Số điện thoại: </strong>
+                        {{ student.phoneNumber }}
                     </div>
 
                     <div class="col-12 my-1">
                         <strong>Tiến độ: </strong>
                         <div class="progress w-100 mt-2">
-                            <div class="complete bg-success"></div>
+                            <div
+                                :class="
+                                    student.progress
+                                        ? ' bg-success text-light d-flex justify-content-center align-items-center'
+                                        : ' d-flex justify-content-center align-items-center'
+                                "
+                                :style="`width: ${student.progress || 100}%`"
+                            >
+                                {{
+                                    `${
+                                        student.progress
+                                            ? student.progress.toFixed()
+                                            : 0
+                                    }%`
+                                }}
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 d-flex justify-content-around">
                     <router-link
-                        to="/company/detail-task"
+                        :to="`/company/detail-task/${student.id}`"
                         class="btn btn-outline-secondary d-flex align-items-center"
                     >
                         Quản lý công việc
@@ -56,8 +72,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
     name: "TrainingDetail",
+
+    computed: {
+        ...mapGetters({
+            student: "getStudentTrainingDetail",
+        }),
+    },
 };
 </script>
 
@@ -69,9 +93,5 @@ export default {
 .btn-close {
     top: 10px;
     right: 10px;
-}
-
-.complete {
-    width: 20%;
 }
 </style>

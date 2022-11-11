@@ -5,10 +5,11 @@ import { ObjectId } from "mongodb";
 const getInforRegister = async function (req, res, next) {
     const { studentId, companyId } = req.query;
     try {
-        const { name, email, phone, username, urlAvatar } =
+        const { _id, name, email, phone, username, urlAvatar } =
             await Account.findOne({
                 _id: ObjectId(studentId),
             });
+
         const { message, projects, gpa, languages } =
             await FormRegister.findOne({
                 studentId: ObjectId(studentId),
@@ -16,6 +17,7 @@ const getInforRegister = async function (req, res, next) {
             });
 
         const result = {
+            id: _id,
             name,
             email,
             phone,
@@ -33,7 +35,7 @@ const getInforRegister = async function (req, res, next) {
             result,
         });
     } catch (error) {
-        console.log(error);
+        console.log(error, "Hey");
     }
 };
 

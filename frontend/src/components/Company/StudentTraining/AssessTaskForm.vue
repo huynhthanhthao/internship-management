@@ -24,14 +24,15 @@
                     <form>
                         <div class="mb-3">
                             <label class="form-label"
-                                ><strong>Tên công việc: </strong> Học ngôn ngữ
-                                Python</label
-                            >
+                                ><strong>Tên công việc: </strong>
+                            </label>
+                            <div>{{ task.title }}</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label"
-                                ><strong>Thời gian: </strong> 3 giờ</label
-                            >
+                                ><strong>Thời gian: </strong>
+                            </label>
+                            <div>{{ task.time }}</div>
                         </div>
                         <div class="mb-3">
                             <strong>Trạng thái: </strong>
@@ -42,6 +43,9 @@
                                         id="finished"
                                         name="status_result"
                                         class="me-2"
+                                        :value="true"
+                                        v-model="task.status"
+                                        :selected="task.status"
                                     />
                                     <label for="finished"> Hoàn thành</label>
                                 </div>
@@ -51,6 +55,8 @@
                                         id="unfinished"
                                         name="status_result"
                                         class="me-2"
+                                        :value="false"
+                                        v-model="task.status"
                                     />
                                     <label for="unfinished">
                                         Chưa hoàn thành</label
@@ -68,6 +74,7 @@
                                 class="form-control"
                                 id="AssessTask"
                                 placeholder="Viết đánh giá..."
+                                v-model="task.message"
                             ></textarea>
                         </div>
                     </form>
@@ -80,7 +87,13 @@
                     >
                         Hủy
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button
+                        data-bs-dismiss="modal"
+                        type="button"
+                        class="btn btn-primary"
+                        @click="handleAssessTask"
+                        :disabled="!task.message"
+                    >
                         Xác nhận
                     </button>
                 </div>
@@ -90,8 +103,22 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
     name: "AssessTaskForm",
+    computed: {
+        ...mapGetters({ task: "getTaskCurrent" }),
+    },
+    methods: {
+        handleAssessTask() {
+            this.$store.dispatch("assessTask", {
+                taskId: this.task._id,
+                status: this.task.status,
+                message: this.task.message,
+            });
+        },
+    },
 };
 </script>
 

@@ -29,6 +29,7 @@
                                 type="text"
                                 class="form-control"
                                 id="nameTask"
+                                v-model="title"
                             />
                         </div>
                         <div class="mb-3">
@@ -41,6 +42,7 @@
                                 id="work-time"
                                 name="work-time"
                                 class="form-control"
+                                v-model="time"
                             />
                             <div id="workTimelHelp" class="form-text">
                                 Đây là thời gian trễ nhất mà sinh viên có thể
@@ -57,7 +59,13 @@
                     >
                         Đóng
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        @click="handleAddTask"
+                        data-bs-dismiss="modal"
+                        :disabled="!time || !title"
+                    >
                         Xác nhận
                     </button>
                 </div>
@@ -69,6 +77,19 @@
 <script>
 export default {
     name: "AddTaskForm",
+    data() {
+        return { time: "", title: "" };
+    },
+    methods: {
+        handleAddTask() {
+            const studentId = this.$route.params.studentId;
+            this.$store.dispatch(
+                "addTask",
+
+                { studentId, title: this.title, time: this.time }
+            );
+        },
+    },
 };
 </script>
 

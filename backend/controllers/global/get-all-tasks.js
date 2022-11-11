@@ -1,9 +1,9 @@
 import Task from "../../models/Task.js";
 
 const getTasks = async function (req, res, next) {
-    const { studentId } = req.params;
+    const { studentId } = req.query;
     try {
-        const result = await Task.findOne({ studentId });
+        const result = await Task.find({ studentId });
 
         return res.status(201).json({
             status: true,

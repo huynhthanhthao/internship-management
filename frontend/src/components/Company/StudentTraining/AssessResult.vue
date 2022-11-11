@@ -44,7 +44,7 @@
                                         <td style="font-weight: bold">
                                             Tinh thần kỷ luật
                                         </td>
-                                        <td>10</td>
+                                        <td>{{ points[0] }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">I.1</th>
@@ -54,8 +54,9 @@
                                         </td>
                                         <td>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="w-100 form-control"
+                                                v-model="points[1]"
                                             />
                                         </td>
                                     </tr>
@@ -67,24 +68,13 @@
                                         </td>
                                         <td>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="w-100 form-control"
+                                                v-model="points[2]"
                                             />
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">I.2</th>
-                                        <td>
-                                            Chấp hành giờ giấc làm việc (nếu
-                                            thực tập online thì không chấm điểm)
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                class="w-100 form-control"
-                                            />
-                                        </td>
-                                    </tr>
+
                                     <tr>
                                         <th scope="row">I.3</th>
                                         <td>
@@ -94,8 +84,9 @@
                                         </td>
                                         <td>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="w-100 form-control"
+                                                v-model="points[3]"
                                             />
                                         </td>
                                     </tr>
@@ -104,8 +95,9 @@
                                         <td>Tích cực trong công việc</td>
                                         <td>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="w-100 form-control"
+                                                v-model="points[4]"
                                             />
                                         </td>
                                     </tr>
@@ -114,15 +106,16 @@
                                         <td style="font-weight: bold">
                                             Khả năng chuyên môn, nghiệp vụ
                                         </td>
-                                        <td>10</td>
+                                        <td>{{ points[5] }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">II.1</th>
                                         <td>Đáp ứng yêu cầu công việc</td>
                                         <td>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="w-100 form-control"
+                                                v-model="points[6]"
                                             />
                                         </td>
                                     </tr>
@@ -134,8 +127,9 @@
                                         </td>
                                         <td>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="w-100 form-control"
+                                                v-model="points[7]"
                                             />
                                         </td>
                                     </tr>
@@ -147,8 +141,9 @@
                                         </td>
                                         <td>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="w-100 form-control"
+                                                v-model="points[8]"
                                             />
                                         </td>
                                     </tr>
@@ -157,7 +152,7 @@
                                         <td style="font-weight: bold">
                                             Kết quả công tác
                                         </td>
-                                        <td>10</td>
+                                        <td>{{ points[9] }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">III.1</th>
@@ -167,8 +162,9 @@
                                         </td>
                                         <td>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="w-100 form-control"
+                                                v-model="points[10]"
                                             />
                                         </td>
                                     </tr>
@@ -177,8 +173,9 @@
                                         <td>Hoàn thành công việc được giao</td>
                                         <td>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="w-100 form-control"
+                                                v-model="points[11]"
                                             />
                                         </td>
                                     </tr>
@@ -190,8 +187,9 @@
                                         </td>
                                         <td>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="w-100 form-control"
+                                                v-model="points[12]"
                                             />
                                         </td>
                                     </tr>
@@ -200,7 +198,7 @@
                                         <td style="font-weight: bold">Tổng</td>
                                         <td></td>
 
-                                        <td>10</td>
+                                        <td>{{ points[13] }}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3">
@@ -211,6 +209,7 @@
                                                 rows="3"
                                                 class="form-control"
                                                 placeholder="Nhận xét thêm..."
+                                                v-model="message"
                                             ></textarea>
                                         </td>
                                     </tr>
@@ -226,7 +225,25 @@
                         >
                             Đóng
                         </button>
-                        <button type="button" class="btn btn-primary">
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-dismiss="modal"
+                            @click="handleAssess"
+                            :disabled="
+                                !points[1] ||
+                                !points[2] ||
+                                !points[3] ||
+                                !points[4] ||
+                                !points[6] ||
+                                !points[7] ||
+                                !points[8] ||
+                                !points[10] ||
+                                !points[11] ||
+                                !points[12]
+                            "
+                        >
                             Xác nhận
                         </button>
                     </div>
@@ -237,9 +254,85 @@
 </template>
 
 <script>
+import axios from "axios";
+import config from "@/config/index.js";
+
 export default {
     name: "AssessResult",
+    data() {
+        return { points: [], message: "" };
+    },
+    methods: {
+        async handleAssess() {
+            const token = localStorage.getItem("token");
+            const studentId = this.$route.params.studentId;
+            this.points[0] = (
+                (this.points[1] +
+                    this.points[2] +
+                    this.points[3] +
+                    this.points[4]) /
+                4
+            ).toFixed(1);
+
+            this.points[5] = (
+                (this.points[6] + this.points[7] + this.points[8]) /
+                3
+            ).toFixed(1);
+
+            this.points[9] = (
+                (this.points[10] + this.points[11] + this.points[12]) /
+                3
+            ).toFixed(1);
+
+            this.points[13] = (
+                (+this.points[0] + +this.points[5] + +this.points[9]) /
+                3
+            ).toFixed(1);
+
+            const res = await axios.patch(
+                `${config.domain}/company/assess-result`,
+                {
+                    studentId,
+                    points: this.points,
+                    message: this.message,
+                },
+                { headers: { Authorization: "Bearer " + token } }
+            );
+
+            this.$store.commit("SET_TOAST", {
+                message: res.data.message,
+                isSuccess: res.data.status,
+            });
+        },
+    },
+    async mounted() {
+        try {
+            const token = localStorage.getItem("token");
+            const studentId = this.$route.params.studentId;
+            const res = await axios.get(
+                `${config.domain}/company/get-company-assess`,
+                {
+                    headers: { Authorization: "Bearer " + token },
+                    params: {
+                        studentId,
+                    },
+                }
+            );
+            this.points = res.data.result.points;
+            this.message = res.data.result.message;
+            console.log(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    },
 };
 </script>
 
-<style></style>
+<style>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>
