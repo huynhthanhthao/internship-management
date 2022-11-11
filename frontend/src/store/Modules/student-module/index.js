@@ -1,8 +1,3 @@
-import InformationModule from "./information.js";
-const modules = {
-    InformationModule,
-};
-
 const state = {
     showCompany: false,
 };

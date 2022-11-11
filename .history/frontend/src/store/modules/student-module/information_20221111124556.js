@@ -24,17 +24,16 @@ const InformationModule = {
         },
     },
     actions: {
-        async changeInformation({ commit }, newInformation) {
-            try {
-                await axios.put(
-                    `${config.domain}/student/update-student-infor`
-                );
-
-                commit("CHANGE_INFORMATION", newInformation);
-            } catch (error) {
-                console.log(error);
-            }
-        },
+        // async changeInformation({ commit }, newInformation) {
+        //     try {
+        //         const response = await axios.put(
+        //             `${config.domain}/student/update-student-infor`
+        //         );
+        //         commit("CHANGE_INFORMATION", newInformation);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // },
     },
 };
 
