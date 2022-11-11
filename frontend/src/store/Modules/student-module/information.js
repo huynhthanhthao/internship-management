@@ -26,7 +26,7 @@ const InformationModule = {
     actions: {
         async changeInformation({ commit }, newInformation) {
             try {
-                const response = await axios.put(
+                await axios.put(
                     `${config.domain}/student/update-student-infor`
                 );
 

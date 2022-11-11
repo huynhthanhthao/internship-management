@@ -11,7 +11,7 @@
                     :aria-controls="`flush - collapse${index}`"
                 >
                     <img
-                        src="https://cdn-icons-png.flaticon.com/512/3650/3650049.png"
+                        :src="teacher.urlAvatar"
                         alt=""
                         class="me-2"
                         style="width: 30px"

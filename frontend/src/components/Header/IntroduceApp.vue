@@ -25,7 +25,7 @@
                 aria-expanded="false"
             >
                 <img
-                    src="https://cdn-icons-png.flaticon.com/512/236/236831.png"
+                    :src="account.urlAvatar"
                     alt="Ảnh đại diện"
                     style="width: 50px"
                 />

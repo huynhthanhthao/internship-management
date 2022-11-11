@@ -6,7 +6,7 @@ import argon2 from "argon2";
 
 const createAccount = async (req, res, next) => {
     const { username, password, name, typeAccount } = req.body;
-    const urlAvatar = "https://cdn-icons-png.flaticon.com/512/1053/1053244.png";
+    const urlAvatar = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 
     // simple validate
     if (!username || !password || !name || !typeAccount) {

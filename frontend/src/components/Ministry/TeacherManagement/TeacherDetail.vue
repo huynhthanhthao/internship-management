@@ -8,7 +8,7 @@
                 style="height: 180px; width: 200px"
             >
                 <img
-                    src="https://cdn-icons-png.flaticon.com/512/2883/2883939.png"
+                    :src="teacher.urlAvatar"
                     alt=""
                     style="height: 100%; width: 100%"
                 />
