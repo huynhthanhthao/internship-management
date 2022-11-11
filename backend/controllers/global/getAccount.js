@@ -1,24 +1,34 @@
 import Account from "../../models/Account.js";
-import { ObjectId } from "mongodb";
+import jwt from "jsonwebtoken";
 
 const getAccount = async function (req, res, next) {
-  const { accountId } = req.body;
+  const authHeader = req.body.headers.Authorization;
+  const token = authHeader && authHeader.split(" ")[1];
+  if (!token) {
+    return res.json({ status: false, message: "Token not found!" });
+  }
+
   try {
-    const account = await Account.findOne({ _id: ObjectId(accountId) });
-    if (account) {
-      return res.json({
-        status: true,
-        message: "Lấy thông tin tài khoản thành công.",
-        account,
+    // decoded is username
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+    const { _id, username, name, email, phoneNumber, urlAvatar } =
+      await Account.findOne({
+        username: decoded,
       });
-    } else {
-      return res.json({
-        status: false,
-        message: "Không tìm thấy tài khoản!",
-      });
-    }
+
+    const account = { id: _id, username, name, email, phoneNumber, urlAvatar };
+
+    // return account
+
+    return res.json({
+      status: true,
+      message: "Get account successfully!",
+      result: account,
+    });
   } catch (error) {
-    next(error);
+    console.log(error);
+    return res.json({ status: false, message: "Invalid token!" });
   }
 };
 

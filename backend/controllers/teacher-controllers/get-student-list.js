@@ -18,7 +18,7 @@ const getStudentList = async (req, res, next) => {
 
       const company = await Account.findOne({ _id: ObjectId(companyId) });
       result.push({
-        _id,
+        id: _id,
         username,
         name,
         email,
@@ -27,7 +27,7 @@ const getStudentList = async (req, res, next) => {
         class: studentAccounts[i].class,
         semester,
         schoolYear,
-        companyName: company ? company.name : "Chua tham gia thuc tap",
+        companyName: company ? company.name : "Chưa tham gia thực tập",
       });
     }
     return res.json({

@@ -3,40 +3,31 @@ import CompanyAccount from "../../models/CompanyAccount.js";
 import StudentAccount from "../../models/StudentAccount.js";
 import TeacherAccount from "../../models/TeacherAccount.js";
 import argon2 from "argon2";
+
 const createAccount = async (req, res, next) => {
-  const {
-    username,
-    password,
-    name,
-    email,
-    phoneNumber,
-    address,
-    message,
-    typeAccount,
-  } = req.body;
+  const { username, password, name, typeAccount } = req.body;
   const urlAvatar = "https://cdn-icons-png.flaticon.com/512/1053/1053244.png";
+
+  // simple validate
+  if (!username || !password || !name || !typeAccount) {
+    return res.json({
+      status: false,
+      message: "Vui lòng điền đầy đủ thông tin!",
+    });
+  }
   try {
     const findAccount = await Account.findOne({ username });
     if (!findAccount) {
-      const hashPassword = await argon2.hash(password);
+      const hashedPassword = await argon2.hash(password);
       const newAccount = await Account.create({
         username,
-        password: hashPassword,
+        password: hashedPassword,
         name,
-        email,
-        phoneNumber,
         urlAvatar,
         rule: typeAccount,
         createdAt: Date.now(),
       });
 
-      if (typeAccount === "MINISTRY" || typeAccount === "ADMIN") {
-        return res.json({
-          status: true,
-          message: "Tạo mới một tài khoản thành công!",
-          newAccount,
-        });
-      }
       if (typeAccount === "TEACHER") {
         const teacherAccount = await TeacherAccount.create({
           teacherId: newAccount._id,
@@ -51,6 +42,15 @@ const createAccount = async (req, res, next) => {
 
       if (typeAccount === "STUDENT") {
         const { studentClass } = req.body;
+
+        // simple validate
+        if (!studentClass) {
+          return res.json({
+            status: false,
+            message: "Vui lòng điền đầy đủ thông tin!",
+          });
+        }
+
         const studentAccount = await StudentAccount.create({
           studentId: newAccount._id,
           class: studentClass,
@@ -66,8 +66,6 @@ const createAccount = async (req, res, next) => {
       if (typeAccount === "COMPANY") {
         const companyAccount = await CompanyAccount.create({
           companyId: newAccount._id,
-          message,
-          address,
         });
         return res.json({
           status: true,

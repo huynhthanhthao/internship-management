@@ -1,26 +1,25 @@
 import InformationModule from "./information.js";
-
 const modules = {
-    InformationModule,
+  InformationModule,
 };
 
 const state = {
-    detailCompany: false,
+  showCompany: false,
 };
 
 const getters = {
-    getDetailCompany(state) {
-        return state.detailCompany;
-    },
+  getShowCompany(state) {
+    return state.showCompany;
+  },
 };
 
 const mutations = {
-    SHOW_DETAIL_COMPANY(state) {
-        state.detailCompany = true;
-    },
-    CLOSE_DETAIL_COMPANY(state) {
-        state.detailCompany = false;
-    },
+  SHOW_COMPANY(state) {
+    state.showCompany = true;
+  },
+  CLOSE_COMPANY(state) {
+    state.showCompany = false;
+  },
 };
 
 const actions = {};

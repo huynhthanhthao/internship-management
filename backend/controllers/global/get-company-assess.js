@@ -1,27 +1,19 @@
-import { ObjectId } from "mongodb";
 import CompanyAssess from "../../models/CompanyAssess.js";
+import { ObjectId } from "mongodb";
 
-const getCompanyAssess = async (req, res, next) => {
-  const { studentId, companyId } = req.body;
+const getCompanyAssess = async function (req, res, next) {
   try {
-    const { points, message } = await CompanyAssess.findOne({
+    const { studentId } = req.query;
+
+    const result = await CompanyAssess.findOne({
       studentId: ObjectId(studentId),
-      companyId: ObjectId(companyId),
     });
 
-    if (points) {
-      const result = { points, message };
-      return res.json({
-        status: true,
-        message: "Lấy đánh giá của đơn vị thực tập thành công!",
-        result,
-      });
-    } else {
-      return res.json({
-        status: false,
-        message: "Không xác định được sinh viên và đơn vị thực tập!",
-      });
-    }
+    return res.json({
+      status: true,
+      message: "Lấy thông tin đánh giá của đơn vị thành công!",
+      result,
+    });
   } catch (error) {
     next(error);
   }

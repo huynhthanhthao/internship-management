@@ -8,7 +8,7 @@
 
 <script>
 import Header from "@/components/Header/Header.vue";
-import InforStudent from "@/components/Student/Infor/InforStudent.vue";
+import InforStudent from "../components/Student/Infor/InforUser.vue";
 export default {
     name: "StudentComponent",
     components: { Header, InforStudent },

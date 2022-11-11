@@ -1,5 +1,5 @@
 <template>
-<div class="detail-student" v-if="getDetailStudent">
+<div class="detail-student" v-if="detail">
     <div class="detail__infor position-relative border rounded-2 p-3 row animate__fadeIn animate__animated m-0" >
         <button
             type="button"
@@ -8,22 +8,21 @@
             @click="closeDetail"
         >
         </button>
-        <AvatarComponent :avatar="avatar" class="col-5 me-3"/>
+        <AvatarComponent :avatar="{path: studentActive.urlAvatar, height: 150, width: 150}" class="col-5 me-3"/>
         <div class="col-7 flex-grow-1">
-            <div class="col-12 mb-3"><strong>MSSV: </strong> B1906570</div>
+            <div class="col-12 mb-3"><strong>MSSV: </strong> {{studentActive.username}}</div>
             <div class="col-12 mb-3">
-                <strong>Họ và tên: </strong> Huỳnh Thanh Thảo
+                <strong>Họ và tên: </strong> {{studentActive.name}}
             </div>
             <div class="col-12 mb-3">
-                <strong>Email: </strong> thaoB1906758@student.ctu.edu.vn
+                <strong>Email: </strong> {{studentActive.email}}
             </div>
             <div class="col-12 mb-3">
-                <strong>Đơn vị thực tập: </strong> Công ty TNHH MTV An Toàn
-                Khu
+                <strong>Đơn vị thực tập: </strong> {{studentActive.companyName}}
             </div>
         </div>
         <div class="col-12 d-flex justify-content-around mt-3">
-            <router-link to="/teacher/view/progress/id">
+            <router-link :to="'/teacher/view/progress/'+ studentActive.id">
                 <button type="button" class="btn btn-primary" >
                 Xem thông tin thực tập
                 </button>
@@ -34,7 +33,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 import AvatarComponent from "@/components/GlobalComponent/AvatarComponent.vue";
 export default {
     name: "DetailStudent",
@@ -48,19 +47,22 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(["getDetailStudent"]),
+        ...mapGetters({
+            detail: "getDetailStudent", 
+            studentActive: "getStudentActive"
+        }
+        ),
     },
+
     methods: {
-        ...mapMutations({
-            closeDetailStudent: "CLOSE_DETAIL_STUDENT",
-        }),
         closeDetail() {
             const headerDetail = document.querySelector(".title-detail .label");
             headerDetail.innerText = "Tổng quan";
-            this.closeDetailStudent();
+            this.$store.commit("CLOSE_DETAIL_STUDENT")
         }
     },
-    components: { AvatarComponent }
+    components: { AvatarComponent },
+  
 }
 </script>
 

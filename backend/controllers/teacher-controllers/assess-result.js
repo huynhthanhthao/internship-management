@@ -5,10 +5,13 @@ const assessResult = async function (req, res, next) {
   try {
     const { studentId, points } = req.body;
 
-    const result = await TeacherAssess.create({
-      studentId: ObjectId(studentId),
-      points,
-    });
+    const result = await TeacherAssess.updateOne(
+      { studentId: ObjectId(studentId) },
+      {
+        $set: { points },
+      },
+      { upsert: true }
+    );
     return res.json({
       status: true,
       message: "Đánh giá thành công!",

@@ -1,3 +1,6 @@
+import config from "../../config/index.js";
+import axios from "axios";
+
 const accountModule = {
   state: {
     account: {
@@ -17,14 +20,22 @@ const accountModule = {
   },
   mutations: {
     SET_ACCOUNT(state, accountInfor) {
-      state.account.id = accountInfor.id;
-      state.account.username = accountInfor.username;
-      state.account.name = accountInfor.name;
-      state.account.email = accountInfor.email;
-      state.account.phoneNumber = accountInfor.phoneNumber;
-      state.account.urlAvatar = accountInfor.urlAvatar;
+      state.account = accountInfor;
     },
   },
-  actions: {},
+  actions: {
+    async setAccount({ commit }) {
+      const token = localStorage.getItem("token");
+      // set account store
+      if (token) {
+        const response = await axios.post(`${config.domain}/get-account`, {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        commit("SET_ACCOUNT", response.data.result);
+      }
+    },
+  },
 };
 export default accountModule;

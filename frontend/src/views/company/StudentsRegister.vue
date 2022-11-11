@@ -39,7 +39,7 @@
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
             >
-                Close
+                account
             </button>
             <button type="button" class="btn btn-primary">Save changes</button>
         </Modal>
@@ -67,7 +67,9 @@ import { mapGetters } from "vuex";
 export default {
     name: "StudentsRegister",
     components: { ItemStudent, InformationDetail, Statistics, Modal },
-    computed: mapGetters({ isShowDetail: "getShowDetailRegister" }),
+    computed: mapGetters({
+        isShowDetail: "getShowDetailRegister",
+    }),
 };
 </script>
 

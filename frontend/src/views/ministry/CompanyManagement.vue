@@ -21,12 +21,15 @@
                     </h2>
                 </div>
             </div>
-            <div class="col-6">
-                <div
-                    class="accordion"
-                    style="height: 500px; overflow-y: scroll"
-                >
-                    <CompanyItem class="mb-2 me-2" />
+            <div class="col-6" style="height: 500px; overflow-y: scroll">
+                <div class="accordion">
+                    <CompanyItem
+                        class="mb-2 me-2"
+                        v-for="(company, index) in companyList"
+                        :key="index"
+                        :company="company"
+                        :index="index"
+                    />
                 </div>
             </div>
 
@@ -39,6 +42,9 @@
 </template>
 
 <script>
+import axios from "axios";
+import config from "@/config/index.js";
+
 import CompanyItem from "../../components/Ministry/CompanyManagement/CompanyItem.vue";
 import CompanyDetail from "../../components/Ministry/CompanyManagement/CompanyDetail.vue";
 import Statistics from "../../components/Ministry/CompanyManagement/Statistics.vue";
@@ -51,7 +57,33 @@ export default {
         CompanyItem,
         Statistics,
     },
-    computed: mapGetters({ isShowDetail: "getShowDetailRegister" }),
+    computed: mapGetters({
+        isShowDetail: "getShowDetail",
+        companyList: "getCompanyList",
+    }),
+
+    async created() {
+        try {
+            // Dong xem chi tiet
+            this.$store.commit("CLOSE_DETAIL");
+
+            // Load du lieu
+            const token = localStorage.getItem("token");
+            const res = await axios.get(
+                `${config.domain}/ministry/get-all-companies`,
+                {
+                    headers: {
+                        Authorization: "Bearer " + token,
+                    },
+                }
+            );
+
+            this.$store.commit("SET_COMPANY_LIST", res.data.result);
+            console.log(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    },
 };
 </script>
 

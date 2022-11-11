@@ -1,3 +1,11 @@
+import StudentList from "./studentList.js";
+import InforInternship from "./inforInternship.js";
+
+const modules = {
+  StudentList,
+  InforInternship,
+};
+
 const state = {
   detailStudent: false,
 };
@@ -20,4 +28,4 @@ const mutations = {
 
 const actions = {};
 
-export default { state, getters, mutations, actions };
+export default { modules, state, getters, mutations, actions };

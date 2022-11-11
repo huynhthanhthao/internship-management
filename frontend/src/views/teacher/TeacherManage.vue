@@ -1,113 +1,119 @@
 <template>
     <div class="teacher-manage p-4">
         <div class="col-12 d-flex">
-            <TitleStructure :title="`Danh sách sinh viên`" class="col-6 me-4">
-                <StudentFilter
-            /></TitleStructure>
-
+            <TitleStructure 
+                :title="`Danh sách sinh viên`" 
+                class="col-6 me-4"
+            >
+                <StudentFilter/>
+            </TitleStructure>
             <TitleStructure
                 :title="`Tổng quan`"
                 class="col-6 title-detail"
-            ></TitleStructure>
+            >
+            </TitleStructure>
         </div>
         <div class="teacher-manage__content row">
             <div class="teacher-student-list col-6">
                 <div class="teacher-student-item">
-                    <ObjectItem
-                        :infor="infor"
-                        :itemId="`1`"
-                        :layout="layout"
-                        class="me-3"
-                    >
-                        <div class="col-12 d-flex justify-content-center mt-4">
-                            <button
-                                type="button"
-                                class="btn btn-outline-secondary p-2"
-                                style="font-size: 15px"
-                                @click="showDetail"
-                            >
-                                Xem chi tiết
-                            </button>
-                        </div>
-                    </ObjectItem>
+                    <StudentItem v-for="(student, index) in currentList" :key="index" :index="`id${index}`" :student="student" class="me-3"> 
+                    </StudentItem>
                 </div>
             </div>
             <div class="view-detail col-6 flex-grow-1">
                 <Overview />
-                <DetailStudent class="mt-5"></DetailStudent>
+                <DetailStudent></DetailStudent>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
-import ObjectItem from "@/components/GlobalComponent/ObjectItem.vue";
+import axios from "axios";
+import config from "@/config";
+import { mapGetters, mapActions } from "vuex";
 import Overview from "@/components/Teacher/Manage/Overview.vue";
 import DetailStudent from "@/components/Teacher/Manage/DetailStudent.vue";
 import TitleStructure from "@/components/GlobalComponent/TitleStructure.vue";
 import StudentFilter from "@/components/StudentFilter/StudentFilter.vue";
+import StudentItem from "../../components/Teacher/Manage/StudentItem.vue"
 
 export default {
     name: "TeacherManage",
     components: {
         Overview,
         DetailStudent,
-        ObjectItem,
         StudentFilter,
         TitleStructure,
+        StudentItem
     },
-    data() {
-        return {
-            layout: {
-                identify: "MSSV",
-                "unit-address": "Đơn vị thực tập",
-            },
-            infor: {
-                avatar: "https://cdn-icons-png.flaticon.com/512/2436/2436683.png",
-                name: "Huỳnh Thanh Thảo",
-                identify: "B1906758",
-                "unit-address": "Tập đoàn viễn thông quân đội Viettel",
-            },
-        };
-    },
-    // Close detailStudent when the all of accordions are not show.
-    mounted() {
-        const accordionShow = document.querySelector(
-            ".accordion-collapse.show"
+    computed: {
+        ...mapGetters({ account: "getAccount", currentList: "getCurrentList"}),
+    }
+    ,
+
+    methods: mapActions(["setAccount"]),
+    
+    async created() {
+        
+        //Tao lai account khi refresh
+        await this.setAccount();
+
+        const token = localStorage.getItem("token");
+        
+        // Lay danh sach lop <classManagement> cua giang vien!
+        const response = await axios.get(
+            `${config.domain}/teacher/get-class-list`,
+            {
+                headers: { Authorization: "Bearer " + token },
+                params: { teacherId: this.account.id},
+            }
         );
-        if (!accordionShow) {
-            this.closeDetail();
+        const classList = response.data.result;
+
+        //Lay ten lop tu danh sach lop cua giang vien!
+        const className = [];
+        classList.forEach((classManagement) => {
+            if (!className.includes(classManagement.className)) {
+                className.push(classManagement.className)
+            }
+        });
+        this.$store.commit("SET_CLASS_NAME", className);
+        
+        //Lay danh sach sinh vien tu ten lop cua giang vien
+        const studentList = [];
+        for (let i=0;i<className.length; ++i){
+            const response = await axios.get(
+                `${config.domain}/teacher/get-student-list`,
+                {
+                    headers: { Authorization: "Bearer " + token },
+                    params: { className: className[i] },
+                }
+            );
+            const tempt = response.data.result
+            studentList.push(...tempt);
         }
-    },
-    methods: {
-        ...mapMutations({
-            showDetailStudent: "SHOW_DETAIL_STUDENT",
-            closeDetailStudent: "CLOSE_DETAIL_STUDENT",
-        }),
 
-        showDetail() {
-            const headerDetail = document.querySelector(".title-detail .label");
-            headerDetail.innerText = "Thông tin chi tiết";
-            this.showDetailStudent();
-        },
-
-        closeDetail() {
-            const headerDetail = document.querySelector(".title-detail .label");
-            headerDetail.innerText = "Tổng quan";
-            this.closeDetailStudent();
-        },
+        this.$store.commit("SET_STUDENT_LIST", studentList);
+        this.$store.commit("SET_CURRENT_LIST", studentList);
     },
+    mounted(){
+        // Dong cac detail khi accordion khong mo.
+        const accordion = document.querySelector(".accordion-collapse.show");
+        if(!accordion){
+            this.$store.commit("CLOSE_DETAIL_STUDENT");
+        }
+    }
+
 };
 </script>
 
 <style scoped>
-.teacher-student-item {
-    height: 420px;
-    overflow-y: scroll;
-}
-
-.view-detail {
-    width: 49%;
-}
+    .teacher-student-item {
+        height: 420px;
+        overflow-y: scroll;
+    }
+    .view-detail {
+        width: 49%;
+    }
 </style>

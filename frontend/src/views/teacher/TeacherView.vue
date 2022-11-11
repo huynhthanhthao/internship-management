@@ -6,43 +6,49 @@
                 <TitleStructure :title="`Thông tin đơn vị thực tập`" class="col-6 title-detail"></TitleStructure>
             </div>
             <div class="row m-0 pt-3 pb-5 border-bottom justify-content-between">
-                <ObjectInfor :infor="inforStudent"/>
-                <ObjectInfor :infor="inforCompany"/>
+                <InforStudent></InforStudent>
+                <InforCompany></InforCompany>
             </div>
         </div>
-        <InforInternship/>
+        <InforInternship v-if="student.companyId!==null"/>
     </div>
 </template>
 
 <script>
-
-import InforInternship from '@/components/Teacher/ProgressAssess/InforInternship.vue';
-import ObjectInfor from '@/components/GlobalComponent/ObjectInfor.vue';
-import TitleStructure from '@/components/GlobalComponent/TitleStructure.vue';
+import { mapGetters } from 'vuex';
+import InforInternship from '../../components/Teacher/ProgressAssess/InforInternship.vue';
+import InforStudent from '../../components/GlobalComponent/InforStudent.vue';
+import InforCompany from '../../components/GlobalComponent/InforCompany.vue';
+import TitleStructure from "../../components/GlobalComponent/TitleStructure.vue";
 
 export default {
     name: "TeacherView",
-    data(){
-        return {
-            title: {
-                headerList: "Thông tin sinh viên",
-                headerDetail: "Thông tin đơn vị thực tập"
-            },
-            inforStudent: {
-                "MSSV": "B1900001",
-                "Họ và tên": "Huỳnh Thanh Thảo",
-                "Email": "thaob1900001@student.ctu.edu.vn",
-                "Đơn vị": "Tập đoàn viễn thông quân đội Viettel"
-            },
-            inforCompany: {
-                "Đơn vị thực tập": "Tập đoàn viễn thông quân đội Viettel",
-                "Email":"contacts@viettel.com",
-                "Số điện thoại": "0999489362",
-                "Địa chỉ": "Xuân Khánh, Ninh Kiểu, Cần Thơ",
-            }
-        }
+    components: { InforInternship, InforCompany, TitleStructure, InforStudent },
+    computed:{
+        ...mapGetters({student: "getStudentInfor"})
     },
-    components: { InforInternship, ObjectInfor, TitleStructure },
+    async created(){
+        const studentId = this.$route.params.id;
+        const rule = localStorage.getItem("rule").toLowerCase();
+        const payload = {
+            id: studentId,
+            rule
+        }
+        // Dua thong tin sinh vien vao Store!
+        await this.$store.dispatch("setStudentInfor", payload);
+
+        // Dua thong tin don vi thuc tap vao Store!
+        await this.$store.dispatch("setCompanyInfor", payload);
+
+        // Dua thong tin tien do thuc tap vao Store!
+        await this.$store.dispatch("setProgressInfor", payload);
+
+        // Dua thong tin danh gia cua cong ty vao Store
+        await this.$store.dispatch("setCompanyAssess", payload);
+    },
+
+
+
 }
 </script>
 

@@ -9,42 +9,38 @@
                 <div class="modal-body ps-0">
                     <form action="" class="row col-12  p-0 my-3 mx-2">
                         <div class="avatar col-4 d-flex flex-column align-items-center ps-0">
-                            <AvatarComponent :avatar="avatar" class="col-12"/>
-                            <h3 class="col-10 text-center fw-bold mt-3" style="color:#1f5caa">Trần Nguyễn Nguyên Minh</h3>
+                            <AvatarComponent :avatar="{path: student.urlAvatar, height: 200, width: 200}" class="col-12"/>
+                            <h3 class="col-10 text-center fw-bold mt-3" style="color:#1f5caa">{{student.name}}</h3>
                         </div>
                         <div class="infor col-8">
                             <div class="mb-3 row">
-                                <label for="inputEmail" class="col-3 col-form-label px-0"><strong>Email:</strong></label>
-                                <div class="col-9">
-                                    <input type="email" class="form-control" id="inputEmail">
-                                </div>
+                                <span class="col-3 px-0"><strong>Email: </strong></span>
+                                <span class="col-6">{{ student.email }}</span>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPhone" class="col-3 col-form-label px-0"><strong>Điện thoại:</strong></label>
-                                <div class="col-6">
-                                    <input type="text" class="form-control" id="inputPhone">
-                                </div>
+                                <span class="col-3 px-0"><strong>Số điện thoại: </strong></span>
+                                <span class="col-6">{{ student.phoneNumber }}</span>
                                 <label for="inputGPA" class="col-1 col-form-label px-0 ms-auto"><strong>GPA:</strong></label>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" id="inputGPA">
+                                    <input type="text" class="form-control" id="inputGPA" v-model="gpa">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputLanguage" class="col-3 col-form-label px-0"><strong>Ngôn ngữ:</strong></label>
                                 <div class="col-9">
-                                    <input type="email" class="form-control" id="inputLanguage">
+                                    <input type="text" class="form-control" id="inputLanguage" v-model="languages">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="textareaProject" class="col-3 col-form-label px-0"><strong>Dự án:</strong></label>
                                 <div class="col-9">
-                                    <textarea class="form-control" id="textareaProject"></textarea>
+                                    <textarea class="form-control" id="textareaProject" v-model="projects"></textarea>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="textareaProject" class="col-3 col-form-label px-0"><strong>Thông điệp:</strong></label>
                                 <div class="col-9">
-                                    <textarea class="form-control" id="textareaProject"></textarea>
+                                    <textarea class="form-control" id="textareaProject" v-model="message"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +48,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary">Gửi</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="sendRegister">Gửi</button>
                 </div>
             </div>
         </div>
@@ -61,16 +57,48 @@
 
 <script>
 import AvatarComponent from '@/components/GlobalComponent/AvatarComponent.vue';
+import { mapActions, mapGetters } from 'vuex';
+import axios from 'axios';
+import config from '@/config';
 export default {
     name: "SendRegister",
     data(){
-        return {
-            avatar: {
-                path: "https://images.unsplash.com/photo-1664745027113-0145831af78a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=821&q=80",
-                height: 200,
-                width: 200,
-            }
+        return{
+            gpa: "",
+            languages: "",
+            projects: "",
+            message: ""
+
         }
+    },
+    computed:{
+        ...mapGetters({student: "getAccount", company: "getCompanyDetail"}),
+    },
+    methods: {
+        ...mapActions(["setAccount"]),
+         async sendRegister(){
+            this.gpa = this.gpa.replace(",", ".");
+            let gpa = isNaN(parseFloat(this.gpa)) ? 0 : parseFloat(this.gpa);
+            const token = localStorage.getItem("token");
+            const response = await axios.post(
+                `${config.domain}/student/register-company`,
+                { 
+                    studentId: this.student.id, 
+                    companyId: this.company.id, 
+                    gpa, 
+                    languages: this.languages, 
+                    projects: this.projects,
+                    message: this.message 
+                },
+                {
+                    headers: { Authorization: "Bearer " + token },
+                }
+             );
+             this.$store.dispatch("setToast", {isSuccess: true, message: response.data.message})
+        }
+    },
+    created(){
+        this.setAccount();
     },
     components: { AvatarComponent }
 }

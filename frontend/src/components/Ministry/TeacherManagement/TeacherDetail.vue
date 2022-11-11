@@ -15,16 +15,24 @@
             </div>
             <div class="col-7 flex-grow-1">
                 <div class="col-12 my-1">
-                    <strong>Họ tên cán bộ: </strong> Huỳnh Thanh Thảo
+                    <strong>Họ tên cán bộ: </strong> {{ teacher.name }}
                 </div>
                 <div class="col-12 my-1">
-                    <strong>Email: </strong> thaoB1906758@student.ctu.edu.vn
+                    <strong>Mã cán bộ: </strong> {{ teacher.username }}
                 </div>
                 <div class="col-12 my-1">
-                    <strong>Điện thoại: </strong> 0939 105 554
+                    <strong>Email: </strong> {{ teacher.email }}
                 </div>
                 <div class="col-12 my-1">
-                    <strong>Quản lý lớp: </strong> DI1996A3
+                    <strong>Điện thoại: </strong> {{ teacher.phoneNumber }}
+                </div>
+                <div class="col-12 my-1">
+                    <strong>Quản lý lớp: </strong><br />
+                    <span
+                        v-for="(item, index) in teacher.classesManagement"
+                        :key="index"
+                        >{{ item }} <br
+                    /></span>
                 </div>
             </div>
             <slot></slot>
@@ -33,8 +41,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
     name: "TeacherDetail",
+    computed: mapGetters({ teacher: "getTeacherDetail" }),
 };
 </script>
 

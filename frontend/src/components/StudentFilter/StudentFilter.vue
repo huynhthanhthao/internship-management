@@ -39,13 +39,10 @@
                                 id="class"
                                 class="form-select"
                                 aria-label="Default select example"
+                                v-model="filterData.class"
                             >
-                                <option selected>Tất cả</option>
-                                <option value="DI1996A1">DI1996A1</option>
-                                <option value="DI1996A2">DI1996A2</option>
-                                <option value="DI1996A3">DI1996A3</option>
-                                <option value="DI1996A4">DI1996A4</option>
-                                <option value="DI1996A5">DI1996A5</option>
+                                <option selected value="">Tất cả</option>
+                                <option v-for="(value, index) in className" :key="index" :value="value">{{value}}</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -56,8 +53,9 @@
                                 id="semester"
                                 class="form-select"
                                 aria-label="Default select example"
+                                v-model="filterData.semester"
                             >
-                                <option selected>Tất cả</option>
+                                <option selected value="">Tất cả</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">Hè</option>
@@ -69,11 +67,14 @@
                                 id="year"
                                 class="form-select"
                                 aria-label="Default select example"
+                                v-model="filterData.schoolYear"
                             >
-                                <option selected>Tất cả</option>
+                                <option selected value="">Tất cả</option>
                                 <option value="2019-2020">2019-2020</option>
                                 <option value="2020-2021">2020-2021</option>
                                 <option value="2021-2022">2021-2022</option>
+                                <option value="2021-2022">2022-2023</option>
+                                <option value="2021-2022">2023-2024</option>
                             </select>
                         </div>
                     </div>
@@ -85,7 +86,7 @@
                         >
                             Đóng
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="filterStudent($event)">
                             Lọc
                         </button>
                     </div>
@@ -96,8 +97,47 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     name: "StudentFilter",
+    data(){
+        return{
+            filterData:{
+                class:"",
+                semester: "",
+                schoolYear: "",
+            }
+        }
+    },
+    computed: {
+        ...mapGetters({className: "getClassName",currentList: "getCurrentList", studentList: "getStudentList"})
+    },
+    methods: {
+        filterStudent(){
+            const data = {};
+            for(let key in this.filterData){
+                if(this.filterData[key]){
+                    data[key] = this.filterData[key];
+                }
+            }
+            let resultFilter = [];
+            if(data){
+                resultFilter = this.studentList.filter((student) => {
+                    for (let key in data) {
+                        if (data[key] != student[key]) {
+                            return false;
+                        }
+                    }
+                    return true;
+                });
+            }
+            else{
+                resultFilter = this.studentList;
+            }
+            this.$store.commit("SET_CURRENT_LIST", resultFilter);
+        }
+    }
 };
 </script>
 

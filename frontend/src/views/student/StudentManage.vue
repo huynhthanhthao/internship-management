@@ -6,7 +6,7 @@
     </div>
     <div>
         <div class="infor row m-0 pt-3 pb-5 border-bottom justify-content-between">
-            <ObjectInfor :infor="infor" />
+            <InforCompany></InforCompany>
             <div class="manage-internship col-6 d-flex justify-content-center align-items-center mb-4 mx-auto">
                 <div class="col-3 me-5">
                     <router-link to="/student/manage/view-progress" class="router-link">
@@ -41,19 +41,39 @@
 
 <script>
 import TitleStructure from "@/components/GlobalComponent/TitleStructure.vue"
-import ObjectInfor from '@/components/GlobalComponent/ObjectInfor.vue';
-
+import InforCompany from "../../components/GlobalComponent/InforCompany.vue";
+import { mapGetters } from 'vuex';
 export default {
-    components: { ObjectInfor, TitleStructure },
-    data(){
-        return {
-            infor: {
-                "Đơn vị": "Tập đoàn viễn thông quân đội Viettel",
-                "Email": "contacts@viettel.com.vn",
-                "Điện thoại": "0939382723",
-                "Địa chỉ": "Xuân Khánh, Ninh Kiều, Cần Thơ"
-            }
-        }
+    components: {  TitleStructure, InforCompany },
+
+    computed: {
+        ...mapGetters({account: "getAccount"})
+    },
+
+    methods: {
+        clearDisabled() {
+            const buttons = document.querySelectorAll(".manage-internship button");
+            buttons.forEach((button) => {
+                button.disabled = false;
+            })
+        },
+        viewInforInternship(event) {
+            this.clearDisabled();
+            event.currentTarget.disabled = true;
+        },
+    },
+
+    async created(){
+        await this.$store.dispatch("setAccount");
+        const rule = localStorage.getItem("rule").toLowerCase();
+        const payload = {id: this.account.id, rule};
+
+        // Dat cac thong tin thuc tap cua sinh vien vao Store de su dung.
+        await this.$store.dispatch("setStudentInfor", payload);
+        await this.$store.dispatch("setCompanyInfor", payload);
+        await this.$store.dispatch("setProgressInfor", payload);
+        await this.$store.dispatch("setCompanyAssess", payload);
+        await this.$store.dispatch("setTeacherAssess", payload);
     },
     mounted(){
         const viewProgress = document.querySelector(".view-progress");
@@ -73,18 +93,6 @@ export default {
             btnTeacher.disabled = true;
         }
     },
-    methods:{
-        clearDisabled(){
-           const buttons = document.querySelectorAll(".manage-internship button");
-           buttons.forEach((button) => {
-            button.disabled = false;
-           })
-        },
-        viewInforInternship(event){
-            this.clearDisabled();
-            event.currentTarget.disabled = true;
-        },
-    }
 }
 </script>
 
