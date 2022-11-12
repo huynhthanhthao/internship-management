@@ -44,6 +44,7 @@ const getStudentManaged = async function (req, res, next) {
                 await Account.findOne({
                     _id: studentIds[i].studentId,
                 });
+            console.log(studentIds[i].class);
             studentList.push({
                 username,
                 name,
@@ -59,7 +60,6 @@ const getStudentManaged = async function (req, res, next) {
             status: true,
             message:
                 "Lấy danh sách sinh viên quản lý bởi giảng viên thành công!",
-            classes,
             result: studentList,
         });
     } catch (error) {

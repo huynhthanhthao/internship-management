@@ -41,7 +41,7 @@ const createAccount = async (req, res, next) => {
             }
 
             if (typeAccount === "STUDENT") {
-                const { studentClass, semester, schoolYear } = req.body;
+                const { studentClass } = req.body;
 
                 // simple validate
                 if (!studentClass) {
@@ -54,8 +54,6 @@ const createAccount = async (req, res, next) => {
                 const studentAccount = await StudentAccount.create({
                     studentId: newAccount._id,
                     class: studentClass,
-                    semester,
-                    schoolYear,
                 });
                 return res.json({
                     status: true,

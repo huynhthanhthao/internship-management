@@ -19,4 +19,4 @@ const mutations = {
 
 const actions = {};
 
-export default { state, getters, mutations, actions };
+export default { modules, state, getters, mutations, actions };

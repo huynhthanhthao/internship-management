@@ -89,7 +89,7 @@
                             <div
                                 class="mb-3 row px-0 semester-schoolYear justify-content-between student-info d-none"
                             >
-                                <div class="student-class col-4 p-0">
+                                <div class="student-class col-4">
                                     <label
                                         for="inputClass"
                                         class="col-form-label px-0"
@@ -224,8 +224,6 @@ export default {
                     name: this.name.trim(),
                     typeAccount: this.typeAccount,
                     studentClass: this.studentClass.trim(),
-                    semester: this.semester,
-                    schoolYear: this.schoolYear,
                 },
                 {
                     headers: {

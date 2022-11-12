@@ -168,9 +168,7 @@
                         class="btn btn-primary"
                         @click="handleCreateAccount"
                         data-bs-dismiss="modal"
-                        :disabled="
-                            !username || !password || !name || !typeAccount
-                        "
+                        :disabled="checkDisable"
                     >
                         Xác nhận
                     </button>
@@ -224,8 +222,6 @@ export default {
                     name: this.name.trim(),
                     typeAccount: this.typeAccount,
                     studentClass: this.studentClass.trim(),
-                    semester: this.semester,
-                    schoolYear: this.schoolYear,
                 },
                 {
                     headers: {

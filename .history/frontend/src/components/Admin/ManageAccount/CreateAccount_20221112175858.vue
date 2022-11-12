@@ -86,23 +86,21 @@
                                     </option>
                                 </select>
                             </div>
-                            <div
-                                class="mb-3 row px-0 semester-schoolYear justify-content-between student-info d-none"
-                            >
-                                <div class="student-class col-4 p-0">
-                                    <label
-                                        for="inputClass"
-                                        class="col-form-label px-0"
-                                        ><strong>Lớp:</strong></label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="inputClass"
-                                        name="studentClass"
-                                        v-model="studentClass"
-                                    />
-                                </div>
+                            <div class="mb-3 row student-class d-none">
+                                <label
+                                    for="inputClass"
+                                    class="col-form-label px-0"
+                                    ><strong>Lớp:</strong></label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputClass"
+                                    name="studentClass"
+                                    v-model="studentClass"
+                                />
+                            </div>
+                            <div class="mb-3 row px-0 semester-schoolYear">
                                 <div class="semester col-3 p-0">
                                     <label
                                         for="inputSemester"
@@ -121,7 +119,7 @@
                                         <option value="3">Hè</option>
                                     </select>
                                 </div>
-                                <div class="semester col-4 p-0">
+                                <div class="semester col-3 p-0">
                                     <label
                                         for="inputSchoolYear"
                                         class="col-form-label px-0"
@@ -199,13 +197,12 @@ export default {
             studentClass: "",
             typeAccount: "TEACHER",
             semester: "1",
-            schoolYear: "2020-2021",
         };
     },
     methods: {
         selectTypeAccount(event) {
             const type = event.target.value;
-            const studentClass = document.querySelector(".student-info");
+            const studentClass = document.querySelector(".student-class");
             if (type == "STUDENT") {
                 studentClass.classList.remove("d-none");
             } else {
@@ -224,8 +221,6 @@ export default {
                     name: this.name.trim(),
                     typeAccount: this.typeAccount,
                     studentClass: this.studentClass.trim(),
-                    semester: this.semester,
-                    schoolYear: this.schoolYear,
                 },
                 {
                     headers: {

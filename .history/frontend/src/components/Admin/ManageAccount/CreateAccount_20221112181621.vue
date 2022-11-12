@@ -224,8 +224,6 @@ export default {
                     name: this.name.trim(),
                     typeAccount: this.typeAccount,
                     studentClass: this.studentClass.trim(),
-                    semester: this.semester,
-                    schoolYear: this.schoolYear,
                 },
                 {
                     headers: {

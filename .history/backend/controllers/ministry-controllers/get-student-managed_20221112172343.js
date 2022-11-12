@@ -59,7 +59,6 @@ const getStudentManaged = async function (req, res, next) {
             status: true,
             message:
                 "Lấy danh sách sinh viên quản lý bởi giảng viên thành công!",
-            classes,
             result: studentList,
         });
     } catch (error) {

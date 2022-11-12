@@ -124,6 +124,7 @@ export default {
     methods: {
         filterStudent() {
             const data = {};
+            console.log(this.filterData);
             for (let key in this.filterData) {
                 if (this.filterData[key]) {
                     data[key] = this.filterData[key];
@@ -134,6 +135,7 @@ export default {
                 resultFilter = this.studentList.filter((student) => {
                     for (let key in data) {
                         if (data[key] != student[key]) {
+                            console.log(data[key], student[key]);
                             return false;
                         }
                     }

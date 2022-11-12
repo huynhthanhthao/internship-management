@@ -53,13 +53,13 @@ const getStudentManaged = async function (req, res, next) {
                 semester: studentIds[i].semester,
                 schoolYear: studentIds[i].schoolYear,
             });
+            console.log(studentList);
         }
 
         res.json({
             status: true,
             message:
                 "Lấy danh sách sinh viên quản lý bởi giảng viên thành công!",
-            classes,
             result: studentList,
         });
     } catch (error) {

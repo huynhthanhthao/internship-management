@@ -169,7 +169,7 @@
                         @click="handleCreateAccount"
                         data-bs-dismiss="modal"
                         :disabled="
-                            !username || !password || !name || !typeAccount
+                            !username || !password || !name || !typeAccount || (typeAccount==="STUDENT" && )
                         "
                     >
                         Xác nhận
@@ -224,8 +224,6 @@ export default {
                     name: this.name.trim(),
                     typeAccount: this.typeAccount,
                     studentClass: this.studentClass.trim(),
-                    semester: this.semester,
-                    schoolYear: this.schoolYear,
                 },
                 {
                     headers: {
