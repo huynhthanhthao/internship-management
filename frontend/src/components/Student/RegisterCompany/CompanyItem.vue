@@ -13,8 +13,8 @@
                     <img
                         :src="`${company.urlAvatar}`"
                         alt=""
-                        class="me-2"
-                        style="width: 30px"
+                        class="me-2 rounded-circle"
+                        style="width: 35px; height: 35px"
                     />
                     <span>{{ company.name }}</span>
                 </button>
