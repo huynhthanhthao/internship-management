@@ -1,7 +1,7 @@
 <template>
     <div class="detail-company" v-if="showCompany">
         <div
-            class="detail__infor row position-relative border rounded-2 p-3 mx-2 animate__fadeIn animate__animated"
+            class="detail__infor row position-relative border rounded-2 p-4 mx-2 animate__fadeIn animate__animated"
         >
             <button
                 type="button"
@@ -10,10 +10,10 @@
                 @click="closeDetail"
             ></button>
             <AvatarComponent
-                :avatar="{ path: company.urlAvatar, width: 150, height: 150 }"
-                class="col-5 pe-0"
+                :urlAvatar="company.urlAvatar"
+                class="col-4 pe-0"
             />
-            <div class="col-8 ms-3">
+            <div class="col-7 ms-3 mt-2">
                 <div class="col-12 mt-0 mb-3">
                     <strong>Đơn vị: </strong>{{ company.name }}
                 </div>
@@ -27,7 +27,7 @@
                     <strong>Địa chỉ: </strong> {{ company.address }}
                 </div>
             </div>
-            <div class="col-12 my-1 p-0">
+            <div class="col-12 my-4 p-0">
                 <strong>Về đơn vị: </strong> {{ company.message }}
             </div>
             <div class="col-12 d-flex justify-content-around pt-2">

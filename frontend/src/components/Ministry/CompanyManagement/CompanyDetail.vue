@@ -35,9 +35,6 @@
                 <div class="col-12 my-1">
                     <strong>Địa chỉ: </strong> {{ company.address }}
                 </div>
-                <div class="col-12 my-1">
-                    <strong>Số lượng sinh viên đang thực tập: </strong> 150
-                </div>
             </div>
             <div class="col-12 my-1">
                 <strong>Giới thiệu: </strong> {{ company.message }}

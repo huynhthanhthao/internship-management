@@ -15,6 +15,7 @@
             tabindex="-1"
             id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel"
+            style="width: 333px"
         >
             <div class="offcanvas-header text-white">
                 <h5 class="offcanvas-title" id="offcanvasExampleLabel">
@@ -32,19 +33,13 @@
                 <div
                     class="infor-student-header d-flex flex-column align-items-center"
                 >
-                    <Avatar
-                        :avatar="{
-                            path: account.urlAvatar,
-                            height: 200,
-                            width: 200,
-                        }"
-                    />
-                    <h3 class="infor-student-name mt-3">
+                    <Avatar :urlAvatar="account.urlAvatar" />
+                    <h3 class="infor-student-name mt-3 fw-bold">
                         {{ account.name }}
                     </h3>
                 </div>
 
-                <ul class="infor-student-detail fs-6 mt-5 ps-0">
+                <ul class="infor-student-detail fs-6 mt-5 ps-0 ms-4">
                     <li class="infor-student-item mb-2">
                         <span class="item__title me-3">
                             <i class="bi bi-person-circle"></i>
@@ -90,7 +85,10 @@ export default {
     computed: mapGetters({ account: "getAccount" }),
     methods: {
         toUpdate() {
-            this.$router.push("/student/update-infor");
+            console.log(this.account);
+            this.$router.push(
+                `/${this.account.rule.toLowerCase()}/update-infor/view`
+            );
         },
     },
 };

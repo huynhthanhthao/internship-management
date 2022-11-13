@@ -1,9 +1,6 @@
 <template>
     <div class="object-infor col-6 d-flex p-3 border rounded-4">
-        <AvatarComponent
-            :avatar="{ path: student.urlAvatar, height: 150, width: 150 }"
-            class="col-5 me-4"
-        />
+        <AvatarComponent :urlAvatar="student.urlAvatar" class="col-5 me-4" />
         <div class="col-7 row flex-grow-1">
             <div class="col-8 my-1">
                 <strong>MSSV: </strong> {{ student.username }}

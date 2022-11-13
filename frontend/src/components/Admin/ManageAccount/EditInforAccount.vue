@@ -26,7 +26,7 @@
                                 <label
                                     for="name"
                                     class="col-form-label px-0 py-2"
-                                    ><strong>Tên người dùng:</strong></label
+                                    ><strong>Tên đăng nhập:</strong></label
                                 >
                                 <div class="form-control text-center" id="name">
                                     {{ accountUpdate.username }}

@@ -42,6 +42,7 @@ const login = async (req, res, next) => {
             email: account.email,
             phoneNumber: account.phoneNumber,
             urlAvatar: account.urlAvatar,
+            rule: account.rule,
         };
 
         return res.json({

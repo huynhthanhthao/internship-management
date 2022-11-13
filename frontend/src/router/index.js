@@ -15,6 +15,7 @@ import HomePage from "../components/GlobalComponent/HomePage.vue";
 import StudentsRegister from "../views/company/StudentsRegister.vue";
 import StudentsTraining from "../views/company/StudentsTraining.vue";
 import TaskDetail from "../views/company/TaskDetail.vue";
+import UpdateInforCompany from "../components/Company/UpdateInfor.vue";
 
 //Teacher router
 import TeacherManage from "../views/teacher/TeacherManage.vue";
@@ -30,7 +31,7 @@ import StudentsManagement from "../views/ministry/StudentsManagement.vue";
 //Student router
 import StudentRegister from "../views/student/StudentRegister.vue";
 import StudentManage from "../views/student/StudentManage.vue";
-import StudentUpdateInfor from "../views/student/StudentUpdateInfor.vue";
+import UpdateInfor from "../views/UpdateInfor.vue";
 import ViewAssessCompany from "../components/GlobalComponent/ViewAssessCompany.vue";
 import ViewAssessTeacher from "../components/Student/ManageInternship/ViewAssessTeacher.vue";
 
@@ -45,6 +46,7 @@ const routes = [
     { path: "/login", component: Login },
     { path: "/student", component: Student },
     { path: "/error", component: Error },
+
     {
         path: "/admin",
         component: Admin,
@@ -77,6 +79,10 @@ const routes = [
                     },
                 ],
             },
+            {
+                path: "/teacher/update-infor/:status",
+                component: UpdateInfor,
+            },
         ],
     },
     {
@@ -87,6 +93,10 @@ const routes = [
             { path: "/company/students-register", component: StudentsRegister },
             { path: "/company/detail-task/:studentId", component: TaskDetail },
             { path: "/company/students-training", component: StudentsTraining },
+            {
+                path: "/company/update-infor/:status",
+                component: UpdateInforCompany,
+            },
         ],
     },
     {
@@ -133,7 +143,10 @@ const routes = [
                     },
                 ],
             },
-            { path: "/student/update-infor", component: StudentUpdateInfor },
+            {
+                path: "/student/update-infor/:status",
+                component: UpdateInfor,
+            },
         ],
     },
 ];

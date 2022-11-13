@@ -13,8 +13,8 @@
                     <img
                         src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBelU3RHc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f9e8471fd1ae553364e9ee7d8cd34d50ea9fdd35/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJc0FXa0NMQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--ee4e4854f68df0a745312d63f6c2782b5da346cd/axon-logo.png"
                         alt=""
-                        class="me-2"
-                        style="width: 30px"
+                        class="me-2 rounded-circle"
+                        style="width: 35px; height: 35px"
                     />{{ company.name }}
                 </button>
             </h2>

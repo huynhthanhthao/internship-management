@@ -27,7 +27,8 @@
                 <img
                     :src="account.urlAvatar"
                     alt="Ảnh đại diện"
-                    style="width: 50px"
+                    style="width: 50px; height: 50px"
+                    class="rounded-circle"
                 />
                 &nbsp;
             </button>

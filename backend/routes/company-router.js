@@ -11,6 +11,7 @@ import getStudentsTraining from "../controllers/company-controllers/get-students
 import getInforRegister from "../controllers/company-controllers/get-infor-register.js";
 import getInforTraining from "../controllers/company-controllers/get-infor-training.js";
 import getCompanyAssess from "../controllers/global/get-company-assess.js";
+import getCompanyInfor from "../controllers/global/get-company-infor.js";
 
 const router = express.Router();
 
@@ -51,5 +52,7 @@ router.get("/get-infor-training", getInforTraining);
 
 // Get company assess
 router.get("/get-company-assess", getCompanyAssess);
+
+router.get("/get-company-infor", getCompanyInfor);
 
 export default router;

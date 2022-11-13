@@ -3,14 +3,7 @@ import axios from "axios";
 
 const accountModule = {
     state: {
-        account: {
-            id: "",
-            username: "",
-            name: "",
-            email: "",
-            phoneNumber: "",
-            urlAvatar: "",
-        },
+        account: {},
     },
 
     getters: {

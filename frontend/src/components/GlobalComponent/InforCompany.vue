@@ -2,7 +2,7 @@
     <div class="object-infor col-6 d-flex p-3 border rounded-4">
         <div v-if="student.companyId !== null" class="d-flex">
             <AvatarComponent
-                :avatar="{ path: company.urlAvatar, height: 150, width: 150 }"
+                :urlAvatar="company.urlAvatar"
                 class="col-5 me-4"
             />
             <div class="col-7 row flex-grow-1">

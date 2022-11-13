@@ -10,14 +10,10 @@
                 @click="closeDetail"
             ></button>
             <AvatarComponent
-                :avatar="{
-                    path: studentActive.urlAvatar,
-                    height: 150,
-                    width: 150,
-                }"
-                class="col-5 me-3"
+                :urlAvatar="studentActive.urlAvatar"
+                class="col-4 me-3"
             />
-            <div class="col-7 flex-grow-1">
+            <div class="col-7 flex-grow-1 mt-3">
                 <div class="col-12 mb-3">
                     <strong>MSSV: </strong> {{ studentActive.username }}
                 </div>

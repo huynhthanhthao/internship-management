@@ -15,10 +15,10 @@
             </div>
             <div class="col-7 flex-grow-1">
                 <div class="col-12 my-1">
-                    <strong>Họ tên cán bộ: </strong> {{ teacher.name }}
+                    <strong>Họ tên giảng viên: </strong> {{ teacher.name }}
                 </div>
                 <div class="col-12 my-1">
-                    <strong>Mã cán bộ: </strong> {{ teacher.username }}
+                    <strong>Mã số giảng viên: </strong> {{ teacher.username }}
                 </div>
                 <div class="col-12 my-1">
                     <strong>Email: </strong> {{ teacher.email }}

@@ -6,7 +6,6 @@
         <div>
             <img
                 src="https://cdn-icons-png.flaticon.com/512/1376/1376203.png"
-                alt=""
                 style="width: 200px"
             />
         </div>

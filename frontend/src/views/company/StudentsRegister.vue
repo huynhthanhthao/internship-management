@@ -160,6 +160,8 @@ export default {
         },
     },
     async created() {
+        this.$store.commit("CLOSE_DETAIL");
+
         const token = localStorage.getItem("token");
         await this.setAccount();
 

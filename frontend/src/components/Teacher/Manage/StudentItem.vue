@@ -11,10 +11,10 @@
                     :aria-controls="`collapse${index}`"
                 >
                     <img
-                        :src="`${student.urlAvatar}`"
+                        :src="student.urlAvatar"
                         alt=""
-                        class="me-2"
-                        style="width: 30px"
+                        class="me-2 rounded-circle"
+                        style="width: 40px; height: 40px"
                     />
                     <span class="me-2">{{ student.username }}</span>
                     <span>{{ student.name }}</span>

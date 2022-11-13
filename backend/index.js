@@ -11,14 +11,29 @@ import studentRouter from "./routes/student-router.js";
 import teacherRouter from "./routes/teacher-router.js";
 import companyRouter from "./routes/company-router.js";
 import authRouter from "./routes/auth-router.js";
-// import getRule from "./routes/get-rule.js";
 import getAccount from "./controllers/global/getAccount.js";
+import uploadProfile from "./controllers/global/upload-profile.js";
 
 // import midleware
 import middlewareRouter from "./middleware/check-rule.js";
 
+import multer from "multer";
+
 const app = express();
 const port = 3000;
+
+// set up upload file
+const storage = multer.diskStorage({
+    // cb check file is accessed ?
+    destination: function (req, file, cb) {
+        cb(null, "../frontend/public/uploads");
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + file.originalname);
+    },
+});
+
+const upload = multer({ storage: storage });
 
 // Connect database
 connectDB();
@@ -73,6 +88,9 @@ app.use(
 
 // app.use("/get-rule", getRule);
 app.post("/get-account", getAccount);
+
+// update avatar
+app.post("/update-profile", upload.single("avatar"), uploadProfile);
 
 app.use("/", authRouter);
 

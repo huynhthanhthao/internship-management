@@ -60,6 +60,7 @@ export default {
 
     async created() {
         const token = localStorage.getItem("token");
+        this.$store.commit("CLOSE_DETAIL");
         await this.setAccount();
 
         const res = await axios.get(

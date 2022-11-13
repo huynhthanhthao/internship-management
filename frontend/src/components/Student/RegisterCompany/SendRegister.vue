@@ -22,18 +22,14 @@
                 <div class="modal-body ps-0">
                     <form action="" class="row col-12 p-0 my-3 mx-2">
                         <div
-                            class="avatar col-4 d-flex flex-column align-items-center ps-0"
+                            class="avatar col-4 d-flex flex-column align-items-center ps-0 text-center mt-3"
                         >
                             <AvatarComponent
-                                :avatar="{
-                                    path: student.urlAvatar,
-                                    height: 200,
-                                    width: 200,
-                                }"
+                                :urlAvatar="student.urlAvatar"
                                 class="col-12"
                             />
                             <h3
-                                class="col-10 text-center fw-bold mt-3"
+                                class="col-10 text-center fw-bold fs-4 mt-3"
                                 style="color: #1f5caa"
                             >
                                 {{ student.name }}
