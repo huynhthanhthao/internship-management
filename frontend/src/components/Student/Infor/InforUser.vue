@@ -39,7 +39,7 @@
                     </h3>
                 </div>
 
-                <ul class="infor-student-detail fs-6 mt-5 ps-0 ms-4">
+                <ul class="infor-student-detail fs-6 mt-5 ps-0 ms-0">
                     <li class="infor-student-item mb-2">
                         <span class="item__title me-3">
                             <i class="bi bi-person-circle"></i>
