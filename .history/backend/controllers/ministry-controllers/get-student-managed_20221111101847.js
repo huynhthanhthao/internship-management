@@ -32,7 +32,7 @@ const getStudentManaged = async function (req, res, next) {
 
                 // if (studentIds.includes(students[j].studentId)) {
 
-                studentIds.push(students[j]);
+                studentIds.push(students[j].studentId);
                 // }
             }
         }
@@ -42,24 +42,16 @@ const getStudentManaged = async function (req, res, next) {
         for (let i = 0; i < studentIds.length; i++) {
             const { username, name, phoneNumber, email } =
                 await Account.findOne({
-                    _id: studentIds[i].studentId,
+                    _id: studentIds[i],
                 });
-            studentList.push({
-                username,
-                name,
-                phoneNumber,
-                email,
-                class: studentIds[i].class,
-                semester: studentIds[i].semester,
-                schoolYear: studentIds[i].schoolYear,
-            });
+
+            studentList.push({ username, name, phoneNumber, email });
         }
 
         res.json({
             status: true,
             message:
                 "Lấy danh sách sinh viên quản lý bởi giảng viên thành công!",
-            classes,
             result: studentList,
         });
     } catch (error) {

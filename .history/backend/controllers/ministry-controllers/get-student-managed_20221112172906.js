@@ -53,6 +53,7 @@ const getStudentManaged = async function (req, res, next) {
                 semester: studentIds[i].semester,
                 schoolYear: studentIds[i].schoolYear,
             });
+            console.log(studentList);
         }
 
         res.json({

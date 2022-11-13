@@ -39,7 +39,7 @@
                                 <label
                                     for="inputUsername"
                                     class="col-form-label px-0"
-                                    ><strong>Tên đăng nhập:</strong></label
+                                    ><strong>Tên người dùng:</strong></label
                                 >
                                 <input
                                     type="text"
@@ -86,71 +86,37 @@
                                     </option>
                                 </select>
                             </div>
-                            <div
-                                class="mb-3 row px-0 semester-schoolYear justify-content-between student-info d-none"
-                            >
-                                <div class="student-class col-4 p-0">
-                                    <label
-                                        for="inputClass"
-                                        class="col-form-label px-0"
-                                        ><strong>Lớp:</strong></label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="inputClass"
-                                        name="studentClass"
-                                        v-model="studentClass"
-                                    />
-                                </div>
-                                <div class="semester col-3 p-0">
-                                    <label
-                                        for="inputSemester"
-                                        class="col-form-label px-0"
-                                        ><strong>Học kỳ:</strong></label
-                                    >
-                                    <select
-                                        class="form-select select-semester"
-                                        aria-label="Select Semester"
-                                        id="inputSemester"
-                                        name="semester"
-                                        v-model="semester"
-                                    >
-                                        <option selected value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">Hè</option>
-                                    </select>
-                                </div>
-                                <div class="semester col-4 p-0">
-                                    <label
-                                        for="inputSchoolYear"
-                                        class="col-form-label px-0"
-                                        ><strong>Niên khóa:</strong></label
-                                    >
-                                    <select
-                                        class="form-select select-schoolYear"
-                                        aria-label="Select School Year"
-                                        id="inputSchoolYear"
-                                        name="schoolYear"
-                                        v-model="schoolYear"
-                                    >
-                                        <option selected value="2020-2021">
-                                            2020-2021
-                                        </option>
-                                        <option value="2021-2022">
-                                            2021-2022
-                                        </option>
-                                        <option value="2022-2023">
-                                            2022-2023
-                                        </option>
-                                        <option value="2023-2024">
-                                            2023-2024
-                                        </option>
-                                        <option value="2024-2025">
-                                            2024-2025
-                                        </option>
-                                    </select>
-                                </div>
+                            <div class="mb-3 row student-class d-none">
+                                <label
+                                    for="inputClass"
+                                    class="col-form-label px-0"
+                                    ><strong>Lớp:</strong></label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputClass"
+                                    name="studentClass"
+                                    v-model="studentClass"
+                                />
+                            </div>
+                            <div class="mb-3 col-3 mx-0">
+                                <label
+                                    for="inputSemester"
+                                    class="col-form-label px-0"
+                                    ><strong>Học kỳ:</strong></label
+                                >
+                                <select
+                                    class="form-select select-semester"
+                                    aria-label="Select Semester"
+                                    id="inputSemester"
+                                    name="semester"
+                                    v-model="semester"
+                                >
+                                    <option selected value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">Hè</option>
+                                </select>
                             </div>
                         </div>
                     </form>
@@ -199,13 +165,12 @@ export default {
             studentClass: "",
             typeAccount: "TEACHER",
             semester: "1",
-            schoolYear: "2020-2021",
         };
     },
     methods: {
         selectTypeAccount(event) {
             const type = event.target.value;
-            const studentClass = document.querySelector(".student-info");
+            const studentClass = document.querySelector(".student-class");
             if (type == "STUDENT") {
                 studentClass.classList.remove("d-none");
             } else {
@@ -224,8 +189,6 @@ export default {
                     name: this.name.trim(),
                     typeAccount: this.typeAccount,
                     studentClass: this.studentClass.trim(),
-                    semester: this.semester,
-                    schoolYear: this.schoolYear,
                 },
                 {
                     headers: {

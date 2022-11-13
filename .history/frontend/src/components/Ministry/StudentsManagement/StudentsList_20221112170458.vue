@@ -31,7 +31,7 @@
             </thead>
 
             <tbody style="overflow-y: scroll">
-                <tr v-for="(student, index) in currentList" :key="index">
+                <tr v-for="(student, index) in studentList" :key="index">
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ student.username }}</td>
                     <td>{{ student.name }}</td>
@@ -52,6 +52,11 @@ import { mapActions, mapGetters } from "vuex";
 export default {
     name: "StudentsList",
     components: { StudentFilter },
+    data() {
+        return {
+            studentList: [],
+        };
+    },
     computed: mapGetters({
         teacher: "getTeacherDetail",
         currentList: "getCurrentList",
@@ -77,7 +82,7 @@ export default {
                 },
             }
         );
-        this.$store.commit("SET_CLASS_NAME", res.data.classes);
+
         this.$store.commit("SET_STUDENT_LIST", res.data.result);
         this.$store.commit("SET_CURRENT_LIST", res.data.result);
     },

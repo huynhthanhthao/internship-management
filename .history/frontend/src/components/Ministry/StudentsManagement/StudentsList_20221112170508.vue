@@ -77,7 +77,7 @@ export default {
                 },
             }
         );
-        this.$store.commit("SET_CLASS_NAME", res.data.classes);
+
         this.$store.commit("SET_STUDENT_LIST", res.data.result);
         this.$store.commit("SET_CURRENT_LIST", res.data.result);
     },

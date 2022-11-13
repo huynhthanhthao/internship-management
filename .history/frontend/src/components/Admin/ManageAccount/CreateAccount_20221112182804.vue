@@ -39,7 +39,7 @@
                                 <label
                                     for="inputUsername"
                                     class="col-form-label px-0"
-                                    ><strong>Tên đăng nhập:</strong></label
+                                    ><strong>Tên người dùng:</strong></label
                                 >
                                 <input
                                     type="text"

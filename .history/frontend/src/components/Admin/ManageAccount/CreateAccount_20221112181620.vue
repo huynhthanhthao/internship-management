@@ -39,7 +39,7 @@
                                 <label
                                     for="inputUsername"
                                     class="col-form-label px-0"
-                                    ><strong>Tên đăng nhập:</strong></label
+                                    ><strong>Tên người dùng:</strong></label
                                 >
                                 <input
                                     type="text"
@@ -169,7 +169,11 @@
                         @click="handleCreateAccount"
                         data-bs-dismiss="modal"
                         :disabled="
-                            !username || !password || !name || !typeAccount
+                            !username ||
+                            !password ||
+                            !name ||
+                            !typeAccount ||
+                            
                         "
                     >
                         Xác nhận
@@ -224,8 +228,6 @@ export default {
                     name: this.name.trim(),
                     typeAccount: this.typeAccount,
                     studentClass: this.studentClass.trim(),
-                    semester: this.semester,
-                    schoolYear: this.schoolYear,
                 },
                 {
                     headers: {

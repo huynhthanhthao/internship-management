@@ -134,6 +134,7 @@ export default {
                 resultFilter = this.studentList.filter((student) => {
                     for (let key in data) {
                         if (data[key] != student[key]) {
+                            console.log(data[key], student[key]);
                             return false;
                         }
                     }
