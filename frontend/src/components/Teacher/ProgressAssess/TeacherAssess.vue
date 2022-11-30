@@ -326,7 +326,7 @@ export default {
                         this.assessPoint[7] += point;
                         break;
                     case 14:
-                        this.assessPoint[index] =
+                        this.assessPoint[14] =
                             this.assessPoint[0] +
                             this.assessPoint[3] +
                             this.assessPoint[7];

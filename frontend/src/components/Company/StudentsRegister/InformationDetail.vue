@@ -13,9 +13,10 @@
             style="height: 180px; width: 200px"
         >
             <img
-                src="https://cdn-icons-png.flaticon.com/512/2302/2302834.png"
+                :src="student.urlAvatar"
                 alt=""
                 style="height: 100%; width: 100%"
+                class="rounded-circle"
             />
         </div>
         <div class="col-7" style="min-height: 200px">

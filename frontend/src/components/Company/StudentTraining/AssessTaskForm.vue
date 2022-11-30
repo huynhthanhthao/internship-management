@@ -32,7 +32,13 @@
                             <label class="form-label"
                                 ><strong>Thời gian: </strong>
                             </label>
-                            <div>{{ task.time }}</div>
+                            <div>
+                                {{
+                                    new Date(task.time).toLocaleDateString(
+                                        "en-GB"
+                                    )
+                                }}
+                            </div>
                         </div>
                         <div class="mb-3">
                             <strong>Trạng thái: </strong>

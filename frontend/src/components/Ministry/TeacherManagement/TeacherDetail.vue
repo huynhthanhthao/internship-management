@@ -11,6 +11,7 @@
                     :src="teacher.urlAvatar"
                     alt=""
                     style="height: 100%; width: 100%"
+                    class="rounded-circle"
                 />
             </div>
             <div class="col-7 flex-grow-1">

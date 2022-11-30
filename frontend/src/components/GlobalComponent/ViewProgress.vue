@@ -61,7 +61,11 @@
                             {{ task.status ? "Hoàn thành" : "Chưa hoàn thành" }}
                         </td>
                         <td>{{ task.time }}</td>
-                        <td>{{ task.message }}</td>
+                        <td :class="task.message ? '' : 'text-warning'">
+                            {{
+                                task.message ? task.message : "Chưa có nhận xét"
+                            }}
+                        </td>
                     </tr>
                 </tbody>
             </table>

@@ -13,8 +13,8 @@
                     <img
                         :src="student.urlAvatar"
                         alt=""
-                        class="me-2"
-                        style="width: 30px"
+                        class="me-2 rounded-circle"
+                        style="width: 30px; height: 30px"
                     />{{ student.name }}
                 </button>
             </h2>
