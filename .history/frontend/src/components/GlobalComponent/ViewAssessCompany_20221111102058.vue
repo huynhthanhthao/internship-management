@@ -13,6 +13,7 @@
             <p class="assess-company__date" v-if="startDate">
                 <strong>Thời gian thực tập:</strong>
                 <span> từ ngày {{ startDate }}</span>
+                <span v-if="completedAssess"> đến ngày </span>
             </p>
             <p v-else style="color: red">Bạn chưa tham gia thực tập</p>
             <p class="assess-company__status" v-if="startDate">
