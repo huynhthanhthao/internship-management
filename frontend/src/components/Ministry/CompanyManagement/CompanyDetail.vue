@@ -14,9 +14,10 @@
                 style="height: 180px; width: 200px"
             >
                 <img
-                    src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBelU3RHc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f9e8471fd1ae553364e9ee7d8cd34d50ea9fdd35/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJc0FXa0NMQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--ee4e4854f68df0a745312d63f6c2782b5da346cd/axon-logo.png"
+                    :src="company.urlAvatar"
                     alt=""
                     style="height: 100%; width: 100%"
+                    class="rounded-circle border"
                 />
             </div>
             <div class="col-7 flex-grow-1" style="min-height: 200px">
