@@ -90,19 +90,16 @@ import InformationDetail from "../../components/Company/StudentsRegister/Informa
 import Statistics from "../../components/Company/StudentsRegister/Statistics.vue";
 import Modal from "@/components/Modal/Modal.vue";
 
-import { mapActions, mapGetters, mapMutations } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
     name: "StudentsRegister",
     components: { ItemStudent, InformationDetail, Statistics, Modal },
-    computed: {
-        ...mapGetters({
-            isShowDetail: "getShowDetail",
-            studentList: "getStudentList",
-            account: "getAccount",
-            student: "getStudentDetail",
-        }),
-        ...mapMutations({ closeDetail: "CLOSE_DETAIL" }),
-    },
+    computed: mapGetters({
+        isShowDetail: "getShowDetail",
+        studentList: "getStudentList",
+        account: "getAccount",
+        student: "getStudentDetail",
+    }),
     methods: {
         ...mapActions(["setAccount"]),
         async handleRefuse(studentId) {

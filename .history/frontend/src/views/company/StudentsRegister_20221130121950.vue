@@ -101,7 +101,7 @@ export default {
             account: "getAccount",
             student: "getStudentDetail",
         }),
-        ...mapMutations({ closeDetail: "CLOSE_DETAIL" }),
+        ...mapMutations(["closeDetail"]),
     },
     methods: {
         ...mapActions(["setAccount"]),

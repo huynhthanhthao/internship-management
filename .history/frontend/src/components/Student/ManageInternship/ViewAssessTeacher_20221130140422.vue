@@ -12,7 +12,6 @@
         <div class="assess-teacher__detail mb-4">
             <p class="assess-teacher__date" v-if="startDate">
                 <strong>Thời gian thực tập:</strong>
-                <span> từ ngày {{ startDate }}</span>
             </p>
             <p v-else style="color: red">Bạn chưa tham gia thực tập</p>
             <p class="assess-teacher__status" v-if="startDate">

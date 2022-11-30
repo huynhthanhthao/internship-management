@@ -13,6 +13,7 @@
             <p class="assess-teacher__date" v-if="startDate">
                 <strong>Thời gian thực tập:</strong>
                 <span> từ ngày {{ startDate }}</span>
+                <span v-if="tasks.length >= 8"> 
             </p>
             <p v-else style="color: red">Bạn chưa tham gia thực tập</p>
             <p class="assess-teacher__status" v-if="startDate">
