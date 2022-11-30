@@ -25,6 +25,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Mã số</th>
                     <th scope="col">Họ và tên</th>
+                    <th scope="col">Lớp</th>
                     <th scope="col">Điện thoại</th>
                     <th scope="col">Email</th>
                 </tr>
@@ -35,6 +36,7 @@
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ student.username }}</td>
                     <td>{{ student.name }}</td>
+                    <td>{{ student.class }}</td>
                     <td>{{ student.phoneNumber }}</td>
                     <td>{{ student.email }}</td>
                 </tr>

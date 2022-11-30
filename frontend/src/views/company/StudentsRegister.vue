@@ -51,7 +51,10 @@
                 type="button"
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
-                @click="handleRefuse(student.id)"
+                @click="
+                    handleRefuse(student.id);
+                    closeDetail();
+                "
             >
                 Xác nhận
             </button>
@@ -71,7 +74,10 @@
                 type="button"
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
-                @click="handleConfirm(student.id)"
+                @click="
+                    handleConfirm(student.id);
+                    closeDetail();
+                "
             >
                 Xác nhận
             </button>
@@ -87,7 +93,7 @@ import InformationDetail from "../../components/Company/StudentsRegister/Informa
 import Statistics from "../../components/Company/StudentsRegister/Statistics.vue";
 import Modal from "@/components/Modal/Modal.vue";
 
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 export default {
     name: "StudentsRegister",
     components: { ItemStudent, InformationDetail, Statistics, Modal },
@@ -99,6 +105,7 @@ export default {
     }),
     methods: {
         ...mapActions(["setAccount"]),
+        ...mapMutations({ closeDetail: "CLOSE_DETAIL" }),
         async handleRefuse(studentId) {
             try {
                 const toast = await this.handleDeleteStudent(studentId);

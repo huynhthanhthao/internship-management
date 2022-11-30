@@ -33,7 +33,7 @@
                 <strong>GPA: </strong> {{ student.gpa }}
             </div>
             <div class="col-12 my-1">
-                <strong>Ngôn ngữ: </strong> {{ student.languages }}
+                <strong>Công nghệ: </strong> {{ student.languages }}
             </div>
             <div class="col-12 my-1">
                 <strong>Dự án: </strong> {{ student.projects }}

@@ -55,7 +55,7 @@
                                     type="password"
                                     class="form-control"
                                     id="password"
-                                    v-model="accountUpdate.password"
+                                    v-model="password"
                                 />
                             </div>
                         </div>
@@ -99,6 +99,7 @@ export default {
                 height: 160,
                 width: 160,
             },
+            password: "",
         };
     },
     methods: {
@@ -122,7 +123,7 @@ export default {
                     {
                         accountId: this.accountUpdate._id,
                         name: this.accountUpdate.name.trim(),
-                        password: this.accountUpdate.password.trim(),
+                        password: this.password.trim(),
                     },
                     { headers: { Authorization: "Bearer " + token } }
                 );

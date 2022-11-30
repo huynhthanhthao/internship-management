@@ -67,7 +67,7 @@
                                 <label
                                     for="inputLanguage"
                                     class="col-3 col-form-label px-0"
-                                    ><strong>Ngôn ngữ:</strong></label
+                                    ><strong>Công nghệ:</strong></label
                                 >
                                 <div class="col-9">
                                     <input

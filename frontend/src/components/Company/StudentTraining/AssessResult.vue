@@ -320,7 +320,6 @@ export default {
             );
             this.points = res.data.result.points;
             this.message = res.data.result.message;
-            console.log(res.data);
         } catch (error) {
             console.log(error);
         }
