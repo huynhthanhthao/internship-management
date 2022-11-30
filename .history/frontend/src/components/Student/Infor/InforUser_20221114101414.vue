@@ -85,6 +85,7 @@ export default {
     computed: mapGetters({ account: "getAccount" }),
     methods: {
         toUpdate() {
+            console.log(this.account);
             this.$router.push(
                 `/${this.account.rule.toLowerCase()}/update-infor/view`
             );
