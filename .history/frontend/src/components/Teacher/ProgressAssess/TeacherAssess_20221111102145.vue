@@ -300,6 +300,7 @@ export default {
     methods: {
         // Tinh toan diem danh gia cua giang vien.
         setAssessPoint() {
+            this.assessPoint[0] = this.assessPoint[3] = this.assessPoint[7] = 0;
             // Diem danh gia cua giang vien la null hoac rong hoac khong phai so thi dac mac dinh la 0
             this.assessPoint = this.assessPoint.map((point) => {
                 point = point === null || point === "" ? 0 : point;
@@ -325,13 +326,13 @@ export default {
                         this.assessPoint[7] += point;
                         break;
                     case 14:
-                        this.assessPoint[14] =
+                        this.assessPoint[index] =
                             this.assessPoint[0] +
                             this.assessPoint[3] +
                             this.assessPoint[7];
                         break;
-                    case 15:
-                        this.assessPoint[16] =
+                    case 16:
+                        this.assessPoint[index] =
                             this.assessPoint[14] - this.assessPoint[15];
                         break;
                 }
