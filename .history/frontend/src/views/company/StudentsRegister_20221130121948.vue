@@ -74,10 +74,7 @@
                 type="button"
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
-                @click="
-                    handleConfirm(student.id);
-                    closeDetail();
-                "
+                @click="handleConfirm(student.id)"
             >
                 Xác nhận
             </button>
@@ -104,11 +101,10 @@ export default {
             account: "getAccount",
             student: "getStudentDetail",
         }),
-        ...mapMutations({ closeDetail: "CLOSE_DETAIL" }),
+        ...mapMutations(["closeDetail"]),
     },
     methods: {
         ...mapActions(["setAccount"]),
-        ...mapMutations({ closeDetail: "CLOSE_DETAIL" }),
         async handleRefuse(studentId) {
             try {
                 const toast = await this.handleDeleteStudent(studentId);

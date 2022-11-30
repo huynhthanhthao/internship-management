@@ -6,7 +6,7 @@
         >
             <h2 class="login__title fs-2 fw-semibold" style="color: #555">
                 Chào mừng đến với
-                <span style="color: #1f5cca">CTU&nbsp;</span>
+                <span style="color: #1f5cca">CTU &nbsp;</span>
                 <span style="color: #00b0f0">M-INTERNSHIP</span> !
             </h2>
             <form
