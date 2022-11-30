@@ -323,7 +323,7 @@ export default {
                         this.assessPoint[3] += point;
                         break;
                     case 7:
-                        this.assessPoint[7] = 0;
+                        this.assessPoint[0] = 0;
                         break;
                     case 8:
                     case 9:
@@ -339,7 +339,7 @@ export default {
                             this.assessPoint[3] +
                             this.assessPoint[7];
                         break;
-                    case 16:
+                    case 15:
                         this.assessPoint[16] =
                             this.assessPoint[14] - this.assessPoint[15];
                         break;

@@ -306,24 +306,21 @@ export default {
                 return point;
             });
             this.assessPoint.forEach((point, index) => {
+                this.accessPoint[0] =
+                    this.accessPoint[3] =
+                    this.accessPoint[7] =
+                    this.accessPoint[14] =
+                    this.accessPoint[16] =
+                        0;
                 switch (index) {
-                    case 0:
-                        this.assessPoint[0] = 0;
-                        break;
                     case 1:
                     case 2:
                         this.assessPoint[0] += point;
-                        break;
-                    case 3:
-                        this.assessPoint[3] = 0;
                         break;
                     case 4:
                     case 5:
                     case 6:
                         this.assessPoint[3] += point;
-                        break;
-                    case 7:
-                        this.assessPoint[7] = 0;
                         break;
                     case 8:
                     case 9:
@@ -339,7 +336,7 @@ export default {
                             this.assessPoint[3] +
                             this.assessPoint[7];
                         break;
-                    case 16:
+                    case 15:
                         this.assessPoint[16] =
                             this.assessPoint[14] - this.assessPoint[15];
                         break;
