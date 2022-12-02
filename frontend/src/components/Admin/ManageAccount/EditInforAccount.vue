@@ -74,9 +74,7 @@
                         class="btn btn-primary"
                         data-bs-dismiss="modal"
                         @click="handleUpdateAccount"
-                        :disabled="
-                            !accountUpdate.name || !accountUpdate.password
-                        "
+                        :disabled="!accountUpdate.name || !password"
                     >
                         Lưu thay đổi
                     </button>

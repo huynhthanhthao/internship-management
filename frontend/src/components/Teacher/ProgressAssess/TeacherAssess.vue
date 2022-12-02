@@ -234,7 +234,7 @@
                         <th></th>
                         <td>Điểm còn lại</td>
                         <td></td>
-                        <td>{{ assessPoint[16] }}</td>
+                        <td>{{ assessPoint[14] - assessPoint[15] }}</td>
                     </tr>
                 </tbody>
             </table>

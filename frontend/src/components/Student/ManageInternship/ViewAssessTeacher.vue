@@ -159,7 +159,9 @@
                         <th></th>
                         <td>Điểm còn lại</td>
                         <td></td>
-                        <td>{{ points[16] }}</td>
+                        <td>
+                            {{ points[14] - points[15] }}
+                        </td>
                     </tr>
                 </tbody>
             </table>
