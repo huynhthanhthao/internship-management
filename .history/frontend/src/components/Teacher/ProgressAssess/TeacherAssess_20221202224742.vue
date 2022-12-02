@@ -306,19 +306,19 @@ export default {
         // Tinh toan diem danh gia cua giang vien.
         setAssessPoint() {
             // Diem danh gia cua giang vien la null hoac rong hoac khong phai so thi dac mac dinh la 0
-            // for (let i = 0; i < 17; i++) {
-            //     if (
-            //         this.assessPoint[i] === null ||
-            //         this.assessPoint[i] === "" ||
-            //         this.assessPoint[i] === undefined
-            //     ) {
-            //         this.assessPoint[i] = 0;
-            //     }
-            // }
-            this.assessPoint = this.assessPoint.map((point) => {
-                point = point === null || point === "" ? 0 : point;
-                return point;
-            });
+            for (let i = 0; i < 17; i++) {
+                if (
+                    this.assessPoint[i] === null ||
+                    this.assessPoint[i] === "" ||
+                    this.assessPoint[i] === undefined
+                ) {
+                    this.assessPoint[i] = 0;
+                }
+            }
+            // this.assessPoint = this.assessPoint.map((point) => {
+            //     point = point === null || point === "" ? 0 : point;
+            //     return point;
+            // });
             this.assessPoint.forEach((point, index) => {
                 switch (index) {
                     case 0:

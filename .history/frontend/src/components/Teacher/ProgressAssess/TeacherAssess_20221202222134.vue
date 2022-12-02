@@ -234,13 +234,7 @@
                         <th></th>
                         <td>Điểm còn lại</td>
                         <td></td>
-                        <td>
-                            {{
-                                assessPoint[14]
-                                    ? assessPoint[14] - assessPoint[15]
-                                    : 0
-                            }}
-                        </td>
+                        <td>{{ assessPoint[14] - assessPoint[15] }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -299,6 +293,7 @@ export default {
 
         // Deep Clone diem danh gia cua giang vien!
         this.assessPoint = JSON.parse(JSON.stringify(this.teacherAssess));
+        console.log(this.assessPoint);
         // Khoi tao diem danh gia de hien len giao dien!
         this.setAssessPoint();
     },
@@ -306,15 +301,6 @@ export default {
         // Tinh toan diem danh gia cua giang vien.
         setAssessPoint() {
             // Diem danh gia cua giang vien la null hoac rong hoac khong phai so thi dac mac dinh la 0
-            // for (let i = 0; i < 17; i++) {
-            //     if (
-            //         this.assessPoint[i] === null ||
-            //         this.assessPoint[i] === "" ||
-            //         this.assessPoint[i] === undefined
-            //     ) {
-            //         this.assessPoint[i] = 0;
-            //     }
-            // }
             this.assessPoint = this.assessPoint.map((point) => {
                 point = point === null || point === "" ? 0 : point;
                 return point;
